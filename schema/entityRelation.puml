@@ -1,0 +1,32 @@
+@startuml
+hide circle
+
+entity User {
+    * id
+    firstname
+    lastname
+    birth_date
+}
+
+entity Category {
+    * id
+    name
+    label
+}
+
+entity Product  {
+    * id
+    name
+    label
+}
+
+entity Order {
+    *id
+    date
+}
+
+entity OrderProduct {
+    *id
+    quantity
+}
+@enduml
