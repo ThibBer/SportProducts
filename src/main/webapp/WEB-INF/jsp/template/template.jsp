@@ -3,10 +3,10 @@
 <%@ include file="../include/importTags.jsp" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <html>
-<head>liverea
+<head>
     <link rel="stylesheet" href="<spring:url value='/css/bootstrap/v4.4.1/bootstrap.min.css'/>" />
 </head>
-<body class="">
+<body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">Navbar</a>
