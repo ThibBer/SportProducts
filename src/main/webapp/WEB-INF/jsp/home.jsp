@@ -5,6 +5,27 @@
         <title>Accueil</title>
     </head>
     <body>
-        Welcome in our wonderful world !  ${age}
+        <div class="d-flex row justify-content-center">
+            <div class="col-md-3">
+                <div class="card m-3 product-card">
+                    <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
+
+                    <hr/>
+
+                    <div class="card-body pt-0 pl-2">
+                        <h5 class="card-title">Vareuse rouge</h5>
+                        <p class="card-text">52,14€</p>
+                    </div>
+                    <div class="card-footer p-2">
+                        <div class="input-group">
+                            <div class="input-group-prepend mx-md-2">
+                                <button class="btn btn-danger"><i class="fa-solid fa-basket-shopping"></i> Ajouter</button>
+                            </div>
+                            <input type="number" class="form-control" min="0" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
