@@ -1,4 +1,4 @@
-# Sport Items Website selling
+# Sport Products Website selling
 IG 3 projet for "Développement avancé d'application Web" lesson
 
 ## Authors

@@ -1,4 +1,4 @@
-package be.henallux.spring.sportItems;
+package be.henallux.spring.sportProjects;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package be.henallux.spring.sportItems;
+package be.henallux.spring.sportProjects;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
