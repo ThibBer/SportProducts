@@ -1,11 +1,44 @@
 @startuml
-'https://plantuml.com/sequence-diagram
+hide circle
 
-autonumber
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+entity User {
+    * id
+    firstname
+    lastname
+    birth_date
+}
 
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+entity Category {
+    * id
+    name
+    label
+}
+
+entity Product  {
+    * id
+    category
+    name
+    label
+    description
+    price
+}
+
+entity Order {
+    *id
+    user
+    date
+}
+
+entity OrderProduct {
+    *id
+    order
+    product
+    quantity
+}
+
+Order::user -right-> User::id
+Order::id <-left- OrderProduct::order
+Product::category -right-> Category::id
+OrderProduct::product --> Product::id
 @enduml

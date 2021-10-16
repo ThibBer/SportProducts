@@ -18,6 +18,8 @@ entity Product  {
     * id
     name
     label
+    description
+    price
 }
 
 entity Order {
@@ -29,4 +31,10 @@ entity OrderProduct {
     *id
     quantity
 }
+
+Order ||--o{ OrderProduct
+User ||--o{ Order
+Category ||--o{ Product
+OrderProduct }o--|| Product
+
 @enduml
