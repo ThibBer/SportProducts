@@ -32,9 +32,17 @@ entity OrderProduct {
     quantity
 }
 
-Order ||--o{ OrderProduct
-User ||--o{ Order
-Category ||--o{ Product
+entity Translation {
+    * name
+    label
+}
+
+Order ||--o{ OrderProduct : Content
+User ||--o{ Order : Ordering
+Category ||--o{ Product : Belong
 OrderProduct }o--|| Product
+
+Category }o--|| Translation : Labeling
+Product }o--|| Translation : Labeling
 
 @enduml
