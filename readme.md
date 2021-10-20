@@ -13,7 +13,7 @@ IG 3 projet for "Développement avancé d'application Web" lesson
 - Database schema -> 22/10/2021 ❌
 
 ## Questions
-- Comment gérer l'adresse de livraison en BDD ?
+- Comment gérer l'adresse de livraison en BDD ? Table Localité, rue et numéro dans client
 - Quand on modifie un produit : est-ce qu'on peut juste insérer une nouvelle ligne en 
-bdd pour garder un historique des prix en bdd ?
-- 
+bdd pour garder un historique des prix en bdd ? Table Produit (libellé), table "version" avec le prix. Le client y sera relié
+- Panier stocké en base de données ?
