@@ -3,9 +3,17 @@ hide circle
 
 entity User {
     * id
+    login
+    password
     firstname
     lastname
     birth_date
+    email
+    phone_number [0..1]
+    city
+    postal_code
+    street
+    house_number
 }
 
 entity Category {
@@ -16,9 +24,6 @@ entity Category {
 
 entity Product  {
     * id
-    name
-    label
-    description
     price
 }
 
@@ -33,18 +38,27 @@ entity OrderProduct {
 }
 
 entity Translation {
-    * name
+    * id
     french
     deutsch
     german
 }
 
+entity Promotion {
+    *id
+    start_date
+    end_date
+    percentage
+}
+
 Order ||--o{ OrderProduct : Content
 User ||--o{ Order : Ordering
 Category ||--o{ Product : Belong
-OrderProduct }o--|| Product
+OrderProduct }o--|| Product : Belong
 
-Category }o--|| Translation : Labeling
-Product }o--|| Translation : Labeling
+Category }o--o| Promotion : Promotion
+
+Product }o--|| Translation : Label
+Product }o--|| Translation : Description
 
 @enduml
