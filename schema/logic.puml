@@ -1,44 +1,69 @@
 @startuml
 hide circle
 
-
 entity User {
     * id
+    **email**
+    password
     firstname
     lastname
     birth_date
+    phone_number [0..1]
+    city
+    postal_code
+    street
+    house_number
 }
 
 entity Category {
     * id
     name
     label
+    promotion [0..1]
 }
 
 entity Product  {
     * id
+    price
     category
-    name
     label
     description
-    price
 }
 
 entity Order {
     *id
-    user
     date
+    user
 }
 
 entity OrderProduct {
     *id
+    quantity
     order
     product
-    quantity
 }
 
-Order::user -right-> User::id
+entity Translation {
+    * id
+    french
+    deutsch
+    german
+}
+
+entity Promotion {
+    *id
+    start_date
+    end_date
+    percentage
+}
+
+Order::user --> User::id
 Order::id <-left- OrderProduct::order
-Product::category -right-> Category::id
+Product::category -left-> Category::id
 OrderProduct::product --> Product::id
+Category::promotion -left-> Promotion::id
+
+Product::label -right--> Translation::id
+Product::description -right-> Translation::id
+
 @enduml

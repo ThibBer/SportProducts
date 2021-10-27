@@ -3,12 +3,11 @@ hide circle
 
 entity User {
     * id
-    login
+    **email**
     password
     firstname
     lastname
     birth_date
-    email
     phone_number [0..1]
     city
     postal_code
@@ -51,14 +50,13 @@ entity Promotion {
     percentage
 }
 
-Order ||--o{ OrderProduct : Content
+Order ||-left-o{ OrderProduct : Content
 User ||--o{ Order : Ordering
 Category ||--o{ Product : Belong
 OrderProduct }o--|| Product : Belong
 
 Category }o--o| Promotion : Promotion
 
-Product }o--|| Translation : Label
+Product }o-left-|| Translation : Label
 Product }o--|| Translation : Description
-
 @enduml
