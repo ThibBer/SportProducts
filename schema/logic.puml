@@ -17,17 +17,15 @@ entity User {
 
 entity Category {
     * id
-    name
     label
+    description
     promotion [0..1]
 }
 
 entity Product  {
     * id
-    price
+    currentPrice
     category
-    label
-    description
 }
 
 entity Order {
@@ -39,15 +37,21 @@ entity Order {
 entity OrderProduct {
     *id
     quantity
+    accorderPrice
     order
     product
 }
 
+entity Language {
+    *id
+    internationalCode
+}
+
 entity Translation {
-    * id
-    french
-    deutsch
-    german
+    *language
+    *product
+    label
+    description
 }
 
 entity Promotion {
@@ -63,7 +67,6 @@ Product::category -left-> Category::id
 OrderProduct::product --> Product::id
 Category::promotion -left-> Promotion::id
 
-Product::label -right--> Translation::id
-Product::description -right-> Translation::id
-
+Translation::language -right-> Language::id
+Translation::product -right-> Product::id
 @enduml

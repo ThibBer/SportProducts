@@ -17,13 +17,13 @@ entity User {
 
 entity Category {
     * id
-    name
     label
+    description
 }
 
 entity Product  {
     * id
-    price
+    currentPrice
 }
 
 entity Order {
@@ -34,13 +34,19 @@ entity Order {
 entity OrderProduct {
     *id
     quantity
+    accordedPrice
 }
 
 entity Translation {
-    * id
-    french
-    deutsch
-    german
+    label
+    description
+    ---
+    id(Translation) : Language, Product
+}
+
+entity Language {
+    *id
+    internationalCode
 }
 
 entity Promotion {
@@ -50,13 +56,13 @@ entity Promotion {
     percentage
 }
 
-Order ||-left-o{ OrderProduct : Content
-User ||--o{ Order : Ordering
-Category ||--o{ Product : Belong
+Order ||-right-o{ OrderProduct : Content
+User ||-right-o{ Order : Ordering
+Category ||-up-o{ Product : Belong
 OrderProduct }o--|| Product : Belong
 
 Category }o--o| Promotion : Promotion
 
-Product }o-left-|| Translation : Label
-Product }o--|| Translation : Description
+Product ||-left-o{ Translation : TransletedProduct
+Translation }o-left-|| Language : TargetLanguage
 @enduml
