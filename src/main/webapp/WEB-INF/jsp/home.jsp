@@ -2,7 +2,7 @@
 <%@ include file="include/importTags.jsp" %>
 <html>
     <head>
-        <title>Accueil</title>
+        <title><spring:message code="home"/></title>
     </head>
     <body>
         <div class="d-flex row justify-content-center">

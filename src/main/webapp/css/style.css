@@ -1,0 +1,12 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.bg-default {
+    background-color: #101d2f;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+}
