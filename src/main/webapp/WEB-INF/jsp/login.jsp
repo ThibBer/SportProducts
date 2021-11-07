@@ -11,7 +11,7 @@
                 <div class="text-center pt-2">
                     <h2><spring:message code="register"/></h2>
                 </div>
-                <form id="login-form" class="p-5">
+                <form:form id="login-form" method="post" action="/sportProducts/login/post" name="user">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -53,7 +53,7 @@
                     </div>
 
                     <button class="btn text-white mx-auto d-block border-white mt-md-3">Se connecter</button>
-                </form>
+                </form:form>
             </div>
         </div>
     </body>

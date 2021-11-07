@@ -44,7 +44,7 @@
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><spring:message code="logIn"/></a>
+                                <a class="nav-link" href="#"><spring:message code="login"/></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><spring:message code="profile"/></a>
