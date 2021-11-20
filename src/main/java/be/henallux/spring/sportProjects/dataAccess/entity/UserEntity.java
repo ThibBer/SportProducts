@@ -1,7 +1,13 @@
-package be.henallux.spring.sportProjects.model;
+package be.henallux.spring.sportProjects.dataAccess.entity;
 
-public class User {
-    private Integer id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
+public class UserEntity {
+    @Id private Integer id;
     private String email;
     private String password;
     private String firstname;
@@ -12,9 +18,9 @@ public class User {
     private String street;
     private String houseNumber;
 
-    public User() {}
+    public UserEntity() {}
 
-    public User(Integer id, String email, String password, String firstname, String lastname, String phoneNumber, String city, Integer postalCode, String street, String houseNumber) {
+    public UserEntity(Integer id, String email, String password, String firstname, String lastname, String phoneNumber, String city, Integer postalCode, String street, String houseNumber) {
         setId(id);
         setEmail(email);
         setPassword(password);

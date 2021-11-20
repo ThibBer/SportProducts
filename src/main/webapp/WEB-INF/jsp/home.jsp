@@ -13,8 +13,8 @@
                     <hr/>
 
                     <div class="card-body pt-0 pl-2">
-                        <h5 class="card-title">Vareuse rouge</h5>
-                        <p class="card-text">52,14€</p>
+                        <h5 class="card-title">Titre article</h5>
+                        <p class="card-text">Prix</p>
                     </div>
                     <div class="card-footer p-2">
                         <div class="input-group">
@@ -26,6 +26,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="d-flex row justify-content-center">
+            <c:forEach items="${categories}" var="category">
+                <div class="col-md-3">
+                    <div class="card m-3 product-card">
+                        <div class="card-body pt-0 pl-2">
+                            <h5 class="card-title">Catégorie : <c:out value="${category.getLabel()}" /></h5>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </body>
 </html>

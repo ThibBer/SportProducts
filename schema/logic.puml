@@ -24,8 +24,9 @@ entity Category {
 
 entity Product  {
     * id
-    currentPrice
+    price
     category
+    description
 }
 
 entity Order {
@@ -37,7 +38,7 @@ entity Order {
 entity OrderProduct {
     *id
     quantity
-    accorderPrice
+    accorded_price
     order
     product
 }
@@ -51,7 +52,6 @@ entity Translation {
     *language
     *product
     label
-    description
 }
 
 entity Promotion {

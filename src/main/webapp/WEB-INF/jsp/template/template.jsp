@@ -31,7 +31,7 @@
         <header class="container-fluid bg-default">
             <div class="container">
                 <nav class="navbar navbar-expand-lg bg-default">
-                    <a class="navbar-brand" href="#">LOGO</a>
+                    <a class="navbar-brand" href="#">SportProducts</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
