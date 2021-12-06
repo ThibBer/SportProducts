@@ -1,9 +1,17 @@
 package be.henallux.spring.sportProjects.model;
 
-public class User {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
+
+public class User implements UserDetails {
     private Integer id;
     private String email;
-    private String password;
     private String firstname;
     private String lastname;
     private String phoneNumber;
@@ -11,20 +19,37 @@ public class User {
     private Integer postalCode;
     private String street;
     private String houseNumber;
+    private Date birthDate;
+
+    /*SECURITY*/
+    private String username;
+    private String password;
+    private String authorities;
+    private Boolean accountNonExpired;
+    private Boolean accountNonLocked;
+    private Boolean credentialsNonExpired;
+    private Boolean enabled;
 
     public User() {}
 
-    public User(Integer id, String email, String password, String firstname, String lastname, String phoneNumber, String city, Integer postalCode, String street, String houseNumber) {
-        setId(id);
-        setEmail(email);
-        setPassword(password);
-        setFirstname(firstname);
-        setLastname(lastname);
-        setPhoneNumber(phoneNumber);
-        setCity(city);
-        setPostalCode(postalCode);
-        setStreet(street);
-        setHouseNumber(houseNumber);
+    public User(Integer id, String email, String firstname, String lastname, String phoneNumber, String city, Integer postalCode, String street, String houseNumber, Date birthDate, String username, String password, String authorities, Boolean accountNonExpired, Boolean accountNonLocked, Boolean credentialsNonExpired, Boolean enabled) {
+        this.setId(id);
+        this.setEmail(email);
+        this.setFirstname(firstname);
+        this.setLastname(lastname);
+        this.setPhoneNumber(phoneNumber);
+        this.setCity(city);
+        this.setPostalCode(postalCode);
+        this.setStreet(street);
+        this.setHouseNumber(houseNumber);
+        this.setBirthDate(birthDate);
+        this.setUsername(username);
+        this.setPassword(password);
+        this.setAuthorities(authorities);
+        this.setAccountNonExpired(accountNonExpired);
+        this.setAccountNonLocked(accountNonLocked);
+        this.setCredentialsNonExpired(credentialsNonExpired);
+        this.setEnabled(enabled);
     }
 
     public Integer getId() {
@@ -41,14 +66,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getFirstname() {
@@ -107,12 +124,94 @@ public class User {
         this.houseNumber = houseNumber;
     }
 
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getAuthoritiesString(){
+        return authorities;
+    }
+
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+
+        if (authorities != null && !authorities.isEmpty()) {
+            String[] authoritiesAsArray = authorities.split(",");
+
+            for (String authority : authoritiesAsArray) {
+                if (authority != null && !authority.isEmpty()) {
+                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+                }
+            }
+        }
+
+        return grantedAuthorities;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
@@ -120,6 +219,14 @@ public class User {
                 ", postalCode=" + postalCode +
                 ", street='" + street + '\'' +
                 ", houseNumber='" + houseNumber + '\'' +
+                ", birthDate=" + birthDate +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", authorities='" + authorities + '\'' +
+                ", accountNonExpired=" + accountNonExpired +
+                ", accountNonLocked=" + accountNonLocked +
+                ", credentialsNonExpired=" + credentialsNonExpired +
+                ", enabled=" + enabled +
                 '}';
     }
 }

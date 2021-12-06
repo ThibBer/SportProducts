@@ -9,50 +9,24 @@
         <div class="row justify-content-center">
             <div class="d-flex flex-column justify-content-center w-50">
                 <div class="text-center pt-2">
-                    <h2><spring:message code="register"/></h2>
+                    <h2><spring:message code="login"/></h2>
                 </div>
-                <form:form id="login-form" method="post" action="/sportProducts/login/post" name="user">
+                <form:form method="post" modelAttribute="user">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label><spring:message code="firstName"/></label>
-                                <input class="form-control" type="text" id="first_name" name="first_name" placeholder="<spring:message code="firstName"/>"/>
+                                <form:label path="username"><spring:message code="username"/></form:label>
+                                <form:input path="username" cssClass="form-control" required="required"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label><spring:message code="lastName"/></label>
-                                <input class="form-control" type="text" id="last_name" name="last_name" placeholder="<spring:message code="lastName"/>"/>
+                                <form:label path="password"><spring:message code="password"/></form:label>
+                                <form:input path="password" cssClass="form-control" type="password" required="required"/>
                             </div>
                         </div>
                     </div>
-
-                    <div class="form-group mt-md-3">
-                        <label><spring:message code="email"/></label>
-                        <input class="form-control" type="email" placeholder="<spring:message code="email"/>"/>
-                    </div>
-
-                    <div class="form-group mt-md-3">
-                        <label><spring:message code="password"/></label>
-                        <input class="form-control" type="password" placeholder="<spring:message code="password"/>"/>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><spring:message code="birthDate"/></label>
-                                <input class="form-control" type="date" id="birth_date" name="birth_date" placeholder="<spring:message code="birthDate"/>"/>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label><spring:message code="phoneNumber"/></label>
-                                <input class="form-control" type="text" id="last_name" name="last_name" placeholder="<spring:message code="phoneNumber"/>"/>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="btn text-white mx-auto d-block border-white mt-md-3">Se connecter</button>
+                    <button class="btn btn-primary mx-auto d-block mt-md-3">Se connecter</button>
                 </form:form>
             </div>
         </div>

@@ -23,7 +23,14 @@ CREATE TABLE user
     city varchar(50) NOT NULL,
     postal_code varchar(50) NOT NULL,
     street varchar(50) NOT NULL,
-    house_number varchar(10) NOT NULL
+    house_number varchar(10) NOT NULL,
+
+    username varchar(50) NOT NULL UNIQUE,
+    authorities varchar(50) DEFAULT NULL,
+    non_expired boolean DEFAULT NULL,
+    non_locked boolean DEFAULT NULL,
+    credentials_non_expired boolean DEFAULT NULL,
+    enabled boolean DEFAULT NULL
 );
 
 CREATE TABLE `order`
@@ -87,8 +94,8 @@ CREATE TABLE order_product
     `order` INT NOT NULL,
     product INT NOT NULL,
 
-    CONSTRAINT fk_order_product_order FOREIGN KEY (`order`) REFERENCES `order`(id),
-    CONSTRAINT fk_order_product_product FOREIGN KEY (product) REFERENCES product(id)
+    CONSTRAINT fk_order_product_order_ FOREIGN KEY (`order`) REFERENCES `order`(id),
+    CONSTRAINT fk_order_product_product_ FOREIGN KEY (product) REFERENCES product(id)
 );
 
 INSERT INTO language (international_code) VALUES ('en');
@@ -101,6 +108,9 @@ INSERT INTO product (price, category) VALUES (10.0, 1);
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
 INSERT INTO translation (language, product, label) VALUES (2, 1, 'Ballon');
+
+INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
+VALUES ('thibaut.berg@hotmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Thibaut', 'Berg', STR_TO_DATE('28/10/2001', '%d/%m/%Y'), '0478782002', 'Marche-en-Famenne', 6900, 'Rue des champs', 53, 'Spike', 'ROLE_USER', 1, 1, 1, 1);
 
 set @@global.time_zone = '+00:00' ;
 set @@session.time_zone = '+00:00' ;

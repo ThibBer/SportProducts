@@ -2,6 +2,7 @@
 
 <%@ include file="../include/importTags.jsp" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <spring:url var="localeEN" value="">
     <spring:param name="locale" value="en"/>
@@ -39,23 +40,29 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#"><spring:message code="home"/></a>
+                                <a class="nav-link" href="<spring:url value='/'/>"><spring:message code="home"/></a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="#"><spring:message code="login"/></a>
+                                <sec:authorize access="!isAuthenticated()">
+                                    <a class="nav-link" href="<spring:url value='/login'/>"><spring:message code="login"/></a>
+                                </sec:authorize>
+
+                                <sec:authorize access="isAuthenticated()">
+                                    <a class="nav-link" href="<spring:url value='/logout'/>"><spring:message code="logout"/></a>
+                                </sec:authorize>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#"><spring:message code="profile"/></a>
                             </li>
                             <li class="nav-item dropdown">
                                 <button class="btn text-light dropdown-toggle" type="button" id="languageSelectorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<spring:url value='assets/flags/${locale.getLanguage()}.png'/>"/> ${locale.getDisplayName()}
+                                    <img src="<spring:url value='assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayName()}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="languageSelectorDropdown">
-                                    <a class="dropdown-item" href="${localeEN}"><img src="<spring:url value='assets/flags/en.png'/>"/>English</a>
-                                    <a class="dropdown-item" href="${localeFR}"><img src="<spring:url value='assets/flags/fr.png'/>"/>Français</a>
+                                    <a class="dropdown-item" href="${localeEN}"><img src="<spring:url value='assets/flags/en.png'/>" width="15" alt="English"/>English</a>
+                                    <a class="dropdown-item" href="${localeFR}"><img src="<spring:url value='assets/flags/fr.png'/>" width="15" alt="Français"/>Français</a>
                                 </div>
                             </li>
                             <li class="nav-item">
