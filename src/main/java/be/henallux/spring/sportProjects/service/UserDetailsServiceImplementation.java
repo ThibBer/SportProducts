@@ -21,14 +21,10 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userDAO.getUserFromUsername(username);
-        System.out.println(user);
 
-        if(user == null){
-            System.out.println("Invalid username");
+        if(user.getId() == null){
             throw new UsernameNotFoundException("User not found");
         }
-
-        System.out.println(user);
 
         return user;
     }

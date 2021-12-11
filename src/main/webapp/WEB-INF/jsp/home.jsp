@@ -16,8 +16,9 @@
                     <div class="row">
                         <div class="col text-left">
                             <div class="bg-light">
+                                <hr class="m-0 p-0"/>
                                 <c:forEach items="${categories}" var="category">
-                                    <button class="btn w-100 my-md-2"><c:out value="${category.getLabel()}" /></button>
+                                    <a class="btn w-100 my-md-2" href="<spring:url value='/?${category.getId()}'/>"><c:out value="${category.getLabel()}"/></a>
                                     <hr class="m-0 p-0"/>
                                 </c:forEach>
                             </div>
@@ -31,7 +32,7 @@
                         <div class="col">
                             <div class="col-sm p-3 min-vh-100">
                                 <div class="d-flex row justify-content-center">
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
                                         <div class="card m-3 product-card">
                                             <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
 

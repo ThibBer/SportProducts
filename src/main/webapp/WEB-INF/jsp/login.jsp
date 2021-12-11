@@ -12,6 +12,7 @@
                     <h2><spring:message code="login"/></h2>
                 </div>
                 <form:form method="post" modelAttribute="user">
+                    <form:errors/>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
