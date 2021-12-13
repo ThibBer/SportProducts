@@ -5,15 +5,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.DefaultMessageCodesResolver;
 import org.springframework.web.servlet.LocaleResolver;
-import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 @Configuration
 public class MainConfiguration implements WebMvcConfigurer {
@@ -27,7 +24,7 @@ public class MainConfiguration implements WebMvcConfigurer {
         ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
 
         messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setBasenames("i18n/general", "i18n/errors");
+        messageSource.setBasenames("translations/general", "translations/errors");
         messageSource.setUseCodeAsDefaultMessage(true);
 
         return messageSource;
@@ -47,7 +44,7 @@ public class MainConfiguration implements WebMvcConfigurer {
 
         resolver.setDefaultLocale(new Locale("en"));
         resolver.setCookieName("localeCookie");
-        resolver.setCookieMaxAge(-1);
+        resolver.setCookieMaxAge(-1); //Session duration
 
         return resolver;
     }
