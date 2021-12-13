@@ -103,6 +103,7 @@ INSERT INTO language (international_code) VALUES ('fr');
 
 INSERT INTO category (label) VALUES ('Football');
 INSERT INTO category (label) VALUES ('Basketball');
+INSERT INTO category (label) VALUES ('Hockey');
 
 INSERT INTO product (price, category) VALUES (10.0, 1);
 
