@@ -9,22 +9,45 @@ import java.util.Date;
 @Entity
 @Table(name = "user")
 public class UserEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="firstname")
     private String firstname;
+
+    @Column(name="lastname")
     private String lastname;
+
+    @Column(name="phone_number")
     private String phoneNumber;
+
+    @Column(name="city")
     private String city;
+
+    @Column(name="postal_code")
     private Integer postalCode;
+
+    @Column(name="street")
     private String street;
+
+    @Column(name="house_number")
     private String houseNumber;
 
     @Column(name = "birth_date")
     private Date birthDate;
 
     /*SECURITY*/
+    @Column(name="username")
     private String username;
+
+    @Column(name="password")
     private String password;
+
+    @Column(name="authorities")
     private String authorities;
 
     @Column(name = "non_expired")
@@ -36,6 +59,7 @@ public class UserEntity {
     @Column(name = "credentials_non_expired")
     private Boolean credentialsNonExpired;
 
+    @Column(name="enabled")
     private Boolean enabled;
 
     public UserEntity() {}

@@ -5,22 +5,27 @@ import javax.persistence.*;
 @Entity
 @Table(name="product")
 public class ProductEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="description")
+    private String description;
+
+    @Column(name="price")
     private Double price;
 
     @ManyToOne
     @JoinColumn(name="category", referencedColumnName = "id")
     private CategoryEntity category;
 
-    private String description;
-
     public ProductEntity() {}
 
     public ProductEntity(Integer id, Double price, CategoryEntity category, String description) {
-        setId(id);
-        setPrice(price);
-        setCategoryEntity(category);
-        setDescription(description);
+        this.id = id;
+        this.price = price;
+        this.category = category;
+        this.description = description;
     }
 
     public Integer getId() {

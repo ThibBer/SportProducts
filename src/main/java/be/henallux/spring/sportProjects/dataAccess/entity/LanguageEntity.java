@@ -1,5 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -7,7 +8,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name="language")
 public class LanguageEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="internation_code")
     private String internationCode;
 
     public LanguageEntity() {}

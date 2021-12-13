@@ -1,5 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,9 +9,17 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "promotion")
 public class PromotionEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="start_date")
     private LocalDate startDate;
+
+    @Column(name="end_date")
     private LocalDate endDate;
+
+    @Column(name="percentage")
     private Integer percentage;
 
     public PromotionEntity() {}

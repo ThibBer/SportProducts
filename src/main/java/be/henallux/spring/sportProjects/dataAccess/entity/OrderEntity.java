@@ -1,14 +1,16 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
-import be.henallux.spring.sportProjects.model.User;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="order")
 public class OrderEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="date")
     private LocalDate date;
 
     @ManyToOne
@@ -18,9 +20,9 @@ public class OrderEntity {
     public OrderEntity() {}
 
     public OrderEntity(Integer id, LocalDate date, UserEntity userEntity) {
-        setId(id);
-        setDate(date);
-        setUserEntity(userEntity);
+        this.id = id;
+        this.date = date;
+        this.userEntity = userEntity;
     }
 
     public Integer getId() {

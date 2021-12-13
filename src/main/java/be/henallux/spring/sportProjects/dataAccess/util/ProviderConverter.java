@@ -20,8 +20,26 @@ public class ProviderConverter {
         if(user == null){
             return new UserEntity();
         }
-
-        return new UserEntity(user.getId(), user.getEmail(), user.getFirstname(), user.getLastname(), user.getPhoneNumber(), user.getCity(), user.getPostalCode(), user.getStreet(), user.getHouseNumber(), user.getBirthDate(), user.getUsername(), user.getPassword(), user.getAuthoritiesString(), user.isAccountNonExpired(), user.isAccountNonLocked(), user.isCredentialsNonExpired(), user.isEnabled());
+        UserEntity userEntity = new UserEntity(
+                user.getId(),
+                user.getEmail(),
+                user.getFirstname(),
+                user.getLastname(),
+                user.getPhoneNumber(),
+                user.getCity(),
+                user.getPostalCode(),
+                user.getStreet(),
+                user.getHouseNumber(),
+                user.getBirthDate(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getAuthoritiesString(),
+                user.isAccountNonExpired(),
+                user.isAccountNonLocked(),
+                user.isCredentialsNonExpired(),
+                user.isEnabled()
+        );
+        return userEntity;
     }
 
     public User userEntityToUserModel(UserEntity userEntity){
@@ -29,7 +47,26 @@ public class ProviderConverter {
             return new User();
         }
 
-        return new User(userEntity.getId(), userEntity.getEmail(), userEntity.getFirstname(), userEntity.getLastname(), userEntity.getPhoneNumber(), userEntity.getCity(), userEntity.getPostalCode(), userEntity.getStreet(), userEntity.getHouseNumber(), userEntity.getBirthDate(), userEntity.getUsername(), userEntity.getPassword(), userEntity.getAuthorities(), userEntity.getAccountNonExpired(), userEntity.getAccountNonLocked(), userEntity.getCredentialsNonExpired(), userEntity.getEnabled());
+        User user = new User(
+                userEntity.getId(),
+                userEntity.getEmail(),
+                userEntity.getFirstname(),
+                userEntity.getLastname(),
+                userEntity.getPhoneNumber(),
+                userEntity.getCity(),
+                userEntity.getPostalCode(),
+                userEntity.getStreet(),
+                userEntity.getHouseNumber(),
+                userEntity.getBirthDate(),
+                userEntity.getUsername(),
+                userEntity.getPassword(),
+                userEntity.getAuthorities(),
+                userEntity.getAccountNonExpired(),
+                userEntity.getAccountNonLocked(),
+                userEntity.getCredentialsNonExpired(),
+                userEntity.getEnabled()
+        );
+        return user;
     }
 
     /*Category*/

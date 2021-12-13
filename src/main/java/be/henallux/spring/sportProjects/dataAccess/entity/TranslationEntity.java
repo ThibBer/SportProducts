@@ -1,7 +1,5 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
-import be.henallux.spring.sportProjects.model.Product;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,6 +16,7 @@ public class TranslationEntity implements Serializable {
     @JoinColumn(name = "product", referencedColumnName = "id")
     private ProductEntity productEntity;
 
+    @Column(name="label")
     private String label;
 
     public TranslationEntity() {}

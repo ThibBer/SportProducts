@@ -7,9 +7,14 @@ import java.util.Collection;
 @Entity
 @Table(name="category")
 public class CategoryEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
 
+    @Column(name="label")
     private String label;
+
+    @Column(name="description")
     private String description;
 
     @ManyToOne

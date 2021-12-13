@@ -5,8 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name="order_product")
 public class OrderProductEntity {
-    @Id private Integer id;
+    @Id
+    @Column(name="id")
+    private Integer id;
+
+    @Column(name="quantity")
     private Integer quantity;
+
+    @Column(name="accorded_price")
     private Double accordedPrice;
 
     @ManyToOne
@@ -20,11 +26,11 @@ public class OrderProductEntity {
     public OrderProductEntity() {}
 
     public OrderProductEntity(Integer id, Integer quantity, Double accordedPrice, OrderEntity orderEntity, ProductEntity productEntity) {
-        setId(id);
-        setQuantity(quantity);
-        setAccordedPrice(accordedPrice);
-        setOrderEntity(orderEntity);
-        setProductEntity(productEntity);
+        this.id = id;
+        this.quantity = quantity;
+        this.accordedPrice = accordedPrice;
+        this.orderEntity = orderEntity;
+        this.productEntity = productEntity;
     }
     
     public Integer getId() {
