@@ -14,19 +14,18 @@ import java.util.List;
 @Service
 @Transactional
 public class CategoryDAO implements CategoryDataAccess {
-    private CategoryRepository repository;
+    private CategoryRepository categoryRepository;
     private ProviderConverter converter;
 
     @Autowired
     public CategoryDAO(CategoryRepository repository, ProviderConverter converter) {
-        this.repository = repository;
+        this.categoryRepository = repository;
         this.converter = converter;
     }
 
     @Override
     public ArrayList<Category> getCategories() {
-        List<CategoryEntity> categoryEntities = repository.findAll();
-        System.out.println(categoryEntities);
+        List<CategoryEntity> categoryEntities = categoryRepository.findAll();
         ArrayList<Category> categories = new ArrayList<>();
 
         for(CategoryEntity categoryEntity: categoryEntities){
@@ -34,5 +33,12 @@ public class CategoryDAO implements CategoryDataAccess {
         }
 
         return categories;
+    }
+
+    @Override
+    public Category getCategoryWithId(int id) {
+        CategoryEntity categoryEntity = categoryRepository.findCategoryEntityById(id);
+        Category category = converter.categoryEntityToCategoryModel(categoryEntity);
+        return category;
     }
 }

@@ -1,25 +1,18 @@
 package be.henallux.spring.sportProjects.model;
 
-import java.util.ArrayList;
-
 public class Category {
     private Integer id;
     private String label;
     private String description;
     private Promotion promotion;
-    private ArrayList<Product> products;
 
     public Category(){}
 
-    public Category(Integer id, String label, String description, Promotion promotion, ArrayList<Product> products) {
+    public Category(Integer id, String label, String description, Promotion promotion) {
         this.setId(id);
         this.setLabel(label);
         this.setDescription(description);
         this.setPromotion(promotion);
-        this.setProducts(products);
-    }
-    public Category(Integer id, String label, String description, Promotion promotion) {
-        this(id, label, description, promotion, new ArrayList<>());
     }
 
     public Integer getId() {
@@ -52,14 +45,6 @@ public class Category {
 
     public void setPromotion(Promotion promotion) {
         this.promotion = promotion;
-    }
-
-    public ArrayList<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(ArrayList<Product> products) {
-        this.products = products;
     }
 
     @Override

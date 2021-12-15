@@ -7,4 +7,6 @@ import java.util.ArrayList;
 
 public interface CategoryDataAccess {
     ArrayList<Category> getCategories();
+
+    Category getCategoryWithId(int id);
 }

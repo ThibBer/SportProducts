@@ -1,7 +1,6 @@
 package be.henallux.spring.sportProjects.controller;
 
-import be.henallux.spring.sportProjects.dataAccess.dao.CategoryDAO;
-import be.henallux.spring.sportProjects.dataAccess.dao.CategoryDataAccess;
+import be.henallux.spring.sportProjects.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -15,20 +14,20 @@ import java.util.Locale;
 @RequestMapping(value="/")
 public class HomeController {
     private final MessageSource messageSource;
-    private CategoryDataAccess dao;
+    private CategoriesService categoriesService;
 
     @Autowired
-    public HomeController(MessageSource messageSource, CategoryDAO dao){
+    public HomeController(MessageSource messageSource, CategoriesService categoriesService){
         this.messageSource = messageSource;
-        this.dao = dao;
+        this.categoriesService = categoriesService;
     }
 
     @RequestMapping (method = RequestMethod.GET)
     public String home (Model model, Locale locale){
         model.addAttribute("locale", locale);
-        model.addAttribute("categories", dao.getCategories());
+        model.addAttribute("categories", categoriesService.getCategories());
 
-        System.out.println(dao.getCategories());
+        System.out.println(categoriesService.getCategories());
 
         return "integrated:home";
     }

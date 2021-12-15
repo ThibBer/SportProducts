@@ -75,7 +75,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new CategoryEntity(category.getId(), category.getLabel(), category.getDescription(), promotionModelToPromotionEntity(category.getPromotion()), productModelsToProductEntities(category.getProducts()));
+        return new CategoryEntity(category.getId(), category.getLabel(), category.getDescription(), promotionModelToPromotionEntity(category.getPromotion()));
     }
 
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
@@ -83,7 +83,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new Category(categoryEntity.getId(), categoryEntity.getLabel(), categoryEntity.getDescription(), promotionEntityToPromotionModel(categoryEntity.getPromotion()), productEntitiesToProductModels(categoryEntity.getProductEntities()));
+        return new Category(categoryEntity.getId(), categoryEntity.getLabel(), categoryEntity.getDescription(), promotionEntityToPromotionModel(categoryEntity.getPromotion()));
     }
     
     public PromotionEntity promotionModelToPromotionEntity(Promotion promotion){

@@ -1,18 +1,37 @@
 package be.henallux.spring.sportProjects.dataAccess.dao;
 
+import be.henallux.spring.sportProjects.dataAccess.entity.ProductEntity;
 import be.henallux.spring.sportProjects.dataAccess.repository.ProductRepository;
+import be.henallux.spring.sportProjects.dataAccess.util.ProviderConverter;
+import be.henallux.spring.sportProjects.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
 public class ProductDAO implements ProductDataAccess {
-    private ProductRepository repository;
+    private ProductRepository productRepository;
+    private ProviderConverter converter;
 
     @Autowired
-    public ProductDAO(ProductRepository repository) {
-        this.repository = repository;
+    public ProductDAO(ProductRepository productRepository, ProviderConverter converter) {
+        this.productRepository = productRepository;
+        this.converter = converter;
+    }
+
+    @Override
+    public ArrayList<Product> getProductsWithCategoryId(int idCategory) {
+        List<ProductEntity> productEntities = productRepository.findAll();
+        ArrayList<Product> products = new ArrayList<>();
+
+        for(ProductEntity productEntity : productEntities) {
+            products.add(converter.productEntityToProductModel(productEntity));
+        }
+
+        return products;
     }
 }

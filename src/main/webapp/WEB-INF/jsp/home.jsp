@@ -10,7 +10,7 @@
                 <div id="vertical-action-bar">
                     <div class="row text-center">
                         <div class="col">
-                            <h4>Catégories</h4>
+                            <h4><spring:message code="categories" /></h4>
                         </div>
                     </div>
                     <div class="row">
@@ -18,7 +18,7 @@
                             <div class="bg-light">
                                 <hr class="m-0 p-0"/>
                                 <c:forEach items="${categories}" var="category">
-                                    <a class="btn w-100 my-md-2" href="<spring:url value='/?${category.getId()}'/>"><c:out value="${category.getLabel()}"/></a>
+                                    <a class="btn w-100 my-md-2" href="<spring:url value='/category?id=${category.getId()}'/>"><c:out value="${category.getLabel()}"/></a>
                                     <hr class="m-0 p-0"/>
                                 </c:forEach>
                             </div>

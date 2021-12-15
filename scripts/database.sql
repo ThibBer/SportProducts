@@ -60,7 +60,7 @@ CREATE TABLE category
 (
     id INT PRIMARY KEY AUTO_INCREMENT,
     label VARCHAR(45) NOT NULL,
-    description TEXT,
+    description TEXT NOT NULL,
     promotion INT,
 
     CONSTRAINT fk_category_promotion FOREIGN KEY (promotion) REFERENCES promotion(id)
@@ -101,17 +101,22 @@ CREATE TABLE order_product
 INSERT INTO language (international_code) VALUES ('en');
 INSERT INTO language (international_code) VALUES ('fr');
 
-INSERT INTO category (label) VALUES ('Football');
-INSERT INTO category (label) VALUES ('Basketball');
-INSERT INTO category (label) VALUES ('Hockey');
+INSERT INTO category (label, description) VALUES ('Football', 'Description football');
+INSERT INTO category (label, description) VALUES ('Basketball', 'Description basketball');
+INSERT INTO category (label, description) VALUES ('Hockey', 'Description hockey');
 
 INSERT INTO product (price, category) VALUES (10.0, 1);
+INSERT INTO product (price, category) VALUES (25.0, 1);
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
 INSERT INTO translation (language, product, label) VALUES (2, 1, 'Ballon');
+INSERT INTO translation (language, product, label) VALUES (1, 2, 'Goalkeeper gloves');
+INSERT INTO translation (language, product, label) VALUES (2, 2, 'Gants de gardien');
 
 INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
 VALUES ('thibaut.berg@hotmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Thibaut', 'Berg', STR_TO_DATE('28/10/2001', '%d/%m/%Y'), '0478782002', 'Marche-en-Famenne', 6900, 'Rue des champs', 53, 'Spike', 'ROLE_USER', 1, 1, 1, 1);
+INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
+VALUES ('nicobern.play@gmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Nicolas', 'Bernard', STR_TO_DATE('07/12/2000', '%d/%m/%Y'), '0470565656', 'Spontin', 5530, 'Rue du château', 36, 'Bernico', 'ROLE_USER', 1, 1, 1, 1);
 
 set @@global.time_zone = '+00:00' ;
 set @@session.time_zone = '+00:00' ;

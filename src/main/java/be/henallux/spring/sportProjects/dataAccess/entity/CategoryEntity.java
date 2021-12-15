@@ -21,17 +21,13 @@ public class CategoryEntity {
     @JoinColumn(name = "promotion", referencedColumnName = "id")
     private PromotionEntity promotionEntity;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private Collection<ProductEntity> productEntities;
-
     public CategoryEntity(){}
 
-    public CategoryEntity(Integer id, String label, String description, PromotionEntity promotionEntity, Collection<ProductEntity> productEntities) {
+    public CategoryEntity(Integer id, String label, String description, PromotionEntity promotionEntity) {
         this.setId(id);
         this.setLabel(label);
         this.setDescription(description);
         this.setPromotionEntity(promotionEntity);
-        this.setProductEntities(productEntities);
     }
 
     public Integer getId() {
@@ -64,13 +60,5 @@ public class CategoryEntity {
 
     public void setPromotionEntity(PromotionEntity promotionEntity) {
         this.promotionEntity = promotionEntity;
-    }
-
-    public Collection<ProductEntity> getProductEntities() {
-        return productEntities;
-    }
-
-    public void setProductEntities(Collection<ProductEntity> productEntities) {
-        this.productEntities = productEntities;
     }
 }
