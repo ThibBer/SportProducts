@@ -20,3 +20,17 @@ nav a {
 .btn{
     text-align: left !important;
 }
+
+#categories a:link {
+    text-decoration: none;
+}
+
+.category-card-bottom{
+    background-color: #101d2f;
+    color: white;
+}
+
+.category-card-bottom:hover {
+    background-color: #33496e;
+    color: white;
+}
