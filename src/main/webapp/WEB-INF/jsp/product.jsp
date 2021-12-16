@@ -6,6 +6,7 @@
         <title><spring:message code="product" /></title>
     </head>
     <body>
-        Product ${product.getPrice()}
+        Label ${label}
+        Prix ${product.getPrice()}
     </body>
 </html>

@@ -3,15 +3,15 @@ package be.henallux.spring.sportProjects.model;
 public class Product {
     private Integer id;
     private Double price;
-    private Category category;
+    private Integer categoryId;
     private String description;
 
     public Product() {}
 
-    public Product(Integer id, Double price, Category category, String description) {
+    public Product(Integer id, Double price, Integer categoryId, String description) {
         this.id = id;
         this.price = price;
-        this.category = category;
+        this.categoryId = categoryId;
         this.description = description;
     }
 
@@ -31,12 +31,12 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getDescription() {

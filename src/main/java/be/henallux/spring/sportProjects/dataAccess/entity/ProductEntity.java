@@ -15,16 +15,15 @@ public class ProductEntity {
     @Column(name="price")
     private Double price;
 
-    @ManyToOne
-    @JoinColumn(name="category", referencedColumnName = "id")
-    private CategoryEntity category;
+    @Column(name="category")
+    private Integer categoryId;
 
     public ProductEntity() {}
 
-    public ProductEntity(Integer id, Double price, CategoryEntity category, String description) {
+    public ProductEntity(Integer id, Double price, Integer categoryId, String description) {
         this.id = id;
         this.price = price;
-        this.category = category;
+        this.categoryId = categoryId;
         this.description = description;
     }
 
@@ -44,12 +43,12 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public CategoryEntity getCategoryEntity() {
-        return category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategoryEntity(CategoryEntity category) {
-        this.category = category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getDescription() {

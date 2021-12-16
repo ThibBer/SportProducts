@@ -6,41 +6,25 @@ import java.io.Serializable;
 @Entity
 @Table(name = "translation")
 public class TranslationEntity implements Serializable {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "language", referencedColumnName = "id")
-    private LanguageEntity language;
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "product", referencedColumnName = "id")
-    private ProductEntity productEntity;
+    @EmbeddedId
+    private TranslationPrimaryGroup translationId;
 
     @Column(name="label")
     private String label;
 
     public TranslationEntity() {}
 
-    public TranslationEntity(LanguageEntity language, ProductEntity productEntity, String label) {
-        this.language = language;
-        this.productEntity = productEntity;
+    public TranslationEntity(TranslationPrimaryGroup translationId, String label) {
+        this.translationId = translationId;
         this.label = label;
     }
 
-    public LanguageEntity getLanguage() {
-        return language;
+    public TranslationPrimaryGroup getTranslationId() {
+        return translationId;
     }
 
-    public void setLanguage(LanguageEntity language) {
-        this.language = language;
-    }
-
-    public ProductEntity getProductEntity() {
-        return productEntity;
-    }
-
-    public void setProductEntity(ProductEntity productEntity) {
-        this.productEntity = productEntity;
+    public void setTranslationId(TranslationPrimaryGroup translationId) {
+        this.translationId = translationId;
     }
 
     public String getLabel() {
@@ -54,8 +38,8 @@ public class TranslationEntity implements Serializable {
     @Override
     public String toString() {
         return "Translation{" +
-                "language=" + language +
-                ", productEntity=" + productEntity +
+                "language=" + translationId.getLanguage() +
+                ", productEntity=" + translationId.getProduct() +
                 ", label='" + label + '\'' +
                 '}';
     }

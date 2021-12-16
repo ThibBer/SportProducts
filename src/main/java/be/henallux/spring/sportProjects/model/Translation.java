@@ -1,32 +1,32 @@
 package be.henallux.spring.sportProjects.model;
 
 public class Translation {
-    private Language language;
-    private Product product;
+    private Integer languageId;
+    private Integer productId;
     private String label;
 
     public Translation() {}
 
-    public Translation(Language language, Product product, String label) {
-        this.language = language;
-        this.product = product;
+    public Translation(Integer languageId, Integer productId, String label) {
+        this.languageId = languageId;
+        this.productId = productId;
         this.label = label;
     }
 
-    public Language getLanguage() {
-        return language;
+    public Integer getLanguageId() {
+        return languageId;
     }
 
-    public void setLanguage(Language language) {
-        this.language = language;
+    public void setLanguageId(Integer languageId) {
+        this.languageId = languageId;
     }
 
-    public Product getProduct() {
-        return product;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getLabel() {
@@ -40,8 +40,8 @@ public class Translation {
     @Override
     public String toString() {
         return "Translation{" +
-                "language=" + language +
-                ", product=" + product +
+                "language=" + languageId +
+                ", product=" + productId +
                 ", label='" + label + '\'' +
                 '}';
     }

@@ -12,7 +12,7 @@ public class LanguageEntity {
     @Column(name="id")
     private Integer id;
 
-    @Column(name="internation_code")
+    @Column(name="international_code")
     private String internationCode;
 
     public LanguageEntity() {}
