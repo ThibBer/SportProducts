@@ -1,8 +1,10 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@ include file="include/importTags.jsp" %>
+
 <html>
     <head>
         <title><spring:message code="home"/></title>
+
     </head>
     <body>
         <div class="row">
@@ -18,7 +20,7 @@
                             <div class="bg-light">
                                 <hr class="m-0 p-0"/>
                                 <c:forEach items="${categories}" var="category">
-                                    <a class="btn w-100 my-md-2" href="<spring:url value='/category?id=${category.getId()}'/>"><c:out value="${category.getLabel()}"/></a>
+                                    <a class="btn w-100 my-md-2" href="<spring:url value='/category/${category.getId()}/'/>"><c:out value="${category.getLabel()}"/></a>
                                     <hr class="m-0 p-0"/>
                                 </c:forEach>
                             </div>

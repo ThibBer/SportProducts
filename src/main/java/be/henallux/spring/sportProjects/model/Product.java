@@ -9,10 +9,10 @@ public class Product {
     public Product() {}
 
     public Product(Integer id, Double price, Category category, String description) {
-        setId(id);
-        setPrice(price);
-        setCategory(category);
-        setDescription(description);
+        this.id = id;
+        this.price = price;
+        this.category = category;
+        this.description = description;
     }
 
     public Integer getId() {

@@ -25,7 +25,7 @@ public class ProductDAO implements ProductDataAccess {
 
     @Override
     public ArrayList<Product> getProductsWithCategoryId(int idCategory) {
-        List<ProductEntity> productEntities = productRepository.findAll();
+        List<ProductEntity> productEntities = productRepository.findProductEntitiesByCategory_Id(idCategory);
         ArrayList<Product> products = new ArrayList<>();
 
         for(ProductEntity productEntity : productEntities) {
@@ -33,5 +33,12 @@ public class ProductDAO implements ProductDataAccess {
         }
 
         return products;
+    }
+
+    @Override
+    public Product getProductWithId(int idProduct) {
+        ProductEntity productEntity = productRepository.findProductEntityById(idProduct);
+        Product product = converter.productEntityToProductModel(productEntity);
+        return product;
     }
 }

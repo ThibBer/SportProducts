@@ -26,7 +26,6 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet">
-
     </head>
     <body>
         <header class="container-fluid bg-default">
@@ -58,11 +57,15 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <button class="btn text-light dropdown-toggle" type="button" id="languageSelectorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<spring:url value='assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayName()}
+                                    <img src="<spring:url value='/assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayName()}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="languageSelectorDropdown">
-                                    <a class="dropdown-item" href="${localeEN}"><img src="<spring:url value='assets/flags/en.png'/>" width="15" alt="English"/>English</a>
-                                    <a class="dropdown-item" href="${localeFR}"><img src="<spring:url value='assets/flags/fr.png'/>" width="15" alt="Français"/>Français</a>
+                                    <a class="dropdown-item" href="${localeEN}">
+                                        <img src="<spring:url value='/assets/flags/en.png'/>" width="15" alt="English"/>English
+                                    </a>
+                                    <a class="dropdown-item" href="${localeFR}">
+                                        <img src="<spring:url value='/assets/flags/fr.png'/>" width="15" alt="Français"/>Français
+                                    </a>
                                 </div>
                             </li>
                             <li class="nav-item">

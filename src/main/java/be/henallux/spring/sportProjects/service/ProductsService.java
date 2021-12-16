@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class ProductsService {
     private ProductDAO productDAO;
     private ArrayList<Product> products;
+    private Product product;
 
     @Autowired
     public ProductsService(ProductDAO productDAO) {
@@ -20,5 +21,10 @@ public class ProductsService {
     public ArrayList<Product> getProductsWithCategoryId(int idCategory) {
         products = productDAO.getProductsWithCategoryId(idCategory);
         return products;
+    }
+
+    public Product getProductWithId(int idProduct) {
+        product = productDAO.getProductWithId(idProduct);
+        return product;
     }
 }

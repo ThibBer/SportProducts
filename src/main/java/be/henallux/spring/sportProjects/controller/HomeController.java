@@ -27,8 +27,6 @@ public class HomeController {
         model.addAttribute("locale", locale);
         model.addAttribute("categories", categoriesService.getCategories());
 
-        System.out.println(categoriesService.getCategories());
-
         return "integrated:home";
     }
 }
