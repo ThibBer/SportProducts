@@ -37,8 +37,6 @@ public class LoginController {
             return "redirect:/login";
         }
 
-        System.out.println(user);
-
         model.addAttribute("locale", locale);
 
         return "integrated:login";

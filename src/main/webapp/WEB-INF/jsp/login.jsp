@@ -18,17 +18,20 @@
                             <div class="form-group">
                                 <form:label path="username"><spring:message code="username"/></form:label>
                                 <form:input path="username" cssClass="form-control" required="required"/>
+                                <form:errors path="username" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <form:label path="password"><spring:message code="password"/></form:label>
                                 <form:input path="password" cssClass="form-control" type="password" required="required"/>
+                                <form:errors path="password" />
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary mx-auto d-block mt-md-3">Se connecter</button>
+                    <button class="btn btn-primary mx-auto d-block mt-md-3"><spring:message code="login" /></button>
                 </form:form>
+                <button class="btn btn-primary mx-auto d-block mt-md-3" href="<spring:url value='/register'/>"><spring:message code="createAccount" /></button>
             </div>
         </div>
     </body>

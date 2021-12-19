@@ -34,3 +34,7 @@ nav a {
     background-color: #33496e;
     color: white;
 }
+
+.error {
+    color: red;
+}
