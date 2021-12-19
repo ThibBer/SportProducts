@@ -47,6 +47,10 @@ public class Category {
         this.promotion = promotion;
     }
 
+    public boolean havePromotion(){
+        return getPromotion() != null;
+    }
+
     @Override
     public String toString() {
         return "Category{" +

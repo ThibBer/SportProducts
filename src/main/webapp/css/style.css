@@ -21,8 +21,17 @@ nav a {
     text-align: left !important;
 }
 
-#categories a:link {
+.category{
     text-decoration: none;
+}
+
+.category a:link {
+    text-decoration: none;
+}
+
+.category-card{
+    position: relative;
+    overflow: hidden;
 }
 
 .category-card-bottom{
@@ -35,6 +44,39 @@ nav a {
     color: white;
 }
 
+.category-card .category-promotion:hover {
+    font-size: 20px;
+}
+
 .error {
     color: red;
 }
+
+.category-promotion {
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    font-weight: 700;
+    font-size: 18px;
+    right: -40px;
+    top: 20px;
+    line-height: 36px;
+    transform: rotate(45deg);
+    color: white !important;
+    background-color: #101d2f;
+}
+
+.category-promotion:hover {
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    font-weight: 700;
+    font-size: 18px;
+    right: -40px;
+    top: 20px;
+    line-height: 36px;
+    transform: rotate(45deg);
+    color: white !important;
+    background-color: #33496e;
+}
+

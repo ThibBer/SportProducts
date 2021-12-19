@@ -101,9 +101,18 @@ CREATE TABLE order_product
 INSERT INTO language (international_code) VALUES ('en');
 INSERT INTO language (international_code) VALUES ('fr');
 
+INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('24-12-2021', '%d-%m-%Y'), 10);
+INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('31-12-2021', '%d-%m-%Y'), 25);
+
 INSERT INTO category (label, description) VALUES ('Football', 'Description football');
-INSERT INTO category (label, description) VALUES ('Basketball', 'Description basketball');
+INSERT INTO category (label, description, promotion) VALUES ('Basketball', 'Description basketball', 1);
 INSERT INTO category (label, description) VALUES ('Hockey', 'Description hockey');
+INSERT INTO category (label, description) VALUES ('Natation', 'Description natation');
+INSERT INTO category (label, description) VALUES ('Equitation', 'Description equitation');
+INSERT INTO category (label, description) VALUES ('Pêche', 'Description pêche');
+INSERT INTO category (label, description, promotion) VALUES ('Escrime', 'Description escrime', 2);
+INSERT INTO category (label, description) VALUES ('Escalade', 'Description escalade');
+
 
 INSERT INTO product (price, category) VALUES (10.0, 1);
 INSERT INTO product (price, category) VALUES (25.0, 1);

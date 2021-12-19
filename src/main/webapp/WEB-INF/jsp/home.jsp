@@ -13,8 +13,12 @@
                     <div id="categories" class="d-flex row justify-content-center">
                         <c:forEach items="${categories}" var="category">
                             <div class="col-md-3">
-                                <a href="<spring:url value='/category/${category.getId()}/'/>">
+                                <a class="category" href="<spring:url value='/category/${category.getId()}/'/>">
                                     <div class="card m-3 category-card">
+                                        <c:if test="${category.havePromotion()}">
+                                            <p class="category-promotion bg-default">-${category.getPromotion().getPercentage()}%</p>
+                                        </c:if>
+
                                         <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
 
                                         <div class="card-body text-center py-3 category-card-bottom">
