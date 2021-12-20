@@ -10,11 +10,11 @@
         <div class="container">
             <div class="row mt-md-3">
                 <div class="col">
-                    <h3>Choisissez votre sport</h3>
+                    <h3><spring:message code="chooseSport"/></h3>
                 </div>
             </div>
 
-            <div class="row mt-">
+            <div class="row mt-md-3">
                 <div class="col">
                     <div id="categories" class="d-flex row justify-content-center">
                         <c:forEach items="${categories}" var="category">
