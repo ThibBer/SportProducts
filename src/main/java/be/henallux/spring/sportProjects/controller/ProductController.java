@@ -2,6 +2,7 @@ package be.henallux.spring.sportProjects.controller;
 
 import be.henallux.spring.sportProjects.model.Language;
 import be.henallux.spring.sportProjects.model.Product;
+import be.henallux.spring.sportProjects.model.ShoppingCart;
 import be.henallux.spring.sportProjects.model.Translation;
 import be.henallux.spring.sportProjects.service.LanguageService;
 import be.henallux.spring.sportProjects.service.ProductsService;
@@ -10,19 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/product")
+@SessionAttributes({ProductController.SHOPPING_CART})
 public class ProductController {
     private final MessageSource messageSource;
     private ProductsService productsService;
     private LanguageService languageService;
     private TranslationService translationService;
+    protected static final String SHOPPING_CART = "shoppingCart";
 
     @Autowired
     public ProductController(MessageSource messageSource, ProductsService productsService, LanguageService languageService, TranslationService translationService) {
@@ -30,6 +31,11 @@ public class ProductController {
         this.productsService = productsService;
         this.languageService = languageService;
         this.translationService = translationService;
+    }
+
+    @ModelAttribute(SHOPPING_CART)
+    public ShoppingCart sessionShoppingCart() {
+        return ShoppingCart.getInstance();
     }
 
     @RequestMapping(value = "/{id}/", method = RequestMethod.GET)
@@ -46,6 +52,25 @@ public class ProductController {
             model.addAttribute("product", product);
             model.addAttribute("label", translation.getLabel());
             return "integrated:product";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            return "integrated:error";
+        }
+    }
+
+    @RequestMapping(value="/{id}/send", method = RequestMethod.POST)
+    public String getFormData(Model model,
+                              Locale locale,
+                              @PathVariable("id") String id,
+                              @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+        try {
+            int idProduct = Integer.parseInt(id);
+            Product product = productsService.getProductWithId(idProduct);
+            if(product == null)
+                return "integrated:notfound";
+            shoppingCart.addProductWithQuantity(product, 1);
+            System.out.println(shoppingCart.toString());
+            return "redirect:/";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "integrated:error";

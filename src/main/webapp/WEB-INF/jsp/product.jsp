@@ -8,5 +8,13 @@
     <body>
         Label ${label}
         Prix ${product.getPrice()}
+
+        <form:form
+                id="addToShoppingCartForm"
+                method="post"
+                action="/sportProducts/product/${product.getId()}/send">
+
+            <button><spring:message code="addToShoppingCart" /></button>
+        </form:form>
     </body>
 </html>
