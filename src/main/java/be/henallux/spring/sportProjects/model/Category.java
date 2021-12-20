@@ -1,5 +1,7 @@
 package be.henallux.spring.sportProjects.model;
 
+import java.time.LocalDate;
+
 public class Category {
     private Integer id;
     private String label;
@@ -57,8 +59,14 @@ public class Category {
         this.promotion = promotion;
     }
 
-    public boolean havePromotion(){
-        return getPromotion() != null;
+    public boolean isInPromotion(){
+        if(promotion == null){
+            return false;
+        }
+
+        //TODO je crois que c'est inversé ?
+        LocalDate now = LocalDate.now();
+        return (promotion.getStartDate().isEqual(now) || promotion.getStartDate().isBefore(now)) && (promotion.getEndDate().isAfter(now) || this.promotion.getEndDate().equals(now));
     }
 
     @Override

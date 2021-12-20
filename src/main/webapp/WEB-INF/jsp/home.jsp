@@ -21,7 +21,7 @@
                             <div class="col-md-3">
                                 <a class="category" href="<spring:url value='/category/${category.getId()}'/>">
                                     <div class="card m-3 category-card">
-                                        <c:if test="${category.havePromotion()}">
+                                        <c:if test="${category.isInPromotion()}">
                                             <p class="category-promotion bg-default">-${category.getPromotion().getPercentage()}%</p>
                                         </c:if>
 

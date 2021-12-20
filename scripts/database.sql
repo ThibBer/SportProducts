@@ -105,8 +105,8 @@ INSERT INTO language (international_code) VALUES ('fr');
 INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('24-12-2021', '%d-%m-%Y'), 10);
 INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('31-12-2021', '%d-%m-%Y'), 25);
 
-INSERT INTO category (label, description, image) VALUES ('Football', 'Description football', 'soccer.png');
-INSERT INTO category (label, description, image, promotion) VALUES ('Basketball', 'Description basketball', 'basketball.png', 1);
+INSERT INTO category (label, description, image, promotion) VALUES ('Football', 'Description football', 'soccer.png', 1);
+INSERT INTO category (label, description, image) VALUES ('Basketball', 'Description basketball', 'basketball.png');
 INSERT INTO category (label, description, image) VALUES ('Hockey', 'Description hockey', 'hockey.png');
 INSERT INTO category (label, description, image) VALUES ('Tennis', 'Description tennis', 'tennis.png');
 INSERT INTO category (label, description, image) VALUES ('Badminton', 'Description badminton', 'badminton.png');
@@ -114,8 +114,8 @@ INSERT INTO category (label, description, image) VALUES ('Ski', 'Description ski
 INSERT INTO category (label, description, promotion, image) VALUES ('Musculation', 'Description musculation', 2, 'musculation.png');
 INSERT INTO category (label, description, image) VALUES ('Volleyball', 'Description volleyball', 'volleyball.png');
 
-INSERT INTO product (price, category) VALUES (10.0, 1);
-INSERT INTO product (price, category) VALUES (25.0, 1);
+INSERT INTO product (price, category, description) VALUES (10.0, 1, 'Ceci est une incroyuable et super grande description qui met permet de tester mes éléments HTML');
+INSERT INTO product (price, category, description) VALUES (25.0, 1, 'Ceci est une incroyuable et super grande description qui met permet de tester mes éléments HTML');
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
 INSERT INTO translation (language, product, label) VALUES (2, 1, 'Ballon');

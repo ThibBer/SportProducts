@@ -31,7 +31,7 @@ public class Promotion {
     }
 
     public String getFormattedStartDate(){
-        return startDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+        return startDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
     }
 
     public void setStartDate(LocalDate startDate) {

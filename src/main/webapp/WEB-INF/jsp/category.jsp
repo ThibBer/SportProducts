@@ -6,7 +6,7 @@
         <title><spring:message code="category"/> ${category.getLabel()}</title>
     </head>
     <body>
-        <c:if test="${category.havePromotion()}">
+        <c:if test="${category.isInPromotion()}">
             <header class="container-fluid bg-promotion-alert mx-0">
                 <div class="container">
                     <p id="promotion-alert" class="text-white py-md-2">Une réduction de ${category.getPromotion().getPercentage()}% est appliquée à tous les articles de ${category.getLabel().toLowerCase()} pour tout achat avant le <span class="promotion-date">${category.getPromotion().getFormattedEndDate()}</span></p>
@@ -23,16 +23,30 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div id="categories" class="d-flex row justify-content-center">
+                    <div id="products" class="d-flex row justify-content-center">
                         <c:forEach items="${products}" var="product">
                             <div class="col-md-3">
-                                <a class="category" href="<spring:url value='/product/${product.getId()}/'/>">
-                                    <div class="card m-3 category-card">
+                                <a class="product" href="<spring:url value='/product/${product.getId()}/'/>">
+                                    <div class="card m-3 category-card" >
                                         <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
 
-                                        <div class="card-body text-center py-3 category-card-bottom">
-                                            <h5 class="card-title m-0"><c:out value="${product.getPrice()}"/> €</h5>
-                                            <h5 class="card-title m-0"><c:out value="${product.getTranslation().getLabel()}"/></h5>
+                                        <div class="card-body py-3">
+                                            <h5 class="m-0"><c:out value="${product.getTranslation().getLabel()}"/></h5>
+                                            <hr/>
+                                            <p class="m-0"><c:out value="${product.getDescription()}"/></p>
+
+
+                                            <c:if test="${category.isInPromotion()}">
+                                                <div class="text-right mt-md-3">
+                                                    <h5 class="m-0"><span class="old-price"><c:out value="${product.getPrice()}"/></span> <sup class="new-price"><c:out value="${product.getPriceWithPromotion(category.getPromotion())}"/> €</sup></h5>
+                                                </div>
+                                            </c:if>
+
+                                            <c:if test="${!category.isInPromotion()}">
+                                                <div class="text-right mt-md-3">
+                                                    <h5 class="m-0"><c:out value="${product.getPrice()}"/> €</h5>
+                                                </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </a>

@@ -28,6 +28,14 @@ public class Product {
         return price;
     }
 
+    public Double getPriceWithPromotion(Promotion promotion){
+        if(promotion == null){
+            return price;
+        }
+
+        return price * ( 1 - (promotion.getPercentage() / 100.0));
+    }
+
     public void setPrice(Double price) {
         this.price = price;
     }
