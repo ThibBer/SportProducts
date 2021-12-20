@@ -8,18 +8,31 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
+            <div class="row mt-md-3">
+                <div class="col">
+                    <h3>Choisissez votre sport</h3>
+                </div>
+            </div>
+
+            <div class="row mt-">
                 <div class="col">
                     <div id="categories" class="d-flex row justify-content-center">
                         <c:forEach items="${categories}" var="category">
                             <div class="col-md-3">
-                                <a class="category" href="<spring:url value='/category/${category.getId()}/'/>">
+                                <a class="category" href="<spring:url value='/category/${category.getId()}'/>">
                                     <div class="card m-3 category-card">
                                         <c:if test="${category.havePromotion()}">
                                             <p class="category-promotion bg-default">-${category.getPromotion().getPercentage()}%</p>
                                         </c:if>
 
-                                        <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
+                                        <c:if test="${category.getImage() != null}">
+                                            <img class="card-img-top img-responsive" src="<spring:url value='/assets/categories/${category.getImage()}'/>" alt="Card image cap" width="150">
+                                        </c:if>
+
+                                        <c:if test="${category.getImage() == null}">
+                                            <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
+                                        </c:if>
+
 
                                         <div class="card-body text-center py-3 category-card-bottom">
                                             <h5 class="card-title m-0"><c:out value="${category.getLabel()}"/></h5>

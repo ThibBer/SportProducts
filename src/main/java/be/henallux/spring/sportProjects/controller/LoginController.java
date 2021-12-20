@@ -29,16 +29,4 @@ public class LoginController {
 
         return "integrated:login";
     }
-
-
-    @RequestMapping(value = "/post", method = RequestMethod.POST)
-    public String login (Model model, @ModelAttribute("user") User user, Locale locale, final BindingResult errors){
-        if(errors.hasErrors()){
-            return "redirect:/login";
-        }
-
-        model.addAttribute("locale", locale);
-
-        return "integrated:login";
-    }
 }

@@ -5,6 +5,7 @@ public class Product {
     private Double price;
     private Integer categoryId;
     private String description;
+    private Translation translation;
 
     public Product() {}
 
@@ -45,5 +46,13 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Translation getTranslation() {
+        return translation;
+    }
+
+    public void setTranslation(Translation translation) {
+        this.translation = translation;
     }
 }

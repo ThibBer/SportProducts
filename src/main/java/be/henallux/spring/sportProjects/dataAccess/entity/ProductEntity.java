@@ -1,6 +1,7 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="product")

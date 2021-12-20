@@ -1,6 +1,7 @@
 package be.henallux.spring.sportProjects.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Promotion {
     private Integer id;
@@ -29,12 +30,20 @@ public class Promotion {
         return startDate;
     }
 
+    public String getFormattedStartDate(){
+        return startDate.format(DateTimeFormatter.ofPattern("dd-MMM-yy"));
+    }
+
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    public String getFormattedEndDate(){
+        return endDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
     }
 
     public void setEndDate(LocalDate endDate) {

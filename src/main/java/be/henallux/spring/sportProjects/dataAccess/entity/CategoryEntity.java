@@ -17,16 +17,20 @@ public class CategoryEntity {
     @Column(name="description")
     private String description;
 
+    @Column(name="image")
+    private String image;
+
     @ManyToOne
     @JoinColumn(name = "promotion", referencedColumnName = "id")
     private PromotionEntity promotionEntity;
 
     public CategoryEntity(){}
 
-    public CategoryEntity(Integer id, String label, String description, PromotionEntity promotionEntity) {
+    public CategoryEntity(Integer id, String label, String description, String image, PromotionEntity promotionEntity) {
         this.setId(id);
         this.setLabel(label);
         this.setDescription(description);
+        this.setImage(image);
         this.setPromotionEntity(promotionEntity);
     }
 
@@ -52,6 +56,14 @@ public class CategoryEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public PromotionEntity getPromotion() {

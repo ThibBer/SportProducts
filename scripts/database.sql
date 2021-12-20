@@ -62,6 +62,7 @@ CREATE TABLE category
     label VARCHAR(45) NOT NULL,
     description TEXT NOT NULL,
     promotion INT,
+    image VARCHAR(50),
 
     CONSTRAINT fk_category_promotion FOREIGN KEY (promotion) REFERENCES promotion(id)
 );
@@ -104,15 +105,14 @@ INSERT INTO language (international_code) VALUES ('fr');
 INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('24-12-2021', '%d-%m-%Y'), 10);
 INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('31-12-2021', '%d-%m-%Y'), 25);
 
-INSERT INTO category (label, description) VALUES ('Football', 'Description football');
-INSERT INTO category (label, description, promotion) VALUES ('Basketball', 'Description basketball', 1);
-INSERT INTO category (label, description) VALUES ('Hockey', 'Description hockey');
-INSERT INTO category (label, description) VALUES ('Natation', 'Description natation');
-INSERT INTO category (label, description) VALUES ('Equitation', 'Description equitation');
-INSERT INTO category (label, description) VALUES ('Pêche', 'Description pêche');
-INSERT INTO category (label, description, promotion) VALUES ('Escrime', 'Description escrime', 2);
-INSERT INTO category (label, description) VALUES ('Escalade', 'Description escalade');
-
+INSERT INTO category (label, description, image) VALUES ('Football', 'Description football', 'soccer.png');
+INSERT INTO category (label, description, image, promotion) VALUES ('Basketball', 'Description basketball', 'basketball.png', 1);
+INSERT INTO category (label, description, image) VALUES ('Hockey', 'Description hockey', 'hockey.png');
+INSERT INTO category (label, description, image) VALUES ('Tennis', 'Description tennis', 'tennis.png');
+INSERT INTO category (label, description, image) VALUES ('Badminton', 'Description badminton', 'badminton.png');
+INSERT INTO category (label, description, image) VALUES ('Ski', 'Description ski', 'ski.png');
+INSERT INTO category (label, description, promotion, image) VALUES ('Musculation', 'Description musculation', 2, 'musculation.png');
+INSERT INTO category (label, description, image) VALUES ('Volleyball', 'Description volleyball', 'volleyball.png');
 
 INSERT INTO product (price, category) VALUES (10.0, 1);
 INSERT INTO product (price, category) VALUES (25.0, 1);

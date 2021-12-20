@@ -80,3 +80,10 @@ nav a {
     background-color: #33496e;
 }
 
+.promotion-date{
+    font-style: italic;
+}
+
+.bg-promotion-alert{
+    background-color: #c40000;
+}

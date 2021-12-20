@@ -69,7 +69,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new CategoryEntity(category.getId(), category.getLabel(), category.getDescription(), promotionModelToPromotionEntity(category.getPromotion()));
+        return new CategoryEntity(category.getId(), category.getLabel(), category.getDescription(), category.getImage(), promotionModelToPromotionEntity(category.getPromotion()));
     }
 
     public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
@@ -77,7 +77,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new Category(categoryEntity.getId(), categoryEntity.getLabel(), categoryEntity.getDescription(), promotionEntityToPromotionModel(categoryEntity.getPromotion()));
+        return new Category(categoryEntity.getId(), categoryEntity.getLabel(), categoryEntity.getDescription(), categoryEntity.getImage(), promotionEntityToPromotionModel(categoryEntity.getPromotion()));
     }
     
     public PromotionEntity promotionModelToPromotionEntity(Promotion promotion){
@@ -112,6 +112,7 @@ public class ProviderConverter {
         return new Product(productEntity.getId(), productEntity.getPrice(), productEntity.getCategoryId(), productEntity.getDescription());
     }
 
+    /*Translation*/
     public TranslationEntity translationModelToTranslationEntity(Translation translation) {
         if(translation == null)
             return null;
@@ -125,6 +126,7 @@ public class ProviderConverter {
         return new Translation(translationEntity.getTranslationId().getLanguage(), translationEntity.getTranslationId().getProduct(), translationEntity.getLabel());
     }
 
+    /*Language*/
     public LanguageEntity languageModelToLanguageEntity(Language language) {
         if(language == null)
             return null;

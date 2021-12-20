@@ -77,10 +77,7 @@
             </div>
         </header>
 
-
-        <div class="container-fluid">
-            <tiles:insertAttribute name="main-content"/>
-        </div>
+        <tiles:insertAttribute name="main-content"/>
 
         <footer>
 

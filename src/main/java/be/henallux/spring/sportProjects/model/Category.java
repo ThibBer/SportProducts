@@ -4,14 +4,16 @@ public class Category {
     private Integer id;
     private String label;
     private String description;
+    private String image;
     private Promotion promotion;
 
     public Category(){}
 
-    public Category(Integer id, String label, String description, Promotion promotion) {
+    public Category(Integer id, String label, String description, String image, Promotion promotion) {
         this.setId(id);
         this.setLabel(label);
         this.setDescription(description);
+        this.setImage(image);
         this.setPromotion(promotion);
     }
 
@@ -37,6 +39,14 @@ public class Category {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Promotion getPromotion() {

@@ -11,13 +11,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 @Controller
-@RequestMapping(value="/category")
+@RequestMapping(value = "/category")
 public class CategoryController {
     private final MessageSource messageSource;
     private CategoriesService categoriesService;
@@ -30,15 +29,16 @@ public class CategoryController {
         this.productsService = productsService;
     }
 
-    @RequestMapping(value = "/{id}/", method = RequestMethod.GET)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public String getWithCategoryId(@PathVariable("id") String id, Model model, Locale locale) {
         model.addAttribute("locale", locale);
         try {
             int idInteger = Integer.parseInt(id);
             Category category = categoriesService.getCategoryWithId(idInteger);
-            if(category == null) {
+            if (category == null) {
                 return "integrated:notfound";
             }
+
             ArrayList<Product> products = productsService.getProductsWithCategoryId(idInteger);
             model.addAttribute("category", category);
             model.addAttribute("products", products);
