@@ -20,13 +20,17 @@ public class ProductEntity {
     @Column(name="category")
     private Integer categoryId;
 
+    @Column(name="image")
+    private String image;
+
     public ProductEntity() {}
 
-    public ProductEntity(Integer id, Double price, Integer categoryId, String description) {
-        this.id = id;
-        this.price = price;
-        this.categoryId = categoryId;
-        this.description = description;
+    public ProductEntity(Integer id, Double price, Integer categoryId, String description, String image) {
+        setId(id);
+        setPrice(price);
+        setCategoryId(categoryId);
+        setDescription(description);
+        setImage(image);
     }
 
     public Integer getId() {
@@ -59,5 +63,13 @@ public class ProductEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

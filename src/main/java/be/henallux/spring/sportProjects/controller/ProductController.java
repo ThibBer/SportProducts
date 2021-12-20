@@ -1,9 +1,7 @@
 package be.henallux.spring.sportProjects.controller;
 
-import be.henallux.spring.sportProjects.model.Language;
-import be.henallux.spring.sportProjects.model.Product;
-import be.henallux.spring.sportProjects.model.ShoppingCart;
-import be.henallux.spring.sportProjects.model.Translation;
+import be.henallux.spring.sportProjects.model.*;
+import be.henallux.spring.sportProjects.service.CategoriesService;
 import be.henallux.spring.sportProjects.service.LanguageService;
 import be.henallux.spring.sportProjects.service.ProductsService;
 import be.henallux.spring.sportProjects.service.TranslationService;
@@ -23,14 +21,16 @@ public class ProductController {
     private ProductsService productsService;
     private LanguageService languageService;
     private TranslationService translationService;
+    private CategoriesService categoriesService;
     protected static final String SHOPPING_CART = "shoppingCart";
 
     @Autowired
-    public ProductController(MessageSource messageSource, ProductsService productsService, LanguageService languageService, TranslationService translationService) {
+    public ProductController(MessageSource messageSource, ProductsService productsService, LanguageService languageService, TranslationService translationService, CategoriesService categoriesService) {
         this.messageSource = messageSource;
         this.productsService = productsService;
         this.languageService = languageService;
         this.translationService = translationService;
+        this.categoriesService = categoriesService;
     }
 
     @ModelAttribute(SHOPPING_CART)
@@ -44,13 +44,18 @@ public class ProductController {
         try {
             int idProduct = Integer.parseInt(id);
             Product product = productsService.getProductWithId(idProduct);
-            if(product == null)
+            if(product == null){
                 return "integrated:notfound";
+            }
+
             String internationalCode = locale.getLanguage();
             Language language = languageService.getLanguageWithInternationalCode(internationalCode);
             Translation translation = translationService.getTranslationWithProductIdAndLanguageId(idProduct, language.getId());
+            Category category = categoriesService.getCategoryWithId(product.getCategoryId());
+            product.setTranslation(translation);
+
+            model.addAttribute("category", category);
             model.addAttribute("product", product);
-            model.addAttribute("label", translation.getLabel());
             return "integrated:product";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

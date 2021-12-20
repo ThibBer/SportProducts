@@ -6,14 +6,16 @@ public class Product {
     private Integer categoryId;
     private String description;
     private Translation translation;
+    private String image;
 
     public Product() {}
 
-    public Product(Integer id, Double price, Integer categoryId, String description) {
+    public Product(Integer id, Double price, Integer categoryId, String description, String image) {
         this.id = id;
         this.price = price;
         this.categoryId = categoryId;
         this.description = description;
+        this.image = image;
     }
 
     public Integer getId() {
@@ -62,5 +64,13 @@ public class Product {
 
     public void setTranslation(Translation translation) {
         this.translation = translation;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

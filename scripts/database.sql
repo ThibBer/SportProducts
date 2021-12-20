@@ -73,6 +73,7 @@ CREATE TABLE product
     description TEXT,
     price DOUBLE NOT NULL,
     category INT NOT NULl,
+    image VARCHAR(50),
 
     CONSTRAINT fk_product_category FOREIGN KEY (category) REFERENCES category(id)
 );
