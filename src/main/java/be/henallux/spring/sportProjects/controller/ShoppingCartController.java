@@ -21,7 +21,6 @@ public class ShoppingCartController {
     @RequestMapping(method = RequestMethod.GET)
     public String home(Model model, Locale locale, @SessionAttribute(value = SHOPPING_CART, required = false) ShoppingCart shoppingCart) {
         if(shoppingCart == null) {
-            System.out.println("C NUL MON GARS");
             return "redirect:/";
         } else {
             model.addAttribute("locale", locale);
