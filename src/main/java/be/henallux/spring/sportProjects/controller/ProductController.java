@@ -15,14 +15,13 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/product")
-@SessionAttributes({ProductController.SHOPPING_CART})
-public class ProductController {
+@SessionAttributes(types = ShoppingCart.class)
+public class ProductController extends MainController{
     private final MessageSource messageSource;
     private ProductsService productsService;
     private LanguageService languageService;
     private TranslationService translationService;
     private CategoriesService categoriesService;
-    protected static final String SHOPPING_CART = "shoppingCart";
 
     @Autowired
     public ProductController(MessageSource messageSource, ProductsService productsService, LanguageService languageService, TranslationService translationService, CategoriesService categoriesService) {
@@ -31,11 +30,6 @@ public class ProductController {
         this.languageService = languageService;
         this.translationService = translationService;
         this.categoriesService = categoriesService;
-    }
-
-    @ModelAttribute(SHOPPING_CART)
-    public ShoppingCart sessionShoppingCart() {
-        return ShoppingCart.getInstance();
     }
 
     @RequestMapping(value = "/{id}/", method = RequestMethod.GET)
@@ -67,14 +61,13 @@ public class ProductController {
     public String getFormData(Model model,
                               Locale locale,
                               @PathVariable("id") String id,
-                              @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+                              @SessionAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         try {
             int idProduct = Integer.parseInt(id);
             Product product = productsService.getProductWithId(idProduct);
             if(product == null)
                 return "integrated:notfound";
             shoppingCart.addProductWithQuantity(product, 1);
-            System.out.println(shoppingCart.toString());
             return "redirect:/";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

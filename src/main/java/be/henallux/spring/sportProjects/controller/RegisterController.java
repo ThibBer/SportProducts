@@ -16,7 +16,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/register")
-public class RegisterController {
+public class RegisterController extends MainController{
     private final MessageSource messageSource;
     private UserDetailsServiceImplementation userService;
 

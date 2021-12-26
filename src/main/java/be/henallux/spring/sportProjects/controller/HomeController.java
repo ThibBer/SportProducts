@@ -12,7 +12,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/")
-public class HomeController {
+public class HomeController extends MainController {
     private final MessageSource messageSource;
     private CategoriesService categoriesService;
 

@@ -20,7 +20,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value = "/category")
-public class CategoryController {
+public class CategoryController extends MainController {
     private final MessageSource messageSource;
     private CategoriesService categoriesService;
     private ProductsService productsService;

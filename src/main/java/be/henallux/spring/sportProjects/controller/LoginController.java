@@ -14,7 +14,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/login")
-public class LoginController {
+public class LoginController extends MainController {
     private final MessageSource messageSource;
 
     @Autowired
