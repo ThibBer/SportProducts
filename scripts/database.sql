@@ -115,13 +115,22 @@ INSERT INTO category (label, description, image) VALUES ('Ski', 'Description ski
 INSERT INTO category (label, description, promotion, image) VALUES ('Musculation', 'Description musculation', 2, 'musculation.png');
 INSERT INTO category (label, description, image) VALUES ('Volleyball', 'Description volleyball', 'volleyball.png');
 
-INSERT INTO product (price, category, description) VALUES (10.0, 1, 'Ceci est une incroyuable et super grande description qui met permet de tester mes éléments HTML');
-INSERT INTO product (price, category, description) VALUES (25.0, 1, 'Ceci est une incroyuable et super grande description qui met permet de tester mes éléments HTML');
+INSERT INTO product (price, category, description, image) VALUES (10.0, 1, 'Adults football ball. Size 9. FIFA licensed for professional matches.', 'football_ball.jpg');
+INSERT INTO product (price, category, description, image) VALUES (25.0, 1, 'Adults goalkeeper gloves. Size 10. Light and airy, this pair is perfect for games in dry weather.', 'football_goalkeeper_gloves.jpg');
+INSERT INTO product (price, category, description, image) VALUES (50.0, 1, 'Adults size jersey. Robust and durable component at all times, approved by the Belgian red devils.', 'football_jersey.jpg');
+INSERT INTO product (price, category, description, image) VALUES (75.0, 1, 'Children size shoes. Good attachment on wet ground. May be prohibited on artificial turf.', 'football_shoes.jpg');
+INSERT INTO product (price, category, description, image) VALUES (15.0, 1, 'Children shin pads. Resists to violent shocks.', 'football_shin_pads.jpg');
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
 INSERT INTO translation (language, product, label) VALUES (2, 1, 'Ballon');
 INSERT INTO translation (language, product, label) VALUES (1, 2, 'Goalkeeper gloves');
 INSERT INTO translation (language, product, label) VALUES (2, 2, 'Gants de gardien');
+INSERT INTO translation (language, product, label) VALUES (1, 3, 'Jersey');
+INSERT INTO translation (language, product, label) VALUES (2, 3, 'Maillot');
+INSERT INTO translation (language, product, label) VALUES (1, 4, 'Shoes');
+INSERT INTO translation (language, product, label) VALUES (2, 4, 'Chaussures');
+INSERT INTO translation (language, product, label) VALUES (1, 4, 'Shin pads');
+INSERT INTO translation (language, product, label) VALUES (2, 4, 'Protèges tibias');
 
 INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
 VALUES ('thibaut.berg@hotmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Thibaut', 'Berg', STR_TO_DATE('28/10/2001', '%d/%m/%Y'), '0478782002', 'Marche-en-Famenne', 6900, 'Rue des champs', 53, 'Spike', 'ROLE_USER', 1, 1, 1, 1);

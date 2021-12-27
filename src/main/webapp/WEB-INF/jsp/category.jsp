@@ -29,7 +29,14 @@
                             <div class="col-md-3">
                                 <a class="product" href="<spring:url value='/product/${product.getId()}/'/>">
                                     <div class="card m-3 category-card" >
-                                        <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
+
+                                        <c:if test="${product.getImage() != null}">
+                                            <img class="card-img-top img-responsive" src="<spring:url value='/assets/products/${product.getImage()}'/>" alt="Card image cap" width="150">
+                                        </c:if>
+
+                                        <c:if test="${product.getImage() == null}">
+                                            <img class="card-img-top img-responsive" src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png" alt="Card image cap" width="150">
+                                        </c:if>
 
                                         <div class="card-body py-3">
                                             <h5 class="m-0"><c:out value="${product.getTranslation().getLabel()}"/></h5>
