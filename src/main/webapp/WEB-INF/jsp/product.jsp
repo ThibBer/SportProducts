@@ -38,15 +38,22 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form:form id="addToShoppingCartForm" method="post" action="/sportProducts/product/${product.getId()}/send">
+                                            <form:form id="addToShoppingCartForm" method="post" action="/sportProducts/product/send" modelAttribute="shoppingCartItem">
                                                 <div class="input-group mb-3">
-                                                    <input name="quantity" type="number" class="form-control" placeholder="<spring:message code="quantity"/>"/>
+                                                    <spring:message code="quantity" var="quantityLabel"/>
+
+                                                    <form:hidden path="productId" value="${product.getId()}" />
+                                                    <%--<form:input path="age" cssClass="form-control" placeholder="${quantityLabel}" />--%>
+
+                                                    <input name="quantity" type="number" class="form-control" placeholder='<spring:message code="quantity"/>' min="1" required/>
                                                     <div class="input-group-append">
                                                         <button class="btn btn-primary" type="submit">
                                                             <i class="fal fa-cart-plus"></i>
                                                         </button>
                                                     </div>
                                                 </div>
+
+                                                <form:errors path="*"/>
                                             </form:form>
                                         </div>
                                         <div class="col-md-6">

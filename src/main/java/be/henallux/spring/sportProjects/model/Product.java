@@ -3,17 +3,17 @@ package be.henallux.spring.sportProjects.model;
 public class Product {
     private Integer id;
     private Double price;
-    private Integer categoryId;
+    private Category category;
     private String description;
     private Translation translation;
     private String image;
 
     public Product() {}
 
-    public Product(Integer id, Double price, Integer categoryId, String description, String image) {
+    public Product(Integer id, Double price, Category category, String description, String image) {
         this.id = id;
         this.price = price;
-        this.categoryId = categoryId;
+        this.category = category;
         this.description = description;
         this.image = image;
     }
@@ -30,7 +30,8 @@ public class Product {
         return price;
     }
 
-    public Double getPriceWithPromotion(Promotion promotion){
+    public Double getPriceWithPromotion(){
+        Promotion promotion = category.getPromotion();
         if(promotion == null){
             return price;
         }
@@ -42,12 +43,12 @@ public class Product {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getDescription() {
@@ -72,5 +73,17 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", price=" + price +
+                ", category=" + category +
+                ", description='" + description + '\'' +
+                ", translation=" + translation +
+                ", image='" + image + '\'' +
+                '}';
     }
 }

@@ -3,42 +3,50 @@ package be.henallux.spring.sportProjects.model;
 import java.util.HashMap;
 
 public class ShoppingCart {
-    private HashMap<Product, Integer> productsWithQuantities = new HashMap<>();
+    private HashMap<Integer, Integer> productsWithQuantities = new HashMap<>();
 
     public ShoppingCart() {
     }
 
-    public void addProductWithQuantity(Product product, Integer quantity) {
-        productsWithQuantities.put(product, quantity);
+    public void addProductWithQuantity(Integer productId, Integer quantity) {
+        Integer lastQuantity = productsWithQuantities.get(productId);
+
+        if(quantity > 0){
+            if(lastQuantity != null){
+                quantity += lastQuantity;
+            }
+
+            productsWithQuantities.put(productId, quantity);
+        }
     }
 
-    public void changeQuantityForProduct(Product product, Integer newQuantity) {
-        if(productsWithQuantities.containsKey(product)) {
+    public void changeQuantityForProduct(Integer productId, Integer newQuantity) {
+        if(productsWithQuantities.containsKey(productId)) {
             if(newQuantity == 0) {
-                productsWithQuantities.remove(product);
+                removeProduct(productId);
             } else {
-                productsWithQuantities.put(product, newQuantity);
+                productsWithQuantities.put(productId, newQuantity);
             }
         }
     }
 
-    public void removeProduct(Product product) {
-        if(productsWithQuantities.containsKey(product)) {
-            productsWithQuantities.remove(product);
-        }
+    public void removeProduct(Integer productId) {
+        productsWithQuantities.remove(productId);
     }
 
-    public HashMap<Product, Integer> getProductsWithQuantities() {
+    public HashMap<Integer, Integer> getProductsWithQuantities() {
         return productsWithQuantities;
     }
 
     @Override
     public String toString() {
-        String shoppingCartText = "Panier\n";
-        for(Product product : productsWithQuantities.keySet()) {
-            shoppingCartText += "Nb products : " + productsWithQuantities.size() + "\n";
-            shoppingCartText += "Id : " + product.getId() + "\tQuantity : " + productsWithQuantities.get(product) + "\n";
+        StringBuilder shoppingCartText = new StringBuilder("Panier\n");
+
+        for(Integer productId : productsWithQuantities.keySet()) {
+            shoppingCartText.append("Nb products : ").append(productsWithQuantities.size()).append("\n");
+            shoppingCartText.append("Id : ").append(productId).append("\tQuantity : ").append(productsWithQuantities.get(productId)).append("\n");
         }
-        return shoppingCartText;
+
+        return shoppingCartText.toString();
     }
 }

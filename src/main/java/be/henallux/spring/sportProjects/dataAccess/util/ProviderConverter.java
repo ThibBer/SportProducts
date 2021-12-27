@@ -101,7 +101,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new ProductEntity(product.getId(), product.getPrice(), product.getCategoryId(), product.getDescription(), product.getImage());
+        return new ProductEntity(product.getId(), product.getPrice(), categoryModelToCategoryEntity(product.getCategory()), product.getDescription(), product.getImage());
     }
 
     public Product productEntityToProductModel(ProductEntity productEntity){
@@ -109,7 +109,7 @@ public class ProviderConverter {
             return null;
         }
 
-        return new Product(productEntity.getId(), productEntity.getPrice(), productEntity.getCategoryId(), productEntity.getDescription(), productEntity.getImage());
+        return new Product(productEntity.getId(), productEntity.getPrice(), categoryEntityToCategoryModel(productEntity.getCategoryEntity()), productEntity.getDescription(), productEntity.getImage());
     }
 
     /*Translation*/

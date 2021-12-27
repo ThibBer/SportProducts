@@ -1,5 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
+import be.henallux.spring.sportProjects.model.Category;
 import be.henallux.spring.sportProjects.model.Promotion;
 
 import javax.persistence.*;
@@ -17,18 +18,19 @@ public class ProductEntity {
     @Column(name="price")
     private Double price;
 
-    @Column(name="category")
-    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name="category", referencedColumnName = "id")
+    private CategoryEntity categoryEntity;
 
     @Column(name="image")
     private String image;
 
     public ProductEntity() {}
 
-    public ProductEntity(Integer id, Double price, Integer categoryId, String description, String image) {
+    public ProductEntity(Integer id, Double price, CategoryEntity categoryEntity, String description, String image) {
         setId(id);
         setPrice(price);
-        setCategoryId(categoryId);
+        setCategoryEntity(categoryEntity);
         setDescription(description);
         setImage(image);
     }
@@ -49,12 +51,12 @@ public class ProductEntity {
         this.price = price;
     }
 
-    public Integer getCategoryId() {
-        return categoryId;
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     public String getDescription() {

@@ -9,11 +9,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes({MainController.SHOPPING_CART})
 public class MainController {
     protected static final String SHOPPING_CART = "shoppingCart";
+    private ShoppingCart shoppingCart;
 
-    public MainController(){}
+    public MainController(){
+        shoppingCart = new ShoppingCart();
+    }
 
     @ModelAttribute(SHOPPING_CART)
     public ShoppingCart shoppingCart() {
-        return new ShoppingCart();
+        return shoppingCart;
     }
 }

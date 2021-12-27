@@ -25,7 +25,7 @@ public class ProductDAO implements ProductDataAccess {
 
     @Override
     public ArrayList<Product> getProductsWithCategoryId(int idCategory) {
-        List<ProductEntity> productEntities = productRepository.findProductEntitiesByCategoryId(idCategory);
+        List<ProductEntity> productEntities = productRepository.findProductEntitiesByCategoryEntityId(idCategory);
         ArrayList<Product> products = new ArrayList<>();
 
         for(ProductEntity productEntity : productEntities) {

@@ -38,10 +38,11 @@ public class ProductController extends MainController{
                 return "integrated:notfound";
             }
 
-            Category category = categoriesService.getCategoryWithId(product.getCategoryId());
+            Category category = categoriesService.getCategoryWithId(product.getCategory().getId());
 
             model.addAttribute("category", category);
             model.addAttribute("product", product);
+            model.addAttribute("shoppingCartItem", new ShoppingCartItem());
             return "integrated:product";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
@@ -49,22 +50,27 @@ public class ProductController extends MainController{
         }
     }
 
-    @RequestMapping(value="/{id}/send", method = RequestMethod.POST)
+    @RequestMapping(value="/send", method = RequestMethod.POST)
     public String getFormData(Model model,
                               Locale locale,
-                              @PathVariable("id") String id,
+                              @ModelAttribute ShoppingCartItem shoppingCartItem,
                               @SessionAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+        Integer quantity = shoppingCartItem.getQuantity();
+
         try {
-            int idProduct = Integer.parseInt(id);
+            int idProduct = shoppingCartItem.getProductId();
+
             Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
-            if(product == null)
+            if(product == null){
                 return "integrated:notfound";
-            shoppingCart.addProductWithQuantity(product, 1);
+            }
+
+            shoppingCart.addProductWithQuantity(idProduct, quantity);
+
             return "redirect:/";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "integrated:error";
         }
     }
-
 }
