@@ -70,7 +70,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-basket"><span class="badge badge-light">5</span></i></a>
+                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-basket"></i><span class="badge badge-light">5</span></a>
                             </li>
                         </ul>
                     </div>

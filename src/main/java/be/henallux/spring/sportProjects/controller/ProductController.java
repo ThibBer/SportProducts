@@ -65,7 +65,7 @@ public class ProductController extends MainController{
 
             shoppingCart.addProductWithQuantity(idProduct, quantity);
 
-            return "redirect:/";
+            return "redirect:/category/" + product.getCategory().getId() + "/";
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());
             return "integrated:error";

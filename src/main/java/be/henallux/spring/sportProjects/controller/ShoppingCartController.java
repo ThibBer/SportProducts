@@ -54,9 +54,24 @@ public class ShoppingCartController extends MainController {
             model.addAttribute("shoppingCartItems", shoppingCartItems);
             model.addAttribute("articlesInPromotion", articlesInPromotion);
             model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
-            model.addAttribute("articlesCount", shoppingCartItems.size());
+            model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
+            model.addAttribute("shoppingCartItem", new ShoppingCartItem());
 
             return "integrated:shopping-cart";
         }
+    }
+
+    @RequestMapping(value="/editQuantity", method = RequestMethod.POST)
+    public String editQuantity(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart, @ModelAttribute ShoppingCartItem shoppingCartItem) {
+        shoppingCart.updateQuantity(shoppingCartItem.getProductId(), shoppingCartItem.getQuantity());
+
+        return "redirect:/shopping-cart";
+    }
+
+    @RequestMapping(value="/delete", method = RequestMethod.POST)
+    public String delete(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart, @ModelAttribute ShoppingCartItem shoppingCartItem) {
+        shoppingCart.removeProduct(shoppingCartItem.getProductId());
+
+        return "redirect:/shopping-cart";
     }
 }

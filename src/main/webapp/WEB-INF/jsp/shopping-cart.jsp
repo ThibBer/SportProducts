@@ -33,7 +33,29 @@
                                     <div class="col-md-6">
                                         <h3><c:out value="${product.key.getTranslation().getLabel()}"/></h3>
                                         <p><c:out value="${product.key.getDescription()}"/></p>
-                                        <p><c:out value="${product.value}"/></p>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <form:form method="POST" action="/sportProducts/shopping-cart/editQuantity" modelAttribute="shoppingCartItem">
+                                                    <div class="input-group mb-3">
+                                                        <input name="quantity" type="number" class="form-control" placeholder='<spring:message code="quantity"/>' min="0" value="${product.value}" required/>
+                                                        <form:hidden path="productId" value="${product.key.getId()}"/>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-primary" type="submit">
+                                                                <i class="fal fa-cart-plus"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </form:form>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <form:form method="POST" action="/sportProducts/shopping-cart/delete" modelAttribute="shoppingCartItem">
+                                                    <form:hidden path="productId" value="${product.key.getId()}"/>
+                                                    <button class="btn btn-danger" type="submit">
+                                                        <i class="fal fa-trash-alt"></i>
+                                                    </button>
+                                                </form:form>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="row">
@@ -71,11 +93,10 @@
                     </div>
                     <div class="col-md-2">
                         <div class="card mt-md-5">
-                            <h5 class="card-header"><spring:message code="shoppingCartSummary"/></h5>
+                            <h5 class="card-header"><spring:message code="shoppingCartSummary" arguments="${shoppingCartItemsCount}"/></h5>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
-                                        <h5 class="card-title"><spring:message code="articlesCount" arguments="${articlesCount}"/></h5>
 
                                         <c:if test="${articlesInPromotion == 1}">
                                             <small>Votre panier contient <c:out value="${articlesInPromotion}"/> article en promotion</small>
