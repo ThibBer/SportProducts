@@ -2,9 +2,7 @@ package be.henallux.spring.sportProjects.controller;
 
 import be.henallux.spring.sportProjects.model.*;
 import be.henallux.spring.sportProjects.service.CategoriesService;
-import be.henallux.spring.sportProjects.service.LanguageService;
 import be.henallux.spring.sportProjects.service.ProductsService;
-import be.henallux.spring.sportProjects.service.TranslationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -15,7 +13,7 @@ import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/product")
-@SessionAttributes(types = ShoppingCart.class)
+@SessionAttributes({MainController.SHOPPING_CART})
 public class ProductController extends MainController{
     private final MessageSource messageSource;
     private ProductsService productsService;
@@ -54,7 +52,7 @@ public class ProductController extends MainController{
     public String getFormData(Model model,
                               Locale locale,
                               @ModelAttribute ShoppingCartItem shoppingCartItem,
-                              @SessionAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+                              @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         Integer quantity = shoppingCartItem.getQuantity();
 
         try {

@@ -9,13 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 @Controller
-@SessionAttributes(types = ShoppingCart.class)
+@SessionAttributes({MainController.SHOPPING_CART})
 @RequestMapping(value="/shopping-cart")
 public class ShoppingCartController extends MainController {
     private ProductsService productsService;
@@ -26,7 +25,7 @@ public class ShoppingCartController extends MainController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public String home(Model model, Locale locale, @SessionAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+    public String home(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         if(shoppingCart == null) {
             return "redirect:/";
         } else {
