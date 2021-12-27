@@ -103,7 +103,7 @@ CREATE TABLE order_product
 INSERT INTO language (international_code) VALUES ('en');
 INSERT INTO language (international_code) VALUES ('fr');
 
-INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('24-12-2021', '%d-%m-%Y'), 10);
+INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('28-12-2021', '%d-%m-%Y'), 10);
 INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('31-12-2021', '%d-%m-%Y'), 25);
 
 INSERT INTO category (label, description, image, promotion) VALUES ('Football', 'Description football', 'soccer.png', 1);

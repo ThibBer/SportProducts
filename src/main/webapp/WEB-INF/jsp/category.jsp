@@ -46,7 +46,7 @@
 
                                             <c:if test="${category.isInPromotion()}">
                                                 <div class="text-right mt-md-3">
-                                                    <h5 class="m-0"><span class="old-price"><c:out value="${product.getPrice()}"/></span> <sup class="new-price"><c:out value="${product.getPriceWithPromotion(category.getPromotion())}"/> €</sup></h5>
+                                                    <h5 class="m-0"><span class="old-price"><c:out value="${product.getPrice()}"/></span> <sup class="new-price"><c:out value="${product.getPriceWithPromotion()}"/> €</sup></h5>
                                                 </div>
                                             </c:if>
 
