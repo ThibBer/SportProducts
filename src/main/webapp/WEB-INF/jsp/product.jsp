@@ -26,7 +26,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <c:if test="${product.getImage() != null}">
-                                        <img class="card-img-top img-responsive" src="<spring:url value='/assets/products/${category.getImage()}'/>" alt="Card image cap" width="150">
+                                        <img class="card-img-top img-responsive" src="<spring:url value='/assets/products/${product.getImage()}'/>" alt="Card image cap" width="150">
                                     </c:if>
 
                                     <c:if test="${product.getImage() == null}">
