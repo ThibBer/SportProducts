@@ -9,6 +9,9 @@ IG 3 projet for "Développement avancé d'application Web" lesson
 ❌
 ✅
 
+## Compte Paypal
+- Client : adresse : 42888personal@personal.be | mot de passe : sports_personal
+
 ## Agenda
 - Database schema -> 22/10/2021 ❌
 

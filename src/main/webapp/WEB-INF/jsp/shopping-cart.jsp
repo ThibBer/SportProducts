@@ -115,9 +115,22 @@
                                 </div>
 
                                 <div class="row text-center mt-md-3">
-                                    <div class="col">
-                                        <a href="#" class="btn btn-primary"><spring:message code="order"/></a>
-                                    </div>
+
+                                    <form action="https://www.sandbox.paypal.com/cgi bin/webscr">
+
+                                        <input type="hidden" name="business" value="42888business@business.be">
+                                        <input type="hidden" name="password" value="ELP3xkoFodSVW2DSyzZGiw1_Xf0h-x3KZo6IRpGGcKzn6RghXhzfF83hh4wwfjw89r--mOsROP6SOpuE">
+                                        <input type="hidden" name="cert_id" value="AQFmAgERQt6ouoZ78-GfCsBapnDwBOrb5_J9MHx9FRv40obAcYQOb-mIuRscuuc3szTcHyXC2uOB62tN">
+                                        <input type="hidden" name="cmd" value="_xclick">
+                                        <input type="hidden" name="amount" value="${total}">
+                                        <input type="hidden" name="currency_code" value="EUR">
+                                        <input type="hidden" name="lc" value="${locale.getLanguage()}">
+                                        <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts">
+                                        <input type="image" name="submit"
+                                               src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
+                                               alt="PayPal - The safer, easier way to pay online">
+
+                                    </form>
                                 </div>
                             </div>
                         </div>
