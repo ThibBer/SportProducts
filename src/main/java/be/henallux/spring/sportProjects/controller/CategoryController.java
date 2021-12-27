@@ -24,16 +24,12 @@ public class CategoryController extends MainController {
     private final MessageSource messageSource;
     private CategoriesService categoriesService;
     private ProductsService productsService;
-    private TranslationService translationService;
-    private LanguageService languageService;
 
     @Autowired
-    public CategoryController(MessageSource messageSource, CategoriesService categoriesService, ProductsService productsService, LanguageService languageService, TranslationService translationService) {
+    public CategoryController(MessageSource messageSource, CategoriesService categoriesService, ProductsService productsService) {
         this.messageSource = messageSource;
         this.categoriesService = categoriesService;
         this.productsService = productsService;
-        this.translationService = translationService;
-        this.languageService = languageService;
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
@@ -46,12 +42,7 @@ public class CategoryController extends MainController {
                 return "integrated:notfound";
             }
 
-            ArrayList<Product> products = productsService.getProductsWithCategoryId(idInteger);
-            Language language = languageService.getLanguageWithInternationalCode(locale.getLanguage());
-
-            for(Product product: products){
-                product.setTranslation(translationService.getTranslationWithProductIdAndLanguageId(product.getId(), language.getId()));
-            }
+            ArrayList<Product> products = productsService.getProductsWithCategoryId(idInteger, locale.getLanguage());
 
             model.addAttribute("category", category);
             model.addAttribute("products", products);

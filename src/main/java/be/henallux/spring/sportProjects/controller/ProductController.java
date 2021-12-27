@@ -19,16 +19,12 @@ import java.util.Locale;
 public class ProductController extends MainController{
     private final MessageSource messageSource;
     private ProductsService productsService;
-    private LanguageService languageService;
-    private TranslationService translationService;
     private CategoriesService categoriesService;
 
     @Autowired
-    public ProductController(MessageSource messageSource, ProductsService productsService, LanguageService languageService, TranslationService translationService, CategoriesService categoriesService) {
+    public ProductController(MessageSource messageSource, ProductsService productsService, CategoriesService categoriesService) {
         this.messageSource = messageSource;
         this.productsService = productsService;
-        this.languageService = languageService;
-        this.translationService = translationService;
         this.categoriesService = categoriesService;
     }
 
@@ -37,16 +33,12 @@ public class ProductController extends MainController{
         model.addAttribute("locale", locale);
         try {
             int idProduct = Integer.parseInt(id);
-            Product product = productsService.getProductWithId(idProduct);
+            Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
             if(product == null){
                 return "integrated:notfound";
             }
 
-            String internationalCode = locale.getLanguage();
-            Language language = languageService.getLanguageWithInternationalCode(internationalCode);
-            Translation translation = translationService.getTranslationWithProductIdAndLanguageId(idProduct, language.getId());
             Category category = categoriesService.getCategoryWithId(product.getCategoryId());
-            product.setTranslation(translation);
 
             model.addAttribute("category", category);
             model.addAttribute("product", product);
@@ -64,7 +56,7 @@ public class ProductController extends MainController{
                               @SessionAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         try {
             int idProduct = Integer.parseInt(id);
-            Product product = productsService.getProductWithId(idProduct);
+            Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
             if(product == null)
                 return "integrated:notfound";
             shoppingCart.addProductWithQuantity(product, 1);
