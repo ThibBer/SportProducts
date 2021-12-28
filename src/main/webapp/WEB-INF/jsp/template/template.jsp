@@ -2,7 +2,6 @@
 
 <%@ include file="../include/importTags.jsp" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <spring:url var="localeEN" value="">
     <spring:param name="locale" value="en"/>
@@ -70,7 +69,7 @@
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-basket"></i><span class="badge badge-light">5</span></a>
+                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-basket"></i></a>
                             </li>
                         </ul>
                     </div>

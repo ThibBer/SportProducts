@@ -107,31 +107,48 @@
                                         </c:if>
                                     </div>
                                 </div>
-
-                                <div class="row mt-md-3">
-                                    <div class="col text-center">
-                                        <h5><spring:message code="totalToPay" arguments="${total}"/></h5>
+                                <div class="row mt-5">
+                                    <div class="col">
+                                        <table class="table table-responsive-md">
+                                            <c:forEach items="${shoppingCartItems}" var="product">
+                                                <tr>
+                                                    <td><c:out value="${product.key.getTranslation().getLabel()}"/></td>
+                                                    <td><c:out value="${product.key.getPriceWithPromotion() * product.value}"/></td>
+                                                </tr>
+                                            </c:forEach>
+                                        </table>
                                     </div>
                                 </div>
 
-                                <div class="row text-center mt-md-3">
-
-                                    <form action="https://www.sandbox.paypal.com/cgi bin/webscr">
-
-                                        <input type="hidden" name="business" value="42888business@business.be">
-                                        <input type="hidden" name="password" value="ELP3xkoFodSVW2DSyzZGiw1_Xf0h-x3KZo6IRpGGcKzn6RghXhzfF83hh4wwfjw89r--mOsROP6SOpuE">
-                                        <input type="hidden" name="cert_id" value="AQFmAgERQt6ouoZ78-GfCsBapnDwBOrb5_J9MHx9FRv40obAcYQOb-mIuRscuuc3szTcHyXC2uOB62tN">
-                                        <input type="hidden" name="cmd" value="_xclick">
-                                        <input type="hidden" name="amount" value="${total}">
-                                        <input type="hidden" name="currency_code" value="EUR">
-                                        <input type="hidden" name="lc" value="${locale.getLanguage()}">
-                                        <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts">
-                                        <input type="image" name="submit"
-                                               src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif"
-                                               alt="PayPal - The safer, easier way to pay online">
-
-                                    </form>
+                                <div class="row mt-md-3">
+                                    <div class="col text-center">
+                                        <h5><strong><spring:message code="totalToPay" arguments="${total}"/> €</strong></h5>
+                                    </div>
                                 </div>
+
+                                <sec:authorize access="isAuthenticated()">
+                                    <div class="row text-center mt-md-3">
+                                        <form action="https://www.sandbox.paypal.com/cgi bin/webscr" class="text-center">
+
+                                            <input type="hidden" name="business" value="42888business@business.be">
+                                            <input type="hidden" name="password" value="ELP3xkoFodSVW2DSyzZGiw1_Xf0h-x3KZo6IRpGGcKzn6RghXhzfF83hh4wwfjw89r--mOsROP6SOpuE">
+                                            <input type="hidden" name="cert_id" value="AQFmAgERQt6ouoZ78-GfCsBapnDwBOrb5_J9MHx9FRv40obAcYQOb-mIuRscuuc3szTcHyXC2uOB62tN">
+                                            <input type="hidden" name="cmd" value="_xclick">
+                                            <input type="hidden" name="amount" value="${total}">
+                                            <input type="hidden" name="currency_code" value="EUR">
+                                            <input type="hidden" name="lc" value="${locale.getLanguage()}">
+                                            <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts">
+                                            <input type="image" class="img-fluid text-center" name="submit"
+                                                   src="<spring:url value='/assets/pay/pay-with-paypal-${locale.getLanguage()}.jpg'/>"
+                                                   alt="PayPal - The safer, easier way to pay online">
+
+                                        </form>
+                                    </div>
+                                </sec:authorize>
+
+                                <sec:authorize access="!isAuthenticated()">
+                                    <p class="mt-3"><spring:message code="mustBeLoggedIn"/></p>
+                                </sec:authorize>
                             </div>
                         </div>
                     </div>
