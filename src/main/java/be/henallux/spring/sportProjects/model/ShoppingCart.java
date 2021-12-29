@@ -21,16 +21,11 @@ public class ShoppingCart {
     }
 
     public void updateQuantity(Integer productId, Integer newQuantity) {
-        System.out.println(productsWithQuantities.containsKey(productId));
         if(productsWithQuantities.containsKey(productId)) {
             if(newQuantity == 0) {
-                System.out.println("Remove");
                 removeProduct(productId);
             } else {
-                System.out.println("Update");
-                System.out.println("before: productsWithQuantities = " + productsWithQuantities.get(productId));
                 productsWithQuantities.put(productId, newQuantity);
-                System.out.println("after: productsWithQuantities = " + productsWithQuantities.get(productId));
             }
         }
     }

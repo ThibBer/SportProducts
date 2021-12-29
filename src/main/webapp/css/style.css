@@ -103,3 +103,7 @@ nav a {
 .new-price{
     font-size: 18px;
 }
+
+.address-data{
+    list-style-type: none;
+}
