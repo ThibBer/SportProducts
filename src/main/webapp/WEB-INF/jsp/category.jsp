@@ -9,8 +9,7 @@
         <c:if test="${category.isInPromotion()}">
             <header class="container-fluid bg-promotion-alert mx-0">
                 <div class="container text-center">
-                    <p id="promotion-alert" class="text-white py-md-2"><spring:message code="categoryInPromotion" arguments="${category.getPromotion().getPercentage()}, ${category.getLabel().toLowerCase()}"/> <span class="promotion-date">${category.getPromotion().getFormattedEndDate()}</span></p>
-                    <%--<p id="promotion-alert" class="text-white py-md-2">Une réduction de ${category.getPromotion().getPercentage()}% est appliquée à tous les articles de ${category.getLabel().toLowerCase()} pour tout achat avant le <span class="promotion-date">${category.getPromotion().getFormattedEndDate()}</span></p>--%>
+                    <p id="promotion-alert" class="text-white py-md-2"><spring:message code="categoryInPromotion" arguments="${category.getPromotion().getPercentage()}, ${category.getLabel().toLowerCase()}"/> <span class="promotion-date">${category.getPromotion().getFormattedEndDate(locale)}</span></p>
                 </div>
             </header>
         </c:if>

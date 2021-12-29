@@ -2,6 +2,7 @@ package be.henallux.spring.sportProjects.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 public class Promotion {
     private Integer id;
@@ -42,8 +43,14 @@ public class Promotion {
         return endDate;
     }
 
-    public String getFormattedEndDate(){
-        return endDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
+    public String getFormattedEndDate(Locale locale){
+        String pattern = "dd MMMM yyyy";
+
+        if(locale == null){
+            return endDate.format(DateTimeFormatter.ofPattern(pattern));
+        }
+
+        return endDate.format(DateTimeFormatter.ofPattern(pattern, locale));
     }
 
     public void setEndDate(LocalDate endDate) {
