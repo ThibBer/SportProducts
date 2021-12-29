@@ -60,7 +60,7 @@
                                     <div class="col-md-3">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <p>Prix Unitaire</p>
+                                                <p><spring:message code="unitPrice"/></p>
 
                                                 <div class="row">
                                                     <c:if test="${product.key.category.isInPromotion()}">
@@ -77,7 +77,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Prix total</p>
+                                                <p><spring:message code="totalPrice" /></p>
 
                                                 <div class="row">
                                                     <div class="text-right mt-md-3">
@@ -131,13 +131,12 @@
                                         <form action="https://www.sandbox.paypal.com/cgi bin/webscr" class="text-center">
 
                                             <input type="hidden" name="business" value="42888business@business.be">
-                                            <input type="hidden" name="password" value="ELP3xkoFodSVW2DSyzZGiw1_Xf0h-x3KZo6IRpGGcKzn6RghXhzfF83hh4wwfjw89r--mOsROP6SOpuE">
-                                            <input type="hidden" name="cert_id" value="AQFmAgERQt6ouoZ78-GfCsBapnDwBOrb5_J9MHx9FRv40obAcYQOb-mIuRscuuc3szTcHyXC2uOB62tN">
                                             <input type="hidden" name="cmd" value="_xclick">
                                             <input type="hidden" name="amount" value="${total}">
                                             <input type="hidden" name="currency_code" value="EUR">
                                             <input type="hidden" name="lc" value="${locale.getLanguage()}">
-                                            <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts">
+                                            <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts/payments/paymentreceived">
+                                            <input type="hidden" name="cancel_url" value="http://127.0.0.1:8082/sportProducts/payments/paymentcancelled">
                                             <input type="image" class="img-fluid text-center" name="submit"
                                                    src="<spring:url value='/assets/pay/pay-with-paypal-${locale.getLanguage()}.jpg'/>"
                                                    alt="PayPal - The safer, easier way to pay online">
