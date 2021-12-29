@@ -28,4 +28,16 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
 
         return user;
     }
+
+    public boolean isEmailAlreadyUsed(String email) {
+        return userDAO.isEmailAlreadyUsed(email);
+    }
+
+    public Boolean isUsernameAlreadyUsed(String username) {
+        return userDAO.isUsernameAlreadyUsed(username);
+    }
+
+    public void postUser(User user) {
+        userDAO.postUser(user);
+    }
 }

@@ -1,6 +1,9 @@
 package be.henallux.spring.sportProjects.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.validation.constraints.*;
+import java.util.Date;
 
 public class UserForm {
     @NotBlank
@@ -14,9 +17,6 @@ public class UserForm {
     private String password;
 
     @NotBlank
-    private String confirmPassword;
-
-    @NotBlank
     private String firstname;
 
     @NotBlank
@@ -24,7 +24,8 @@ public class UserForm {
 
     @NotNull
     @Past
-    private String birthDate;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private Date birthDate;
 
     private String phoneNumber;
 
@@ -61,14 +62,6 @@ public class UserForm {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
     public String getFirstname() {
         return firstname;
     }
@@ -85,11 +78,11 @@ public class UserForm {
         this.lastname = lastname;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

@@ -2,6 +2,7 @@ package be.henallux.spring.sportProjects.dataAccess.util;
 
 import be.henallux.spring.sportProjects.dataAccess.entity.*;
 import be.henallux.spring.sportProjects.model.*;
+import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -11,9 +12,6 @@ import java.util.Collection;
 public class ProviderConverter {
     /*User*/
     public UserEntity userModelToUserEntity(User user){
-        if(user == null){
-            return new UserEntity();
-        }
         UserEntity userEntity = new UserEntity(
                 user.getId(),
                 user.getEmail(),
@@ -37,10 +35,6 @@ public class ProviderConverter {
     }
 
     public User userEntityToUserModel(UserEntity userEntity){
-        if(userEntity == null){
-            return new User();
-        }
-
         User user = new User(
                 userEntity.getId(),
                 userEntity.getEmail(),

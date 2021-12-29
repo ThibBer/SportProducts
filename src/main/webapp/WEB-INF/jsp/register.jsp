@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center w-100 mb-5">
             <div class="d-flex flex-column justify-content-center w-50">
                 <div class="text-center pt-2">
                     <h2><spring:message code="register"/></h2>
@@ -36,13 +36,19 @@
                     <div class="form-group mt-md-3">
                         <form:label path="email"><spring:message code="email"/></form:label>
                         <form:input path="email" cssClass="form-control"/>
+                        <c:if test="${messageEmail == 'already used'}">
+                            <div class="error"><spring:message code="emailAlreadyUsed" /></div>
+                        </c:if>
                         <div class="error"><form:errors path="email" /></div>
                     </div>
 
                     <div class="form-group mt-md-3">
                         <form:label path="username"><spring:message code="username"/></form:label>
                         <form:input path="username" cssClass="form-control"/>
-                        <div class="error"><form:errors path="email" /></div>
+                        <c:if test="${messageUsername == 'already used'}">
+                            <div class="error"><spring:message code="usernameAlreadyUsed" /></div>
+                        </c:if>
+                        <div class="error"><form:errors path="username" /></div>
                     </div>
 
                     <div class="form-group mt-md-3">
@@ -51,17 +57,11 @@
                         <div class="error"><form:errors path="password" /></div>
                     </div>
 
-                    <div class="form-group mt-md-3">
-                        <form:label path="confirmPassword"><spring:message code="confirmPassword"/></form:label>
-                        <form:input path="confirmPassword" cssClass="form-control" type="password"/>
-                        <div class="error"><form:errors path="confirmPassword" /></div>
-                    </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <form:label path="birthDate"><spring:message code="birthDate"/></form:label>
-                                <form:input path="birthDate" cssClass="form-control" type="date"/>
+                                <form:input path="birthDate" cssClass="form-control" type="date" name="birthDate"/>
                                 <div class="error"><form:errors path="birthDate" /></div>
                             </div>
                         </div>
@@ -107,8 +107,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <button class="btn btn-primary mx-auto d-block mt-md-3"><spring:message code="register" /></button>
+                    <button class="btn btn-primary" type="submit"><spring:message code="register" /></button>
                 </form:form>
             </div>
         </div>

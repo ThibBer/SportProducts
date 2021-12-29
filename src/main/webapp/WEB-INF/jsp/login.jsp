@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
     </head>
     <body>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center w-100">
             <div class="d-flex flex-column justify-content-center w-50">
                 <div class="text-center pt-2">
                     <h2><spring:message code="login"/></h2>
@@ -31,7 +31,7 @@
                     </div>
                     <button class="btn btn-primary mx-auto d-block mt-md-3"><spring:message code="login" /></button>
                 </form:form>
-                <button class="btn btn-primary mx-auto d-block mt-md-3" href="<spring:url value='/register'/>"><spring:message code="createAccount" /></button>
+                <a class="btn btn-primary" href="<spring:url value='/register'/>"><spring:message code="createAccount" /></a>
             </div>
         </div>
     </body>

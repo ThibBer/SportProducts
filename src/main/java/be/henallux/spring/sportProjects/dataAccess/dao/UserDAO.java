@@ -1,5 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.dao;
 
+import be.henallux.spring.sportProjects.dataAccess.entity.UserEntity;
 import be.henallux.spring.sportProjects.dataAccess.repository.UserRepository;
 import be.henallux.spring.sportProjects.dataAccess.util.ProviderConverter;
 import be.henallux.spring.sportProjects.model.User;
@@ -23,5 +24,21 @@ public class UserDAO implements UserDataAccess{
     @Override
     public User getUserFromUsername(String username) {
         return converter.userEntityToUserModel(userRepository.findUserByUsername(username));
+    }
+
+    @Override
+    public boolean isEmailAlreadyUsed(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public Boolean isUsernameAlreadyUsed(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    @Override
+    public void postUser(User user) {
+        UserEntity userEntity = converter.userModelToUserEntity(user);
+        userEntity = userRepository.save(userEntity);
     }
 }
