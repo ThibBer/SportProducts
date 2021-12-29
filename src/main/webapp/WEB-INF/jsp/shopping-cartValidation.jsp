@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="container-fluid">
-            <div class="row mt-3">
+            <div class="row mt-3 mb-5">
                 <div class="col-md-8 offset-md-1 mr-5">
                     <div class="row">
                         <div class="col">
@@ -92,10 +92,11 @@
 
                                     <c:if test="${articlesInPromotion == 1}">
                                         <small>Votre panier contient <c:out value="${articlesInPromotion}"/> article en promotion</small>
+                                        <small><spring:message code="shoppingCartContains" /> <c:out value="${articlesInPromotion}"/> <spring:message code="articleInPromotion" /></small>
                                     </c:if>
 
                                     <c:if test="${articlesInPromotion > 1}">
-                                        <small>Votre panier contient <c:out value="${articlesInPromotion}"/> articles en promotion</small>
+                                        <small><spring:message code="shoppingCartContains" /> <c:out value="${articlesInPromotion}"/> <spring:message code="articlesInPromotion"/></small>
                                     </c:if>
                                 </div>
                             </div>
@@ -120,8 +121,7 @@
 
                             <div class="row mt-md-5">
                                 <div class="col">
-                                    <h5><strong>Données de livraison</strong></h5>
-
+                                    <h5><strong><spring:message code="deliveryData"/></strong></h5>
                                     <div>
                                         <ul class="list-unstyled">
                                             <li><c:out value="${loggedUser.getFirstname()}"/> <c:out value="${loggedUser.getLastname()}"/></li>

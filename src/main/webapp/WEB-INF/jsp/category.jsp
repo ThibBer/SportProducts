@@ -22,7 +22,7 @@
                     <p>${category.getDescription()}</p>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col">
                     <div id="products" class="d-flex row justify-content-center">
                         <c:forEach items="${products}" var="product">

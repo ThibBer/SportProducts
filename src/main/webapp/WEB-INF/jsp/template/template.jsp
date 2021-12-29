@@ -82,8 +82,12 @@
 
         <tiles:insertAttribute name="main-content"/>
 
-        <footer>
-
+        <footer class="bg-default fixed-bottom d-flex justify-content-center mt-auto">
+            <div class="container">
+                <div class="d-flex justify-content-center">
+                    <a class="nav-link" href="<spring:url value='/Bergnard'/>">Bergnard</a>
+                </div>
+            </div>
         </footer>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

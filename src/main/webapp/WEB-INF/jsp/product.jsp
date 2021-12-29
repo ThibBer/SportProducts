@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="row">
+            <div class="row mb-5">
                 <div class="col">
                     <div class="card mt-5">
                         <h5 class="card-header bg-default text-white">

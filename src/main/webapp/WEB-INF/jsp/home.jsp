@@ -4,7 +4,6 @@
 <html>
     <head>
         <title><spring:message code="home"/></title>
-
     </head>
     <body>
         <div class="container">
@@ -14,7 +13,7 @@
                 </div>
             </div>
 
-            <div class="row mt-md-3">
+            <div class="row mt-md-3 mb-5">
                 <div class="col">
                     <div id="categories" class="d-flex row justify-content-center">
                         <c:forEach items="${categories}" var="category">
