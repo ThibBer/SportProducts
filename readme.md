@@ -16,7 +16,7 @@ IG 3 projet for "Développement avancé d'application Web" lesson
 - Database schema -> 22/10/2021 ❌
 
 ## À faire
-- Message personnalisé si user loggé sur chaque page | dans la bannière reprenant son login
+- Message personnalisé si user loggé sur chaque page | dans la bannière reprenant son login ✅
 - Lien vers la description de la société (je vais le faire via le footer)
 - Avant de passe à l'achat (via paypal) une confirmation doit être demandée à l'utilisateur
 - Si confirmation validée, enregistrer la commande dans la DB

@@ -49,13 +49,11 @@
                                 </sec:authorize>
 
                                 <sec:authorize access="isAuthenticated()">
-                                    <a class="nav-link" href="<spring:url value='/logout'/>"><spring:message code="logout"/></a>
+                                    <a class="nav-link" href="<spring:url value='/logout'/>"><spring:message code="logout"/>&nbsp;&nbsp;<i class="fal fa-sign-out-alt text-light"></i></a>
+
                                 </sec:authorize>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><spring:message code="profile"/></a>
-                            </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown mr-4">
                                 <button class="btn text-light dropdown-toggle" type="button" id="languageSelectorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="<spring:url value='/assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayName()}
                                 </button>
@@ -68,8 +66,13 @@
                                     </a>
                                 </div>
                             </li>
+                            <sec:authorize access="isAuthenticated()">
+                                <li class="nav-item">
+                                    <p class="nav-link text-light my-auto"><spring:message code="welcome"/>&nbsp;<c:out value="${pageContext.request.remoteUser}"/></p>
+                                </li>
+                            </sec:authorize>
                             <li class="nav-item">
-                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-basket"></i></a>
+                                <a class="nav-link" href="<spring:url value='/shopping-cart'/>"><i class="fal fa-shopping-cart"></i></a>
                             </li>
                         </ul>
                     </div>
