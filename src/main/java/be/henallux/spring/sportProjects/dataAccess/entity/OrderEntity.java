@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name="order")
+@Table(name="`order`")
 public class OrderEntity {
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Integer id;
 

@@ -38,6 +38,10 @@ public class ShoppingCart {
         return productsWithQuantities;
     }
 
+    public void clear(){
+        productsWithQuantities.clear();
+    }
+
     @Override
     public String toString() {
         StringBuilder shoppingCartText = new StringBuilder("Panier\n");

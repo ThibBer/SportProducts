@@ -1,5 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.util;
 
+import be.henallux.spring.sportProjects.dataAccess.dao.OrderProductDAO;
 import be.henallux.spring.sportProjects.dataAccess.entity.*;
 import be.henallux.spring.sportProjects.model.*;
 import org.apache.catalina.mapper.Mapper;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Component
 public class ProviderConverter {
@@ -133,5 +135,39 @@ public class ProviderConverter {
         return new Language(languageEntity.getId(), languageEntity.getInternationCode());
     }
 
+    public Order orderEntityToOrderModel(OrderEntity orderEntity){
+        return new Order(orderEntity.getId(), orderEntity.getDate(), userEntityToUserModel(orderEntity.getUserEntity()));
+    }
 
+    public OrderEntity orderModelToOrderEntity(Order order){
+        return new OrderEntity(order.getId(), order.getDate(), userModelToUserEntity(order.getUser()));
+    }
+
+    public OrderProductEntity orderProductModelToOrderProductEntity(OrderProduct orderProduct){
+        return new OrderProductEntity(orderProduct.getId(), orderProduct.getQuantity(), orderProduct.getAccordedPrice(), orderModelToOrderEntity(orderProduct.getOrder()), productModelToProductEntity(orderProduct.getProduct()));
+    }
+
+    public OrderProduct orderProductEntityToOrderProductModel(OrderProductEntity orderProductEntity){
+        return new OrderProduct(orderProductEntity.getId(), orderProductEntity.getQuantity(), orderProductEntity.getAccordedPrice(), orderEntityToOrderModel(orderProductEntity.getOrderEntity()), productEntityToProductModel(orderProductEntity.getProductEntity()));
+    }
+
+    public List<OrderProductEntity> orderProductModelsToOrderProductEntities(List<OrderProduct> orderProducts){
+        ArrayList<OrderProductEntity> orderProductEntities = new ArrayList<>();
+
+        for(OrderProduct orderProduct: orderProducts){
+            orderProductEntities.add(orderProductModelToOrderProductEntity(orderProduct));
+        }
+
+        return orderProductEntities;
+    }
+
+    public  List<OrderProduct> orderProductEntitiesToOrderProductModels(List<OrderProductEntity> orderProductEntities){
+        ArrayList<OrderProduct> orderProducts = new ArrayList<>();
+
+        for(OrderProductEntity orderProductEntity: orderProductEntities){
+            orderProducts.add(orderProductEntityToOrderProductModel(orderProductEntity));
+        }
+
+        return orderProducts;
+    }
 }

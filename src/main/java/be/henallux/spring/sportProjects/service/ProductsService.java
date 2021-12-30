@@ -43,6 +43,7 @@ public class ProductsService {
             Translation translation = translationService.getTranslationWithProductIdAndLanguageId(idProduct, language.getId());
             product.setTranslation(translation);
         }
+
         return product;
     }
 }
