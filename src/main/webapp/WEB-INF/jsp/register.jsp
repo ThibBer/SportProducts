@@ -14,7 +14,7 @@
                 <form:form
                         id="inscription"
                         method="post"
-                        action="/sportProducts/register/send"
+                        action="/sportProducts/register/"
                         modelAttribute="userForm">
                     <div class="row">
                         <div class="col-md-6">

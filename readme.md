@@ -21,5 +21,5 @@ IG 3 projet for "Développement avancé d'application Web" lesson
 - Avant de passe à l'achat (via paypal) une confirmation doit être demandée à l'utilisateur ✅
 - Si confirmation validée, enregistrer la commande dans la DB
 - Tests unitaires avec JUnit et Mockito
-- Check sur les valeurs dans la DB
+- Check sur les valeurs dans la DB ✅
 - DB suffisamment garnie

@@ -30,7 +30,10 @@ CREATE TABLE user
     non_expired boolean DEFAULT NULL,
     non_locked boolean DEFAULT NULL,
     credentials_non_expired boolean DEFAULT NULL,
-    enabled boolean DEFAULT NULL
+    enabled boolean DEFAULT NULL,
+
+    CONSTRAINT user_birth_date_check CHECK ( birth_date < SYSDATE() ),
+    CONSTRAINT user_postal_code_check CHECK ( postal_code between 1000 AND 9999 )
 );
 
 CREATE TABLE `order`
@@ -39,6 +42,7 @@ CREATE TABLE `order`
     date DATE NOT NULL,
     user INT NOT NULL,
 
+    CONSTRAINT order_date_check CHECK ( date >= SYSDATE() ),
     CONSTRAINT fk_order_user FOREIGN KEY (user) REFERENCES user(id)
 );
 
@@ -53,7 +57,11 @@ CREATE TABLE promotion
     id INT PRIMARY KEY AUTO_INCREMENT,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
-    percentage INT NOT NULL
+    percentage INT NOT NULL,
+
+    CONSTRAINT promotion_end_date_check CHECK ( end_date >= SYSDATE() ),
+    CONSTRAINT promotion_dates_check CHECK ( start_date <= end_date ),
+    CONSTRAINT promotion_percentage_check CHECK ( percentage > 0 )
 );
 
 CREATE TABLE category
@@ -75,6 +83,7 @@ CREATE TABLE product
     category INT NOT NULl,
     image VARCHAR(50),
 
+    CONSTRAINT product_price_check CHECK ( price > 0 ),
     CONSTRAINT fk_product_category FOREIGN KEY (category) REFERENCES category(id)
 );
 
@@ -96,6 +105,8 @@ CREATE TABLE order_product
     `order` INT NOT NULL,
     product INT NOT NULL,
 
+    CONSTRAINT order_product_quantity_check CHECK ( quantity > 0 ),
+    CONSTRAINT order_product_accorded_price_check CHECK ( accorded_price > 0 ),
     CONSTRAINT fk_order_product_order_ FOREIGN KEY (`order`) REFERENCES `order`(id),
     CONSTRAINT fk_order_product_product_ FOREIGN KEY (product) REFERENCES product(id)
 );
@@ -103,8 +114,8 @@ CREATE TABLE order_product
 INSERT INTO language (international_code) VALUES ('en');
 INSERT INTO language (international_code) VALUES ('fr');
 
-INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('10-12-2021', '%d-%m-%Y'), STR_TO_DATE('10-02-2022', '%d-%m-%Y'), 10);
-INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('31-12-2021', '%d-%m-%Y'), 25);
+INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('15-12-2021', '%d-%m-%Y'), STR_TO_DATE('10-02-2022', '%d-%m-%Y'), 10);
+INSERT INTO promotion (start_date, end_date, percentage) VALUES (STR_TO_DATE('01-12-2021', '%d-%m-%Y'), STR_TO_DATE('05-02-2022', '%d-%m-%Y'), 25);
 
 INSERT INTO category (label, description, image, promotion) VALUES ('Football', 'Description football', 'soccer.png', 1);
 INSERT INTO category (label, description, image) VALUES ('Basketball', 'Description basketball', 'basketball.png');

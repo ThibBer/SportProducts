@@ -39,7 +39,7 @@ public class RegisterController extends MainController{
         return "integrated:register";
     }
 
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
+    @RequestMapping(value = "", method = RequestMethod.POST)
     public String getFormData(Model model,
                               Locale locale,
                               @Valid @ModelAttribute("userForm") UserForm inscriptionForm,
