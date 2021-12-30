@@ -125,6 +125,16 @@ INSERT INTO product (price, category, description, image) VALUES (15.0, 1, 'Chil
 /*Basketball*/
 INSERT INTO product (price, category, description, image) VALUES (14.0, 2, 'Adult standard size basketball ball. Official ball used for competitions', 'basketball_ball.png');
 INSERT INTO product (price, category, description, image) VALUES (475.0, 2, 'This ProSport Basketball Hoop adjusts from 1.5 to 3.05 meters to allow players of all ages and skill levels to get out and shoot some hoops.', 'basketball_hoop.jpg');
+INSERT INTO product (price, category, description, image) VALUES (20.5, 2, 'This basketball shirt present a comfortable cut to move freely on the field.', 'basketball_shirt.jpg');
+INSERT INTO product (price, category, description, image) VALUES (7, 2, 'This basketball short present a comfortable cut to move freely on the field.', 'basketball_short.jpg');
+INSERT INTO product (price, category, description, image) VALUES (35, 2, 'This medidu ankle brace will help you avoid breaking your ankles while failing a dunk.', 'basketball_ankle_brace.jpg');
+INSERT INTO product (price, category, description, image) VALUES (20, 2, 'This 25L bag is the best to keep your stuff safely. Moreover, you can place your basket ball in it', 'basketball_bag.jpg');
+
+/*Hockey*/
+INSERT INTO product (price, category, description, image) VALUES (40, 3, 'Professional stick, 20% in carbone material. Ideal to deal with the hardest moves in the sport.', 'hockey_stick.jpg');
+INSERT INTO product (price, category, description, image) VALUES (42, 3, 'Adults shin pads. Resists to violent shocks.', 'hockey_shin_pads.jpg');
+INSERT INTO product (price, category, description, image) VALUES (16, 3, 'Adult standard size hockey ball. Official ball used for competitions', 'hockey_ball.jpg');
+INSERT INTO product (price, category, description, image) VALUES (30, 3, 'Training cones.', 'hockey_cones.jpg');
 
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
@@ -147,6 +157,30 @@ INSERT INTO translation (language, product, label) VALUES (2, 6, 'Ballon');
 
 INSERT INTO translation (language, product, label) VALUES (1, 7, 'Basketball hoop');
 INSERT INTO translation (language, product, label) VALUES (2, 7, 'Panier de basket');
+
+INSERT INTO translation (language, product, label) VALUES (1, 8, 'Basketball shirt');
+INSERT INTO translation (language, product, label) VALUES (2, 8, 'Maillot de basket');
+
+INSERT INTO translation (language, product, label) VALUES (1, 9, 'Basketball short');
+INSERT INTO translation (language, product, label) VALUES (2, 9, 'Short de basket');
+
+INSERT INTO translation (language, product, label) VALUES (1, 10, 'Ankle brace');
+INSERT INTO translation (language, product, label) VALUES (2, 10, 'Chevillère');
+
+INSERT INTO translation (language, product, label) VALUES (1, 11, 'Bag');
+INSERT INTO translation (language, product, label) VALUES (2, 11, 'Sac');
+
+INSERT INTO translation (language, product, label) VALUES (1, 12, 'Stick');
+INSERT INTO translation (language, product, label) VALUES (2, 12, 'Bâton');
+
+INSERT INTO translation (language, product, label) VALUES (1, 13, 'Shin pads');
+INSERT INTO translation (language, product, label) VALUES (2, 13, 'Protèges tibias');
+
+INSERT INTO translation (language, product, label) VALUES (1, 14, 'Hockey ball');
+INSERT INTO translation (language, product, label) VALUES (2, 14, 'Balle de hockey');
+
+INSERT INTO translation (language, product, label) VALUES (1, 15, 'Training cones');
+INSERT INTO translation (language, product, label) VALUES (2, 15, 'Cônes d\'entraînement');
 
 INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
 VALUES ('thibaut.berg@hotmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Thibaut', 'Berg', STR_TO_DATE('28/10/2001', '%d/%m/%Y'), '0478782002', 'Marche-en-Famenne', 6900, 'Rue des champs', 53, 'Spike', 'ROLE_USER', 1, 1, 1, 1);
