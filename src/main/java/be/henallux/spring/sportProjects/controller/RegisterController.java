@@ -56,6 +56,11 @@ public class RegisterController extends MainController{
             model.addAttribute("messageUsername", "already used");
         }
 
+        Boolean arePasswordTheSame = inscriptionForm.getPassword().equals(inscriptionForm.getConfirmPassword());
+        if(!arePasswordTheSame) {
+            model.addAttribute("messageConfirmPassword", "not the same");
+        }
+
         if(errors.hasErrors() || isEmailUsed || isUsernameUsed)
             return "integrated:register";
 

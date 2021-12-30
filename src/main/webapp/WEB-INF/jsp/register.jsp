@@ -54,7 +54,16 @@
                     <div class="form-group mt-md-3">
                         <form:label path="password"><spring:message code="password"/></form:label>
                         <form:input path="password" cssClass="form-control" type="password"/>
+                        <c:if test="${messageConfirmPassword == 'not the same'}">
+                            <div class="error"><spring:message code="confirmPasswordNotTheSame" /></div>
+                        </c:if>
                         <div class="error"><form:errors path="password" /></div>
+                    </div>
+
+                    <div class="form-group mt-md-3">
+                        <form:label path="confirmPassword"><spring:message code="confirmPassword"/></form:label>
+                        <form:input path="confirmPassword" cssClass="form-control" type="password"/>
+                        <div class="error"><form:errors path="confirmPassword" /></div>
                     </div>
 
                     <div class="row">

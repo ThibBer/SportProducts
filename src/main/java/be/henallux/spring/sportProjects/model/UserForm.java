@@ -17,6 +17,9 @@ public class UserForm {
     private String password;
 
     @NotBlank
+    private String confirmPassword;
+
+    @NotBlank
     private String firstname;
 
     @NotBlank
@@ -60,6 +63,14 @@ public class UserForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getFirstname() {
