@@ -22,7 +22,7 @@
 
                         <input type="hidden" name="currency_code" value="EUR">
                         <input type="hidden" name="lc" value="${locale.getLanguage()}">
-                        <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts/payments/paymentreceived">
+                        <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts/payments/paymentsuccess">
                         <input type="hidden" name="cancel_url" value="http://127.0.0.1:8082/sportProducts/payments/paymentcancelled">
                     </form>
                 </div>

@@ -11,7 +11,7 @@ import java.util.Locale;
 @RequestMapping(value="/payments")
 public class PaymentController {
 
-    @RequestMapping(value="/paymentreceived", method = RequestMethod.GET)
+    @RequestMapping(value="/paymentsuccess", method = RequestMethod.GET)
     public String getSuccessPage(Model model, Locale locale) {
         model.addAttribute("locale", locale);
         return "integrated:success";
