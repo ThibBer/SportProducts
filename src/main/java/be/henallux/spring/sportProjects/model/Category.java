@@ -1,6 +1,6 @@
 package be.henallux.spring.sportProjects.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Category {
     private Integer id;
@@ -65,8 +65,8 @@ public class Category {
         }
 
         //TODO je crois que c'est inversé ?
-        LocalDate now = LocalDate.now();
-        return (promotion.getStartDate().isEqual(now) || promotion.getStartDate().isBefore(now)) && (promotion.getEndDate().isAfter(now) || this.promotion.getEndDate().equals(now));
+        Date now = new Date();
+        return (promotion.getStartDate().equals(now) || promotion.getStartDate().before(now)) && (promotion.getEndDate().after(now) || this.promotion.getEndDate().equals(now));
     }
 
     @Override

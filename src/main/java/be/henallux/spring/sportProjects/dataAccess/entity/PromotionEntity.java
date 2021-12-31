@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "promotion")
@@ -14,17 +14,17 @@ public class PromotionEntity {
     private Integer id;
 
     @Column(name="start_date")
-    private LocalDate startDate;
+    private Date startDate;
 
     @Column(name="end_date")
-    private LocalDate endDate;
+    private Date endDate;
 
     @Column(name="percentage")
     private Integer percentage;
 
     public PromotionEntity() {}
 
-    public PromotionEntity(Integer id, LocalDate startDate, LocalDate endDate, Integer percentage) {
+    public PromotionEntity(Integer id, Date startDate, Date endDate, Integer percentage) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -39,19 +39,19 @@ public class PromotionEntity {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

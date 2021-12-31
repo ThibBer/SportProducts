@@ -1,18 +1,19 @@
 package be.henallux.spring.sportProjects.model;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 
 public class Promotion {
     private Integer id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private Date startDate;
+    private Date endDate;
     private Integer percentage;
 
     public Promotion() {}
 
-    public Promotion(Integer id, LocalDate startDate, LocalDate endDate, Integer percentage) {
+    public Promotion(Integer id, Date startDate, Date endDate, Integer percentage) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -27,33 +28,41 @@ public class Promotion {
         this.id = id;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public String getFormattedStartDate(){
-        return startDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy"));
+    public String getFormattedStartDate(Locale locale){
+        return formatDate(startDate, locale);
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
     public String getFormattedEndDate(Locale locale){
-        String pattern = "dd MMMM yyyy";
-
-        if(locale == null){
-            return endDate.format(DateTimeFormatter.ofPattern(pattern));
-        }
-
-        return endDate.format(DateTimeFormatter.ofPattern(pattern, locale));
+        return formatDate(endDate, locale);
     }
 
-    public void setEndDate(LocalDate endDate) {
+    private String formatDate(Date date, Locale locale){
+        String pattern = "dd MMMM yyyy";
+        SimpleDateFormat simpleDateFormat;
+
+        if(locale == null){
+            simpleDateFormat = new SimpleDateFormat(pattern);
+        }else{
+            simpleDateFormat = new SimpleDateFormat(pattern, locale);
+        }
+
+
+        return simpleDateFormat.format(date);
+    }
+
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

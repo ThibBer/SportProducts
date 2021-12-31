@@ -12,11 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @SessionAttributes({MainController.SHOPPING_CART})
@@ -128,7 +124,9 @@ public class ShoppingCartController extends MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = (User) auth.getPrincipal();
 
-        Order order = new Order(null, LocalDate.now(), user);
+        Date date = new Date();
+        date.setHours(12);
+        Order order = new Order(null, date, user);
         Order savedOrder = orderService.insertOrder(order);
 
         ArrayList<OrderProduct> orderProducts = new ArrayList<>();

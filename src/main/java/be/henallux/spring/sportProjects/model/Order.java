@@ -1,15 +1,16 @@
 package be.henallux.spring.sportProjects.model;
 
-import java.time.LocalDate;
+
+import java.util.Date;
 
 public class Order {
     private Integer id;
-    private LocalDate date;
+    private Date date;
     private User user;
 
     public Order() {}
 
-    public Order(Integer id, LocalDate date, User user) {
+    public Order(Integer id, Date date, User user) {
         setId(id);
         setDate(date);
         setUser(user);
@@ -23,11 +24,11 @@ public class Order {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

@@ -42,7 +42,7 @@ CREATE TABLE `order`
     date DATE NOT NULL,
     user INT NOT NULL,
 
-    CONSTRAINT order_date_check CHECK ( date >= SYSDATE() ),
+    CONSTRAINT order_date_check CHECK ( date >= DATE(SYSDATE()) ),
     CONSTRAINT fk_order_user FOREIGN KEY (user) REFERENCES user(id)
 );
 
@@ -59,7 +59,7 @@ CREATE TABLE promotion
     end_date DATE NOT NULL,
     percentage INT NOT NULL,
 
-    CONSTRAINT promotion_end_date_check CHECK ( end_date >= SYSDATE() ),
+    CONSTRAINT promotion_end_date_check CHECK ( end_date >= DATE(SYSDATE()) ),
     CONSTRAINT promotion_dates_check CHECK ( start_date <= end_date ),
     CONSTRAINT promotion_percentage_check CHECK ( percentage > 0 )
 );

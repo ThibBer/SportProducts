@@ -1,7 +1,9 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name="`order`")
@@ -11,7 +13,7 @@ public class OrderEntity {
     private Integer id;
 
     @Column(name="date")
-    private LocalDate date;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name="user", referencedColumnName = "id")
@@ -19,7 +21,7 @@ public class OrderEntity {
 
     public OrderEntity() {}
 
-    public OrderEntity(Integer id, LocalDate date, UserEntity userEntity) {
+    public OrderEntity(Integer id, Date date, UserEntity userEntity) {
         this.id = id;
         this.date = date;
         this.userEntity = userEntity;
@@ -33,11 +35,11 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
