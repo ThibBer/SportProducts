@@ -46,17 +46,17 @@ public class RegisterController extends MainController{
                               final BindingResult errors) {
         model.addAttribute("locale", locale);
 
-        Boolean isEmailUsed = userService.isEmailAlreadyUsed(inscriptionForm.getEmail());
+        boolean isEmailUsed = userService.isEmailAlreadyUsed(inscriptionForm.getEmail());
         if(isEmailUsed) {
             model.addAttribute("messageEmail", "already used");
         }
 
-        Boolean isUsernameUsed = userService.isUsernameAlreadyUsed(inscriptionForm.getUsername());
+        boolean isUsernameUsed = userService.isUsernameAlreadyUsed(inscriptionForm.getUsername());
         if(isUsernameUsed) {
             model.addAttribute("messageUsername", "already used");
         }
 
-        Boolean arePasswordTheSame = inscriptionForm.getPassword().equals(inscriptionForm.getConfirmPassword());
+        boolean arePasswordTheSame = inscriptionForm.getPassword().equals(inscriptionForm.getConfirmPassword());
         if(!arePasswordTheSame) {
             model.addAttribute("messageConfirmPassword", "not the same");
         }
