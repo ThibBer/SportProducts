@@ -5,33 +5,62 @@
         <title><spring:message code="login"/></title>
         <meta charset="UTF-8">
     </head>
-    <body>
-        <div class="row justify-content-center w-100">
-            <div class="d-flex flex-column justify-content-center w-50">
-                <div class="text-center pt-2">
-                    <h2><spring:message code="login"/></h2>
-                </div>
-                <form:form method="post" modelAttribute="user">
-                    <form:errors/>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <form:label path="username"><spring:message code="username"/></form:label>
-                                <form:input path="username" cssClass="form-control" required="required"/>
-                                <form:errors path="username" />
+    <body class="bg-light">
+        <div class="container">
+            <div class="row justify-content-center w-100">
+                <div class="d-flex flex-column justify-content-center w-50 py-5">
+                    <div class="text-center py-3">
+                        <h2><spring:message code="login"/></h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body mx-5">
+                            <div class="row text-center">
+                                <div class="col">
+                                    <i class="fas fa-user-circle fa-8x"></i>
+                                    <br/>
+                                    <h3><spring:message code="alreadyHaveAccount" /></h3>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <form:label path="password"><spring:message code="password"/></form:label>
-                                <form:input path="password" cssClass="form-control" type="password" required="required"/>
-                                <form:errors path="password" />
+
+                            <div class="row my-4">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col">
+                                            <form:form method="post" modelAttribute="user">
+                                                <div class="form-group">
+                                                    <spring:message code="username" var="username"/>
+
+                                                    <form:input path="username" cssClass="form-control bg-light" required="required" placeholder="${username}"/>
+                                                    <form:errors path="username" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <spring:message code="password" var="password"/>
+
+                                                    <form:input path="password" cssClass="form-control bg-light" type="password" required="required" placeholder="${password}"/>
+                                                    <form:errors path="password" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <form:button type="submit" class="btn btn-default mx-auto d-block mt-md-3"><spring:message code="login"/></form:button>
+                                                </div>
+                                            </form:form>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                    <button class="btn btn-primary mx-auto d-block mt-md-3"><spring:message code="login" /></button>
-                </form:form>
-                <a class="btn btn-primary" href="<spring:url value='/register'/>"><spring:message code="createAccount" /></a>
+
+                    <div class="row">
+                        <div class="col">
+                            <a class="btn btn-default btn-block text-center" href="<spring:url value='/register'/>">
+                                <spring:message code="createAccount" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>

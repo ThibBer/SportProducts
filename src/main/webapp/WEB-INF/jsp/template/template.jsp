@@ -4,11 +4,11 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 
 <spring:url var="localeEN" value="">
-    <spring:param name="locale" value="en"/>
+    <spring:param name="locale" value="en-US"/>
 </spring:url>
 
 <spring:url var="localeFR" value="">
-    <spring:param name="locale" value="fr"/>
+    <spring:param name="locale" value="fr-BE"/>
 </spring:url>
 
 <html>
@@ -55,7 +55,7 @@
                             </li>
                             <li class="nav-item dropdown mr-4">
                                 <button class="btn text-light dropdown-toggle" type="button" id="languageSelectorDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="<spring:url value='/assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayName()}
+                                    <img src="<spring:url value='/assets/flags/${locale.getLanguage()}.png'/>" alt="Current language" width="15"/> ${locale.getDisplayLanguage(locale)}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="languageSelectorDropdown">
                                     <a class="dropdown-item" href="${localeEN}">

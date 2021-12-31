@@ -6,9 +6,24 @@ body {
     background-color: #101d2f;
 }
 
-nav a {
+.btn-default {
+    background-color: #101d2f;
+    color: white;
+}
+
+.btn-default:hover {
+    background-color: #33496e;
+    color: white;
+}
+
+nav a, footer a {
     text-decoration: none;
     color: white;
+}
+
+nav a:hover, footer a:hover {
+    text-decoration: none;
+    color: #384e80;
 }
 
 #vertical-action-bar{

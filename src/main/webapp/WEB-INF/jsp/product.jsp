@@ -43,13 +43,12 @@
                                                     <spring:message code="quantity" var="quantityLabel"/>
 
                                                     <form:hidden path="productId" value="${product.getId()}" />
-                                                    <%--<form:input path="age" cssClass="form-control" placeholder="${quantityLabel}" />--%>
 
-                                                    <input name="quantity" type="number" class="form-control" placeholder='<spring:message code="quantity"/>' min="1" required/>
+                                                    <form:input path="quantity" type="number" cssClass="form-control" placeholder="${quantityLabel}" min="1" required="required" />
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-primary" type="submit">
+                                                        <form:button class="btn btn-primary" type="submit">
                                                             <i class="fal fa-cart-plus"></i>
-                                                        </button>
+                                                        </form:button>
                                                     </div>
                                                 </div>
 

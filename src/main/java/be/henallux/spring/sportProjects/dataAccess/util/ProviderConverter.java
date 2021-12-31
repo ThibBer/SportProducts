@@ -116,22 +116,27 @@ public class ProviderConverter {
     }
 
     public Translation translationEntityToTranslationModel(TranslationEntity translationEntity) {
-        if(translationEntity == null)
+        if(translationEntity == null){
             return null;
+        }
 
         return new Translation(translationEntity.getTranslationId().getLanguage(), translationEntity.getTranslationId().getProduct(), translationEntity.getLabel());
     }
 
     /*Language*/
     public LanguageEntity languageModelToLanguageEntity(Language language) {
-        if(language == null)
+        if(language == null){
             return null;
+        }
+
         return new LanguageEntity(language.getId(), language.getInternationCode());
     }
 
     public Language languageEntityToLanguageModel(LanguageEntity languageEntity) {
-        if(languageEntity == null)
+        if(languageEntity == null){
             return null;
+        }
+
         return new Language(languageEntity.getId(), languageEntity.getInternationCode());
     }
 

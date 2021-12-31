@@ -99,6 +99,7 @@ public class ShoppingCartController extends MainController {
             shoppingCartItems.put(product, quantity);
         }
 
+        model.addAttribute("locale", locale);
         model.addAttribute("shoppingCartItems", shoppingCartItems);
         model.addAttribute("articlesInPromotion", articlesInPromotion);
         model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
