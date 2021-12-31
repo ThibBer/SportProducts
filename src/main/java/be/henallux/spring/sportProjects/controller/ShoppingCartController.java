@@ -37,36 +37,32 @@ public class ShoppingCartController extends MainController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String shoppingCart(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
-        if(shoppingCart == null) {
-            return "redirect:/";
-        } else {
-            HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
-            HashMap<Product, Integer> shoppingCartItems = new HashMap<>();
+        HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
+        HashMap<Product, Integer> shoppingCartItems = new HashMap<>();
 
-            int articlesInPromotion = 0;
+        int articlesInPromotion = 0;
 
-            for(Map.Entry<Integer, Integer> entry : shoppingCartMap.entrySet()) {
-                Integer productId = entry.getKey();
-                Integer quantity = entry.getValue();
+        for(Map.Entry<Integer, Integer> entry : shoppingCartMap.entrySet()) {
+            Integer productId = entry.getKey();
+            Integer quantity = entry.getValue();
 
-                Product product = productsService.getProductWithId(productId, locale.getLanguage());
+            Product product = productsService.getProductWithId(productId, locale.getLanguage());
 
-                if(product.getCategory().isInPromotion()){
-                    articlesInPromotion++;
-                }
-
-                shoppingCartItems.put(product, quantity);
+            if(product.getCategory().isInPromotion()){
+                articlesInPromotion++;
             }
 
-            model.addAttribute("locale", locale);
-            model.addAttribute("shoppingCartItems", shoppingCartItems);
-            model.addAttribute("articlesInPromotion", articlesInPromotion);
-            model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
-            model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
-            model.addAttribute("shoppingCartItem", new ShoppingCartItem());
-
-            return "integrated:shopping-cart";
+            shoppingCartItems.put(product, quantity);
         }
+
+        model.addAttribute("locale", locale);
+        model.addAttribute("shoppingCartItems", shoppingCartItems);
+        model.addAttribute("articlesInPromotion", articlesInPromotion);
+        model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
+        model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
+        model.addAttribute("shoppingCartItem", new ShoppingCartItem());
+
+        return "integrated:shopping-cart";
     }
 
     @RequestMapping(value="/editQuantity", method = RequestMethod.POST)
@@ -85,45 +81,40 @@ public class ShoppingCartController extends MainController {
 
     @RequestMapping(value = "/validation", method = RequestMethod.GET)
     public String shoppingCartValidation(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
-        if(shoppingCart == null) {
-            return "redirect:/";
-        } else {
-            HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
+        HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
 
-            if(shoppingCartMap.size() == 0){
-                return "redirect:/shopping-cart";
-            }
-
-            HashMap<Product, Integer> shoppingCartItems = new HashMap<>();
-            int articlesInPromotion = 0;
-
-            for(Map.Entry<Integer, Integer> entry : shoppingCartMap.entrySet()) {
-                Integer productId = entry.getKey();
-                Integer quantity = entry.getValue();
-
-                Product product = productsService.getProductWithId(productId, locale.getLanguage());
-
-                if(product.getCategory().isInPromotion()){
-                    articlesInPromotion++;
-                }
-
-                shoppingCartItems.put(product, quantity);
-            }
-
-            model.addAttribute("locale", locale);
-            model.addAttribute("shoppingCartItems", shoppingCartItems);
-            model.addAttribute("articlesInPromotion", articlesInPromotion);
-            model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
-            model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
-            model.addAttribute("shoppingCartItem", new ShoppingCartItem());
-
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            User user = (User) auth.getPrincipal();
-
-            model.addAttribute("loggedUser", user);
-
-            return "integrated:shopping-cartValidation";
+        if(shoppingCartMap.size() == 0){
+            return "redirect:/shopping-cart";
         }
+
+        HashMap<Product, Integer> shoppingCartItems = new HashMap<>();
+        int articlesInPromotion = 0;
+
+        for(Map.Entry<Integer, Integer> entry : shoppingCartMap.entrySet()) {
+            Integer productId = entry.getKey();
+            Integer quantity = entry.getValue();
+
+            Product product = productsService.getProductWithId(productId, locale.getLanguage());
+
+            if(product.getCategory().isInPromotion()){
+                articlesInPromotion++;
+            }
+
+            shoppingCartItems.put(product, quantity);
+        }
+
+        model.addAttribute("shoppingCartItems", shoppingCartItems);
+        model.addAttribute("articlesInPromotion", articlesInPromotion);
+        model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
+        model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
+        model.addAttribute("shoppingCartItem", new ShoppingCartItem());
+
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) auth.getPrincipal();
+
+        model.addAttribute("loggedUser", user);
+
+        return "integrated:shopping-cartValidation";
     }
 
     @RequestMapping(value = "/payement", method = RequestMethod.POST)
