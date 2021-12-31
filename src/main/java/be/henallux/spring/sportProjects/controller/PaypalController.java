@@ -19,25 +19,21 @@ import java.util.Map;
 @RequestMapping(value = "/paypal")
 public class PaypalController extends MainController {
     private ProductsService productsService;
-    private ShoppingCartService shoppingCartService;
 
     @Autowired
-    public PaypalController(ShoppingCartService shoppingCartService, ProductsService productsService) {
-        this.shoppingCartService = shoppingCartService;
+    public PaypalController(ProductsService productsService) {
         this.productsService = productsService;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getWithCategoryId(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
-        HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
-
         model.addAttribute("locale", locale);
+
+        HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
 
         if(shoppingCartMap.size() == 0){
             return "redirect:/shopping-cart";
         }
-
-        StringBuilder description = new StringBuilder();
 
         HashMap<Product, Integer> shoppingCartItems = new HashMap<>();
         for(Map.Entry<Integer, Integer> entry : shoppingCartMap.entrySet()) {
@@ -47,11 +43,8 @@ public class PaypalController extends MainController {
             Product product = productsService.getProductWithId(productId, locale.getLanguage());
 
             shoppingCartItems.put(product, quantity);
-            description.append(quantity).append("X - ").append(product.getTranslation().getLabel()).append(" | ").append(product.getPriceWithPromotion()).append("\n\n");
         }
 
-        model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
-        model.addAttribute("description", description.toString());
         model.addAttribute("shoppingCartItems", shoppingCartItems);
 
         shoppingCart.clear();
