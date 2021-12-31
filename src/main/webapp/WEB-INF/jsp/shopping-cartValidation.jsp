@@ -138,7 +138,7 @@
                                     <%--<form action="https://www.sandbox.paypal.com/cgi bin/webscr" class="text-center">--%>
                                     <form action="<spring:url value="/shopping-cart/payement"/>" class="text-center" method="POST">
                                         <input type="image" class="img-fluid text-center" name="submit"
-                                               src="<spring:url value='/assets/pay/pay-with-paypal-${locale.getLanguage()}.jpg'/>"
+                                               src="<spring:url value='/assets/pay/pay-with-paypal-${pageContext.response.locale}.jpg'/>"
                                                alt="PayPal - The safer, easier way to pay online">
                                     </form>
                                 </div>
