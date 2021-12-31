@@ -19,12 +19,10 @@ public class CategoriesService {
     }
 
     public ArrayList<Category> getCategories() {
-        categories = categoryDataAccess.getCategories();
-        return categories;
+        return categoryDataAccess.getCategories();
     }
 
     public Category getCategoryWithId(int id) {
-        category = categoryDataAccess.getCategoryWithId(id);
-        return category;
+        return categoryDataAccess.getCategoryWithId(id);
     }
 }

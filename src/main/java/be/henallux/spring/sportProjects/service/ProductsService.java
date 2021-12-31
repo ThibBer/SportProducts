@@ -14,8 +14,6 @@ public class ProductsService {
     private ProductDataAccess productDAO;
     private LanguageService languageService;
     private TranslationService translationService;
-    private ArrayList<Product> products;
-    private Product product;
 
     @Autowired
     public ProductsService(ProductDataAccess productDAO, LanguageService languageService, TranslationService translationService) {
@@ -25,9 +23,10 @@ public class ProductsService {
     }
 
     public ArrayList<Product> getProductsWithCategoryId(int idCategory, String internationalCode) {
-        products = productDAO.getProductsWithCategoryId(idCategory);
+        ArrayList<Product> products = productDAO.getProductsWithCategoryId(idCategory);
         Language language = languageService.getLanguageWithInternationalCode(internationalCode);
         Translation translation;
+
         for(Product product : products){
             translation = translationService.getTranslationWithProductIdAndLanguageId(product.getId(), language.getId());
             product.setTranslation(translation);
@@ -37,7 +36,7 @@ public class ProductsService {
     }
 
     public Product getProductWithId(int idProduct, String internationalCode) {
-        product = productDAO.getProductWithId(idProduct);
+        Product product = productDAO.getProductWithId(idProduct);
         if(product != null) {
             Language language = languageService.getLanguageWithInternationalCode(internationalCode);
             Translation translation = translationService.getTranslationWithProductIdAndLanguageId(idProduct, language.getId());
