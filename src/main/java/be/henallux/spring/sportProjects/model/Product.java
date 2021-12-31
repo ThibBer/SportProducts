@@ -31,12 +31,11 @@ public class Product {
     }
 
     public Double getPriceWithPromotion(){
-        Promotion promotion = category.getPromotion();
-        if(promotion == null){
+        if(!category.isInPromotion()){
             return price;
         }
 
-        return price * ( 1 - (promotion.getPercentage() / 100.0));
+        return price * ( 1 - (category.getPromotion().getPercentage() / 100.0));
     }
 
     public void setPrice(Double price) {
