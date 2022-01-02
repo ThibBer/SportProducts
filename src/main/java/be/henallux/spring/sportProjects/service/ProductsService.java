@@ -7,6 +7,9 @@ import be.henallux.spring.sportProjects.model.Translation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @Service
@@ -44,5 +47,14 @@ public class ProductsService {
         }
 
         return product;
+    }
+
+    public Double priceWithPromotion(Double price, Integer promotionPercentage){
+        if(promotionPercentage == 0){
+            return price;
+        }
+
+        double priceWithPromotion = price * ( 1 - (promotionPercentage / 100.0));
+        return (new BigDecimal(priceWithPromotion).setScale(2, RoundingMode.HALF_UP)).doubleValue();
     }
 }

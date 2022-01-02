@@ -4,26 +4,22 @@ import be.henallux.spring.sportProjects.model.*;
 import be.henallux.spring.sportProjects.service.CategoriesService;
 import be.henallux.spring.sportProjects.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DecimalFormat;
 import java.util.Locale;
 
 @Controller
 @RequestMapping(value="/product")
 @SessionAttributes({MainController.SHOPPING_CART})
 public class ProductController extends MainController{
-    private final MessageSource messageSource;
     private ProductsService productsService;
-    private CategoriesService categoriesService;
 
     @Autowired
-    public ProductController(MessageSource messageSource, ProductsService productsService, CategoriesService categoriesService) {
-        this.messageSource = messageSource;
+    public ProductController(ProductsService productsService) {
         this.productsService = productsService;
-        this.categoriesService = categoriesService;
     }
 
     @RequestMapping(value = "/{id}/", method = RequestMethod.GET)
@@ -36,13 +32,17 @@ public class ProductController extends MainController{
                 return "integrated:notfound";
             }
 
-            Category category = categoriesService.getCategoryWithId(product.getCategory().getId());
+            Category category = product.getCategory();
+            if(category.isInPromotion()){
+                product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), category.getPromotion().getPercentage()));
+            }
 
             model.addAttribute("category", category);
             model.addAttribute("product", product);
             model.addAttribute("shoppingCartItem", new ShoppingCartItem());
             return "integrated:product";
         } catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             return "integrated:error";
         }
@@ -54,21 +54,21 @@ public class ProductController extends MainController{
                               @ModelAttribute ShoppingCartItem shoppingCartItem,
                               @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         Integer quantity = shoppingCartItem.getQuantity();
+        int idProduct = shoppingCartItem.getProductId();
 
-        try {
-            int idProduct = shoppingCartItem.getProductId();
-
-            Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
-            if(product == null){
-                return "integrated:notfound";
-            }
-
-            shoppingCart.addProductWithQuantity(idProduct, quantity);
-
-            return "redirect:/category/" + product.getCategory().getId() + "/";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "integrated:error";
+        Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
+        if(product == null){
+            return "integrated:notfound";
         }
+
+        Category category = product.getCategory();
+
+        if(category.isInPromotion()){
+            product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), category.getPromotion().getPercentage()));
+        }
+
+        shoppingCart.addProductWithQuantity(idProduct, quantity);
+
+        return "redirect:/category/" + category.getId() + "/";
     }
 }

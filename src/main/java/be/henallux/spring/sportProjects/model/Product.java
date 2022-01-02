@@ -3,6 +3,7 @@ package be.henallux.spring.sportProjects.model;
 public class Product {
     private Integer id;
     private Double price;
+    private Double priceWithPromotion;
     private Category category;
     private String description;
     private Translation translation;
@@ -11,11 +12,12 @@ public class Product {
     public Product() {}
 
     public Product(Integer id, Double price, Category category, String description, String image) {
-        this.id = id;
-        this.price = price;
-        this.category = category;
-        this.description = description;
-        this.image = image;
+        setId(id);
+        setPrice(price);
+        setPriceWithPromotion(price);
+        setCategory(category);
+        setDescription(description);
+        setImage(image);
     }
 
     public Integer getId() {
@@ -30,16 +32,16 @@ public class Product {
         return price;
     }
 
-    public Double getPriceWithPromotion(){
-        if(!category.isInPromotion()){
-            return price;
-        }
-
-        return price * ( 1 - (category.getPromotion().getPercentage() / 100.0));
-    }
-
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Double getPriceWithPromotion() {
+        return priceWithPromotion;
+    }
+
+    public void setPriceWithPromotion(Double priceWithPromotion) {
+        this.priceWithPromotion = priceWithPromotion;
     }
 
     public Category getCategory() {

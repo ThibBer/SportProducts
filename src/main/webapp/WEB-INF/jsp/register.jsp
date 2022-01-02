@@ -116,7 +116,8 @@
                             </div>
                         </div>
                     </div>
-                    <button class="btn btn-primary" type="submit"><spring:message code="register" /></button>
+
+                    <form:button class="btn btn-primary" type="submit"><spring:message code="register"/></form:button>
                 </form:form>
             </div>
         </div>

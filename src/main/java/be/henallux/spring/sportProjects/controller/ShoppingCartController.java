@@ -46,6 +46,8 @@ public class ShoppingCartController extends MainController {
 
             if(product.getCategory().isInPromotion()){
                 articlesInPromotion++;
+
+                product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), product.getCategory().getPromotion().getPercentage()));
             }
 
             shoppingCartItems.put(product, quantity);
@@ -94,6 +96,7 @@ public class ShoppingCartController extends MainController {
 
             if(product.getCategory().isInPromotion()){
                 articlesInPromotion++;
+                product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), product.getCategory().getPromotion().getPercentage()));
             }
 
             shoppingCartItems.put(product, quantity);
@@ -137,6 +140,9 @@ public class ShoppingCartController extends MainController {
             Integer quantity = entry.getValue();
 
             Product product = productsService.getProductWithId(productId, locale.getLanguage());
+            if(product.getCategory().isInPromotion()){
+                product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), product.getCategory().getPromotion().getPercentage()));
+            }
 
             orderProducts.add(new OrderProduct(null, quantity, product.getPriceWithPromotion(), savedOrder, product));
         }

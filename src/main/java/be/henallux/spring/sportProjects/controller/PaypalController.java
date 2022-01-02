@@ -42,6 +42,10 @@ public class PaypalController extends MainController {
 
             Product product = productsService.getProductWithId(productId, locale.getLanguage());
 
+            if(product.getCategory().isInPromotion()){
+                product.setPriceWithPromotion(productsService.priceWithPromotion(product.getPrice(), product.getCategory().getPromotion().getPercentage()));
+            }
+
             shoppingCartItems.put(product, quantity);
         }
 
