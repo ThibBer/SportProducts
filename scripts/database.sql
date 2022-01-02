@@ -123,7 +123,7 @@ INSERT INTO category (label, description, image) VALUES ('Hockey', 'Hockey is no
 INSERT INTO category (label, description, image) VALUES ('Tennis', 'Tennis is a sport where the greatest players compete in tournaments. Roland-Garros is the most famous one.', 'tennis.png');
 INSERT INTO category (label, description, image) VALUES ('Badminton', 'Badminton is often played non-competitively, and does not seem overwhelming. Yet, played competitively, it is one of the most tiring sports.', 'badminton.png');
 INSERT INTO category (label, description, image) VALUES ('Ski', 'The favorite sport of one of our employees, skiing brings, in addition to sensations, a magnificent view of the rooftops of the world.', 'ski.png');
-INSERT INTO category (label, description, promotion, image) VALUES ('bodybuilding', 'Strength training helps strengthen different muscles. This helps prevent injuries when playing other sports.', 2, 'musculation.png');
+INSERT INTO category (label, description, promotion, image) VALUES ('Bodybuilding', 'Strength training helps strengthen different muscles. This helps prevent injuries when playing other sports.', 2, 'musculation.png');
 INSERT INTO category (label, description, image) VALUES ('Volleyball', 'Volleyball is one of the most popular sports in the world. Its practice must combine team cohesion as well as a certain endurance.', 'volleyball.png');
 
 /*Football*/
@@ -161,6 +161,16 @@ INSERT INTO product (price, category, description, image) VALUES (2, 4, 'Perfect
 INSERT INTO product (price, category, description, image) VALUES (22, 5, 'Professional racket, Power, tolerance and resistance are these assets.', 'badminton_racket.jpg');
 INSERT INTO product (price, category, description, image) VALUES (5, 5, 'Thanks to its plastic skirt, this shuttlecock allows stable trajectories, even when you are new to badminton.', 'badminton_shuttlecocks.jpg');
 INSERT INTO product (price, category, description, image) VALUES (60, 5, 'Badminton net to play in a club. Easy to assemble.', 'badminton_net.jpg');
+
+/*Ski*/
+INSERT INTO product (price, category, description, image) VALUES (350, 6, 'A ski intended for the confirmed skier, to approach the slopes in a comfortable way.', 'ski_pair_of_skis.jpg');
+INSERT INTO product (price, category, description, image) VALUES (140, 6, 'Unparalleled comfort for learning in the best conditions, especially thanks to its generous volume and thick foams.', 'ski_shoes.jpg');
+INSERT INTO product (price, category, description, image) VALUES (45, 6, '2-part adjustable pole with a long foam grip to comfortably position the hand during ascent and an ergonomic strap.', 'ski_sticks.jpg');
+INSERT INTO product (price, category, description, image) VALUES (110, 6, 'This helmet combine comfort and performance, thanks to perforated ear cups for better hearing.', 'ski_helmet.jpg');
+INSERT INTO product (price, category, description, image) VALUES (60, 6, 'Ski jacket impenetrable by the snow and the cold of the mountains.', 'ski_jacket.jpg');
+
+/*Bodybuilding*/
+INSERT INTO product (price, category, description, image) VALUES (40.50, 7, '10Kg dumbbell', 'bodybuilding_dumbbell.jpg');
 
 INSERT INTO translation (language, product, label) VALUES (1, 1, 'Ball');
 INSERT INTO translation (language, product, label) VALUES (2, 1, 'Ballon');
@@ -218,6 +228,20 @@ INSERT INTO translation (language, product, label) VALUES (1, 25, 'Badminton shu
 INSERT INTO translation (language, product, label) VALUES (2, 25, 'Volant de badminton');
 INSERT INTO translation (language, product, label) VALUES (1, 26, 'Badminton net');
 INSERT INTO translation (language, product, label) VALUES (2, 26, 'Fillet de badminton');
+
+INSERT INTO translation (language, product, label) VALUES (1, 27, 'Pair of skis');
+INSERT INTO translation (language, product, label) VALUES (2, 27, 'Paire de ski');
+INSERT INTO translation (language, product, label) VALUES (1, 28, 'Ski shoes');
+INSERT INTO translation (language, product, label) VALUES (2, 28, 'Chaussures de ski');
+INSERT INTO translation (language, product, label) VALUES (1, 29, 'Ski sticks');
+INSERT INTO translation (language, product, label) VALUES (2, 29, 'Bâtons de ski');
+INSERT INTO translation (language, product, label) VALUES (1, 30, 'Ski helmet');
+INSERT INTO translation (language, product, label) VALUES (2, 30, 'Casque de ski');
+INSERT INTO translation (language, product, label) VALUES (1, 31, 'Ski jacket');
+INSERT INTO translation (language, product, label) VALUES (2, 31, 'Veste de ski');
+
+INSERT INTO translation (language, product, label) VALUES (1, 32, 'Dumbbells');
+INSERT INTO translation (language, product, label) VALUES (2, 32, 'Haltères');
 
 INSERT INTO user (email, password, firstname, lastname, birth_date, phone_number, city, postal_code, street, house_number, username, authorities, non_expired, non_locked, credentials_non_expired, enabled)
 VALUES ('thibaut.berg@hotmail.com', '$2a$10$Q40BovIcYkzsz6NtxW8VAe7TqdY9vEzDeWRm/5ht27PIxOAuPcgwG', 'Thibaut', 'Berg', STR_TO_DATE('28/10/2001', '%d/%m/%Y'), '0478782002', 'Marche-en-Famenne', 6900, 'Rue des champs', 53, 'Spike', 'ROLE_USER', 1, 1, 1, 1);
