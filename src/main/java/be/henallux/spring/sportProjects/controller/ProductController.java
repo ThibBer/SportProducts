@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.text.DecimalFormat;
@@ -18,6 +19,11 @@ import java.util.Locale;
 @SessionAttributes({MainController.SHOPPING_CART})
 public class ProductController extends MainController{
     private ProductsService productsService;
+
+    @ModelAttribute("shoppingCartItem")
+    public ShoppingCartItem newShoppingCartItem() {
+        return new ShoppingCartItem();
+    }
 
     @Autowired
     public ProductController(ProductsService productsService) {
@@ -41,7 +47,6 @@ public class ProductController extends MainController{
 
             model.addAttribute("category", category);
             model.addAttribute("product", product);
-            model.addAttribute("shoppingCartItem", new ShoppingCartItem());
             return "integrated:product";
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,8 +59,9 @@ public class ProductController extends MainController{
     public String getFormData(Model model,
                               Locale locale,
                               @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart,
-                              @Valid @ModelAttribute ShoppingCartItem shoppingCartItem,
-                              final BindingResult errors) {
+                              @Valid @ModelAttribute("shoppingCartItem") ShoppingCartItem shoppingCartItem,
+                              final BindingResult errors,
+                              final RedirectAttributes redirectAttributes) {
         model.addAttribute("locale", locale);
         Integer quantity = shoppingCartItem.getQuantity();
         int idProduct = shoppingCartItem.getProductId();
@@ -66,7 +72,9 @@ public class ProductController extends MainController{
         }
 
         if(errors.hasErrors()) {
-            return "integrated:product";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.shoppingCartItem", errors);
+            redirectAttributes.addFlashAttribute("shoppingCartItem", shoppingCartItem);
+            return "redirect:/product/" + product.getId() + "/";
         }
 
         Category category = product.getCategory();
