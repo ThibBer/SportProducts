@@ -7,7 +7,8 @@ entity User {
     password
     firstname
     lastname
-    birth_date
+    username
+    birth_date [0..1]
     phone_number [0..1]
     city
     postal_code

@@ -9,15 +9,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
-import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.TimeZone;
 
 @Controller
 @RequestMapping(value="/register")
@@ -64,7 +61,9 @@ public class RegisterController extends MainController{
         if(errors.hasErrors() || isEmailUsed || isUsernameUsed)
             return "integrated:register";
 
-        inscriptionForm.getBirthDate().setHours(12); //avoid losing a day in the process
+        if(inscriptionForm.getBirthDate() != null)
+            inscriptionForm.getBirthDate().setHours(12); //avoid losing a day in the process
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User(null, inscriptionForm.getEmail(), inscriptionForm.getFirstname(), inscriptionForm.getLastname(), inscriptionForm.getPhoneNumber(), inscriptionForm.getCity(), Integer.parseInt(inscriptionForm.getPostalCode()), inscriptionForm.getStreet(), inscriptionForm.getHouseNumber(), inscriptionForm.getBirthDate(), inscriptionForm.getUsername(), encoder.encode(inscriptionForm.getPassword()), "ROLE_USER", true, true, true, true);
         userService.postUser(user);

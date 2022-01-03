@@ -22,4 +22,4 @@ IG 3 projet for "Développement avancé d'application Web" lesson
 - Si confirmation validée, enregistrer la commande dans la DB ✅
 - Tests unitaires avec JUnit et Mockito
 - Check sur les valeurs dans la DB ✅
-- DB suffisamment garnie
+- DB suffisamment garnie ✅

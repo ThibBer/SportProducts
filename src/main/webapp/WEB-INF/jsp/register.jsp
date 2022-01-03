@@ -69,14 +69,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <form:label path="birthDate"><spring:message code="birthDate"/></form:label>
+                                <form:label path="birthDate"><spring:message code="birthDate"/> <spring:message code="optional"/></form:label>
                                 <form:input path="birthDate" cssClass="form-control" type="date" name="birthDate"/>
                                 <div class="error"><form:errors path="birthDate" /></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <form:label path="phoneNumber"><spring:message code="phoneNumber"/></form:label>
+                                <form:label path="phoneNumber"><spring:message code="phoneNumber"/> <spring:message code="optional"/></form:label>
                                 <form:input path="phoneNumber" cssClass="form-control"/>
                                 <div class="error"><form:errors path="phoneNumber" /></div>
                             </div>

@@ -14,9 +14,9 @@ public class UserForm {
     private String username;
 
     @NotBlank
+    @Min(6)
     private String password;
 
-    @NotBlank
     private String confirmPassword;
 
     @NotBlank
@@ -25,7 +25,6 @@ public class UserForm {
     @NotBlank
     private String lastname;
 
-    @NotNull
     @Past
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date birthDate;
@@ -35,7 +34,7 @@ public class UserForm {
     @NotBlank
     private String city;
 
-    @NotNull
+    @NotBlank
     @Min(value = 1000)
     @Max(value = 9999)
     private String postalCode;
@@ -102,6 +101,8 @@ public class UserForm {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if(phoneNumber.isBlank())
+            phoneNumber = null;
         this.phoneNumber = phoneNumber;
     }
 
