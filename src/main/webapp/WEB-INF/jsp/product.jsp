@@ -34,7 +34,7 @@
                                     </c:if>
                                 </div>
                                 <div class="col-md-6">
-                                    <p>${product.getDescription()}}</p>
+                                    <p>${product.getDescription()}</p>
 
                                     <div class="row">
                                         <div class="col-md-6">

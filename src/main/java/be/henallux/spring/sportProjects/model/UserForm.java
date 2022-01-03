@@ -14,7 +14,7 @@ public class UserForm {
     private String username;
 
     @NotBlank
-    @Min(6)
+    @Size(min=6)
     private String password;
 
     private String confirmPassword;
