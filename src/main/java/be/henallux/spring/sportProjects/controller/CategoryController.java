@@ -1,12 +1,9 @@
 package be.henallux.spring.sportProjects.controller;
 
 import be.henallux.spring.sportProjects.model.Category;
-import be.henallux.spring.sportProjects.model.Language;
 import be.henallux.spring.sportProjects.model.Product;
 import be.henallux.spring.sportProjects.service.CategoriesService;
-import be.henallux.spring.sportProjects.service.LanguageService;
 import be.henallux.spring.sportProjects.service.ProductsService;
-import be.henallux.spring.sportProjects.service.TranslationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -15,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
