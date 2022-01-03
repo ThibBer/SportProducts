@@ -9,24 +9,23 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @Service
 public class ProductsService {
-    private ProductDataAccess productDAO;
+    private ProductDataAccess productDataAccess;
     private LanguageService languageService;
     private TranslationService translationService;
 
     @Autowired
-    public ProductsService(ProductDataAccess productDAO, LanguageService languageService, TranslationService translationService) {
-        this.productDAO = productDAO;
+    public ProductsService(ProductDataAccess productDataAccess, LanguageService languageService, TranslationService translationService) {
+        this.productDataAccess = productDataAccess;
         this.languageService = languageService;
         this.translationService = translationService;
     }
 
     public ArrayList<Product> getProductsWithCategoryId(int idCategory, String internationalCode) {
-        ArrayList<Product> products = productDAO.getProductsWithCategoryId(idCategory);
+        ArrayList<Product> products = productDataAccess.getProductsWithCategoryId(idCategory);
         Language language = languageService.getLanguageWithInternationalCode(internationalCode);
         Translation translation;
 
@@ -39,7 +38,7 @@ public class ProductsService {
     }
 
     public Product getProductWithId(int idProduct, String internationalCode) {
-        Product product = productDAO.getProductWithId(idProduct);
+        Product product = productDataAccess.getProductWithId(idProduct);
         if(product != null) {
             Language language = languageService.getLanguageWithInternationalCode(internationalCode);
             Translation translation = translationService.getTranslationWithProductIdAndLanguageId(idProduct, language.getId());
@@ -56,5 +55,19 @@ public class ProductsService {
 
         double priceWithPromotion = price * ( 1 - (promotionPercentage / 100.0));
         return (new BigDecimal(priceWithPromotion).setScale(2, RoundingMode.HALF_UP)).doubleValue();
+    }
+
+    public ArrayList<Product> getNumberRandomProducts(int numberProducts, String internationalCode) {
+        ArrayList<Product> products = productDataAccess.getNumberRandomProducts(numberProducts);
+
+        Language language = languageService.getLanguageWithInternationalCode(internationalCode);
+        Translation translation;
+
+        for(Product product : products){
+            translation = translationService.getTranslationWithProductIdAndLanguageId(product.getId(), language.getId());
+            product.setTranslation(translation);
+        }
+
+        return products;
     }
 }

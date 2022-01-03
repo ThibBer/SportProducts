@@ -7,4 +7,5 @@ import java.util.ArrayList;
 public interface ProductDataAccess {
     ArrayList<Product> getProductsWithCategoryId(int idCategory);
     Product getProductWithId(int idProduct);
+    ArrayList<Product> getNumberRandomProducts(int numberProducts);
 }

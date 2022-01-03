@@ -23,7 +23,7 @@ public class CategoriesController extends MainController{
     }
 
     @RequestMapping (method = RequestMethod.GET)
-    public String home (Model model, Locale locale){
+    public String categories (Model model, Locale locale){
         model.addAttribute("locale", locale);
         model.addAttribute("categories", categoriesService.getCategories());
 

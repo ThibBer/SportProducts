@@ -10,8 +10,6 @@ import java.util.ArrayList;
 @Service
 public class CategoriesService {
     private CategoryDataAccess categoryDataAccess;
-    private ArrayList<Category> categories;
-    private Category category;
 
     @Autowired
     public CategoriesService(CategoryDataAccess categoryDataAccess) {
@@ -24,5 +22,9 @@ public class CategoriesService {
 
     public Category getCategoryWithId(int id) {
         return categoryDataAccess.getCategoryWithId(id);
+    }
+
+    public ArrayList<Category> getNumberRandomCategories(int number) {
+        return categoryDataAccess.getNumberRandomCategories(number);
     }
 }
