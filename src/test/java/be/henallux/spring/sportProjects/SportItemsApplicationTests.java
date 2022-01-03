@@ -37,4 +37,5 @@ class SportItemsApplicationTests {
 		userEntities.add(new UserEntity(2, "thibautberg@gmail.com", "Thibaut", "Berg", "0478785222", "Marche-e-f", 6900, "Rue de la station", "25", new Date(), "tibo", "password", "ROLE_USER", true, true, true, true));
 	}
 
+
 }
