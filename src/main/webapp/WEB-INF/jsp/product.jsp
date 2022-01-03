@@ -38,13 +38,16 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <form:form id="addToShoppingCartForm" method="post" action="/sportProducts/product/send" modelAttribute="shoppingCartItem">
+                                            <form:form id="addToShoppingCartForm"
+                                                       method="post"
+                                                       action="/sportProducts/product/"
+                                                       modelAttribute="shoppingCartItem">
                                                 <div class="input-group mb-3">
                                                     <spring:message code="quantity" var="quantityLabel"/>
 
                                                     <form:hidden path="productId" value="${product.getId()}" />
 
-                                                    <form:input path="quantity" type="number" cssClass="form-control" placeholder="${quantityLabel}" min="1" required="required" />
+                                                    <form:input path="quantity" type="number" cssClass="form-control" placeholder="${quantityLabel}" />
                                                     <div class="input-group-append">
                                                         <form:button class="btn btn-primary" type="submit">
                                                             <i class="fal fa-cart-plus"></i>
@@ -52,7 +55,7 @@
                                                     </div>
                                                 </div>
 
-                                                <form:errors path="*"/>
+                                                <div class="error"><form:errors path="quantity"/></div>
                                             </form:form>
                                         </div>
                                         <div class="col-md-6">

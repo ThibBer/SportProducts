@@ -1,7 +1,14 @@
 package be.henallux.spring.sportProjects.model;
 
+import org.springframework.format.annotation.NumberFormat;
+
+import javax.validation.constraints.Min;
+
 public class ShoppingCartItem {
     private Integer productId;
+
+    @NumberFormat(style = NumberFormat.Style.NUMBER)
+    @Min(1)
     private Integer quantity;
 
     public ShoppingCartItem() {}

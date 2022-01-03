@@ -6,8 +6,10 @@ import be.henallux.spring.sportProjects.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.DecimalFormat;
 import java.util.Locale;
 
@@ -48,17 +50,23 @@ public class ProductController extends MainController{
         }
     }
 
-    @RequestMapping(value="/send", method = RequestMethod.POST)
+    @RequestMapping(value="/", method = RequestMethod.POST)
     public String getFormData(Model model,
                               Locale locale,
-                              @ModelAttribute ShoppingCartItem shoppingCartItem,
-                              @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+                              @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart,
+                              @Valid @ModelAttribute ShoppingCartItem shoppingCartItem,
+                              final BindingResult errors) {
+        model.addAttribute("locale", locale);
         Integer quantity = shoppingCartItem.getQuantity();
         int idProduct = shoppingCartItem.getProductId();
 
         Product product = productsService.getProductWithId(idProduct, locale.getLanguage());
         if(product == null){
             return "integrated:notfound";
+        }
+
+        if(errors.hasErrors()) {
+            return "integrated:product";
         }
 
         Category category = product.getCategory();
