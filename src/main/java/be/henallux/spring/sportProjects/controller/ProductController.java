@@ -49,7 +49,6 @@ public class ProductController extends MainController{
             model.addAttribute("product", product);
             return "integrated:product";
         } catch (Exception e) {
-            e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             return "integrated:error";
         }
@@ -72,6 +71,7 @@ public class ProductController extends MainController{
         }
 
         if(errors.hasErrors()) {
+            System.out.println(errors.toString());
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.shoppingCartItem", errors);
             redirectAttributes.addFlashAttribute("shoppingCartItem", shoppingCartItem);
             return "redirect:/product/" + product.getId() + "/";

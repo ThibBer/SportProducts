@@ -43,10 +43,12 @@
                                                 <p><c:out value="${product.key.getDescription()}"/></p>
                                                 <div class="row">
                                                     <div class="col-md-4">
-                                                        <form:form method="POST" action="/sportProducts/shopping-cart/editQuantity" modelAttribute="shoppingCartItem">
+                                                        <form:form method="POST"
+                                                                   action="/sportProducts/shopping-cart/editQuantity"
+                                                                   modelAttribute="shoppingCartItem">
                                                             <div class="input-group mb-3">
                                                                 <spring:message code="quantity" var="quantityLabel"/>
-                                                                <form:input path="quantity" type="number" cssClass="form-control" placeholder="${quantityLabel}" min="1" value="${product.value}" required="required" />
+                                                                <form:input path="quantity" type="number" cssClass="form-control" placeholder="${quantityLabel}" value="${product.value}" min="1" required="required" />
                                                                 <form:hidden path="productId" value="${product.key.getId()}"/>
                                                                 <div class="input-group-append">
                                                                     <form:button class="btn btn-primary" type="submit">
@@ -54,6 +56,7 @@
                                                                     </form:button>
                                                                 </div>
                                                             </div>
+
                                                         </form:form>
                                                     </div>
                                                     <div class="col-md-4">
