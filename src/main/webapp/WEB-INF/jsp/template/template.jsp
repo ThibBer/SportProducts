@@ -50,7 +50,11 @@
 
                                 <sec:authorize access="isAuthenticated()">
                                     <a class="nav-link" href="<spring:url value='/logout'/>"><spring:message code="logout"/>&nbsp;&nbsp;<i class="fal fa-sign-out-alt text-light"></i></a>
-
+                                </sec:authorize>
+                            </li>
+                            <li class="nav-item">
+                                <sec:authorize access="!isAuthenticated()">
+                                    <a class="nav-link" href="<spring:url value='/register'/>"><spring:message code="register"/></a>
                                 </sec:authorize>
                             </li>
                             <li class="nav-item dropdown mr-4">
