@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class LanguageService {
     private LanguageDataAccess languageDataAccess;
-    private Language language;
 
     @Autowired
     public LanguageService(LanguageDataAccess languageDataAccess) {
@@ -16,7 +15,6 @@ public class LanguageService {
     }
 
     public Language getLanguageWithInternationalCode(String internationalCode) {
-        language = languageDataAccess.getLanguageWithInternationalCode(internationalCode);
-        return language;
+        return languageDataAccess.getLanguageWithInternationalCode(internationalCode);
     }
 }
