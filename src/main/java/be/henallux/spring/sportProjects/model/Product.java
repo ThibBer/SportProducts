@@ -76,6 +76,13 @@ public class Product {
         this.image = image;
     }
 
+    public boolean equals(Object o) {
+        if (!(o instanceof Product)) return false;
+
+        Product product = (Product) o;
+        return id.equals(product.getId());
+    }
+
     @Override
     public String toString() {
         return "Product{" +

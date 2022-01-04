@@ -28,6 +28,17 @@ public class Language {
     }
 
     @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Language)){
+            return false;
+        }
+
+        Language language = (Language) obj;
+
+        return language.getId().equals(id) && language.getInternationCode().equals(internationCode);
+    }
+
+    @Override
     public String toString() {
         return "Language{" +
                 "id=" + id +

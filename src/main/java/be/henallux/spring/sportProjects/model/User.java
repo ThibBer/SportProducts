@@ -208,6 +208,14 @@ public class User implements UserDetails {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof User)) return false;
+
+        User user = (User) o;
+        return id.equals(user.getId());
+    }
+
+    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
