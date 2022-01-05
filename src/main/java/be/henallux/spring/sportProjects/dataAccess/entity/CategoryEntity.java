@@ -1,8 +1,6 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Entity
 @Table(name="category")

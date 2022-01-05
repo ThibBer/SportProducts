@@ -5,9 +5,6 @@ import java.util.HashMap;
 public class ShoppingCart {
     private HashMap<Integer, Integer> productsWithQuantities = new HashMap<>();
 
-    public ShoppingCart() {
-    }
-
     public void addProductWithQuantity(Integer productId, Integer quantity) {
         Integer lastQuantity = productsWithQuantities.get(productId);
 

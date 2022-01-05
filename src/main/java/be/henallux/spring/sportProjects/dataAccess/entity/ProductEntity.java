@@ -1,8 +1,5 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
-import be.henallux.spring.sportProjects.model.Category;
-import be.henallux.spring.sportProjects.model.Promotion;
-
 import javax.persistence.*;
 
 @Entity

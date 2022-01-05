@@ -5,8 +5,6 @@ public class Translation {
     private Integer productId;
     private String label;
 
-    public Translation() {}
-
     public Translation(Integer languageId, Integer productId, String label) {
         this.languageId = languageId;
         this.productId = productId;

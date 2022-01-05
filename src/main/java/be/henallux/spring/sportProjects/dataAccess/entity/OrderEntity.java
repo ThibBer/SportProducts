@@ -1,7 +1,5 @@
 package be.henallux.spring.sportProjects.dataAccess.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 

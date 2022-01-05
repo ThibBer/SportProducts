@@ -146,22 +146,6 @@
                                 </div>
 
                                 <sec:authorize access="isAuthenticated()">
-<%--                                    <div class="row text-center mt-md-3">
-                                        <form action="https://www.sandbox.paypal.com/cgi bin/webscr" class="text-center">
-
-                                            <input type="hidden" name="business" value="42888business@business.be">
-                                            <input type="hidden" name="cmd" value="_xclick">
-                                            <input type="hidden" name="amount" value="${total}">
-                                            <input type="hidden" name="currency_code" value="EUR">
-                                            <input type="hidden" name="lc" value="${locale.getLanguage()}">
-                                            <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts/payments/paymentreceived">
-                                            <input type="hidden" name="cancel_url" value="http://127.0.0.1:8082/sportProducts/payments/paymentcancelled">
-                                            <input type="image" class="img-fluid text-center" name="submit"
-                                                   src="<spring:url value='/assets/pay/pay-with-paypal-${locale.getLanguage()}.jpg'/>"
-                                                   alt="PayPal - The safer, easier way to pay online">
-
-                                        </form>
-                                    </div>--%>
                                     <div class="row text-center mt-md-3">
                                         <div class="col">
                                             <a class="btn btn-primary" href="<spring:url value="/shopping-cart/validation"/>"><spring:message code="continue"/></a>

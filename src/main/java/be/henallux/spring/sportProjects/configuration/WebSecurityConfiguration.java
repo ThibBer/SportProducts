@@ -44,7 +44,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll() // To make the login page the available for any user
                 .and()
                 .logout() // We define the logout part here - By default : URL = "/logout"
-                //.logoutUrl("...") // If other link than "/logout" (that is by default)
                 .logoutSuccessUrl("/")  // URL to return if logout is successfull
                 .permitAll(); // To make the logout available for any user
     }

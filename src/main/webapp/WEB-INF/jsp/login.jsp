@@ -40,11 +40,9 @@
                                                     <div class="error"><form:errors path="password"/></div>
                                                 </div>
 
-                                                <div>
-                                                    <c:if test="${param.error != null}">
-                                                        <div class="error"><spring:message code='loginError'/></div>
-                                                    </c:if>
-                                                </div>
+                                                <c:if test="${param.error != null}">
+                                                    <div class="error"><spring:message code='loginError'/></div>
+                                                </c:if>
 
                                                 <div class="form-group">
                                                     <form:button type="submit" class="btn btn-default mx-auto d-block mt-md-3"><spring:message code="login"/></form:button>

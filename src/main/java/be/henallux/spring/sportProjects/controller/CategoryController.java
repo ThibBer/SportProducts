@@ -5,7 +5,6 @@ import be.henallux.spring.sportProjects.model.Product;
 import be.henallux.spring.sportProjects.service.CategoriesService;
 import be.henallux.spring.sportProjects.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +17,11 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/category")
 public class CategoryController extends MainController {
-    private final MessageSource messageSource;
     private CategoriesService categoriesService;
     private ProductsService productsService;
 
     @Autowired
-    public CategoryController(MessageSource messageSource, CategoriesService categoriesService, ProductsService productsService) {
-        this.messageSource = messageSource;
+    public CategoryController(CategoriesService categoriesService, ProductsService productsService) {
         this.categoriesService = categoriesService;
         this.productsService = productsService;
     }
@@ -51,7 +48,6 @@ public class CategoryController extends MainController {
             model.addAttribute("products", products);
             return "integrated:category";
         } catch (Exception e) {
-            e.printStackTrace();
             model.addAttribute("error", e.getMessage());
             return "integrated:error";
         }

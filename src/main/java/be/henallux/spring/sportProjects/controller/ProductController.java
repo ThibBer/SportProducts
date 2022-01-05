@@ -1,7 +1,9 @@
 package be.henallux.spring.sportProjects.controller;
 
-import be.henallux.spring.sportProjects.model.*;
-import be.henallux.spring.sportProjects.service.CategoriesService;
+import be.henallux.spring.sportProjects.model.Category;
+import be.henallux.spring.sportProjects.model.Product;
+import be.henallux.spring.sportProjects.model.ShoppingCart;
+import be.henallux.spring.sportProjects.model.ShoppingCartItem;
 import be.henallux.spring.sportProjects.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 @Controller
@@ -55,7 +56,7 @@ public class ProductController extends MainController{
     }
 
     @RequestMapping(value="/", method = RequestMethod.POST)
-    public String getFormData(Model model,
+    public String addProductToShoppingCart(Model model,
                               Locale locale,
                               @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart,
                               @Valid @ModelAttribute("shoppingCartItem") ShoppingCartItem shoppingCartItem,

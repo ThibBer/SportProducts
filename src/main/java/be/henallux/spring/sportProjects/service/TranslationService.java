@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class TranslationService {
     private TranslationDataAccess translationDataAccess;
-    private Translation translation;
+
 
     @Autowired
     public TranslationService(TranslationDataAccess translationDataAccess) {
@@ -16,8 +16,7 @@ public class TranslationService {
     }
 
     public Translation getTranslationWithProductIdAndLanguageId(Integer idProduct, Integer idLanguage) {
-        translation = translationDataAccess.getTranslationWithProductIdAndLanguageId(idProduct, idLanguage);
-        return translation;
+        return translationDataAccess.getTranslationWithProductIdAndLanguageId(idProduct, idLanguage);
     }
 
 }

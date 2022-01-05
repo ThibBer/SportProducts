@@ -2,7 +2,6 @@ package be.henallux.spring.sportProjects.controller;
 
 import be.henallux.spring.sportProjects.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +12,10 @@ import java.util.Locale;
 @Controller
 @RequestMapping(value = "/categories")
 public class CategoriesController extends MainController{
-    private final MessageSource messageSource;
     private CategoriesService categoriesService;
 
     @Autowired
-    public CategoriesController(MessageSource messageSource, CategoriesService categoriesService){
-        this.messageSource = messageSource;
+    public CategoriesController(CategoriesService categoriesService){
         this.categoriesService = categoriesService;
     }
 

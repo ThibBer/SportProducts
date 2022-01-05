@@ -1,14 +1,11 @@
 package be.henallux.spring.sportProjects.model;
 
-
 import java.util.Date;
 
 public class Order {
     private Integer id;
     private Date date;
     private User user;
-
-    public Order() {}
 
     public Order(Integer id, Date date, User user) {
         setId(id);

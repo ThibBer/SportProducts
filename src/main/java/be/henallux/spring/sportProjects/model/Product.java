@@ -9,8 +9,6 @@ public class Product {
     private Translation translation;
     private String image;
 
-    public Product() {}
-
     public Product(Integer id, Double price, Category category, String description, String image) {
         setId(id);
         setPrice(price);

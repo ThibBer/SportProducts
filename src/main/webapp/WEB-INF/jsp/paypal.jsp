@@ -20,6 +20,7 @@
                             <input type="hidden" name="amount_<c:out value="${loop.count}" />" value="${product.key.getPriceWithPromotion()}">
                         </c:forEach>
 
+                        <input type="hidden" name="brand_name" value="SportProducts">
                         <input type="hidden" name="currency_code" value="EUR">
                         <input type="hidden" name="lc" value="${locale.getLanguage()}-${locale.getCountry()}">
                         <input type="hidden" name="return" value="http://127.0.0.1:8082/sportProducts/payments/paymentsuccess">

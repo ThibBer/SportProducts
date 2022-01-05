@@ -1,14 +1,10 @@
 package be.henallux.spring.sportProjects.dataAccess.dao;
 
-import be.henallux.spring.sportProjects.dataAccess.entity.CategoryEntity;
 import be.henallux.spring.sportProjects.dataAccess.entity.ProductEntity;
 import be.henallux.spring.sportProjects.dataAccess.repository.ProductRepository;
 import be.henallux.spring.sportProjects.dataAccess.util.ProviderConverter;
-import be.henallux.spring.sportProjects.model.Category;
 import be.henallux.spring.sportProjects.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;

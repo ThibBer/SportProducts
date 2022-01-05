@@ -87,7 +87,7 @@ public class ShoppingCartController extends MainController {
     }
 
     @RequestMapping(value="/delete", method = RequestMethod.POST)
-    public String delete(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart, @ModelAttribute ShoppingCartItem shoppingCartItem) {
+    public String delete(@ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart, @ModelAttribute ShoppingCartItem shoppingCartItem) {
         shoppingCart.removeProduct(shoppingCartItem.getProductId());
 
         return "redirect:/shopping-cart";
@@ -134,7 +134,7 @@ public class ShoppingCartController extends MainController {
     }
 
     @RequestMapping(value = "/payement", method = RequestMethod.POST)
-    public String onPayement(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
+    public String onPayement(Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart) {
         HashMap<Integer, Integer> shoppingCartMap = shoppingCart.getProductsWithQuantities();
 
         if(shoppingCartMap.size() == 0){

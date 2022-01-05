@@ -15,11 +15,6 @@ public class ShoppingCartItem {
 
     public ShoppingCartItem() {}
 
-    public ShoppingCartItem(Integer productId, Integer quantity) {
-        this.setProductId(productId);
-        this.setQuantity(quantity);
-    }
-
     public Integer getProductId() {
         return productId;
     }

@@ -45,9 +45,6 @@ public class UserForm {
     @NotBlank
     private String houseNumber;
 
-    public UserForm() {
-    }
-
     public String getEmail() {
         return email;
     }

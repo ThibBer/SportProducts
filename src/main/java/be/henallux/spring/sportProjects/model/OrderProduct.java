@@ -7,8 +7,6 @@ public class OrderProduct {
     private Order order;
     private Product product;
 
-    public OrderProduct() {}
-
     public OrderProduct(Integer id, Integer quantity, Double accordedPrice, Order order, Product product) {
         setId(id);
         setQuantity(quantity);

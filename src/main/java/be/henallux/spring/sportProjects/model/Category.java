@@ -64,9 +64,8 @@ public class Category {
             return false;
         }
 
-        //TODO je crois que c'est inversé ?
         Date now = new Date();
-        return (promotion.getStartDate().equals(now) || promotion.getStartDate().before(now)) && (promotion.getEndDate().after(now) || this.promotion.getEndDate().equals(now));
+        return (promotion.getStartDate().before(now) || promotion.getStartDate().equals(now)) && (this.promotion.getEndDate().equals(now) || promotion.getEndDate().after(now));
     }
 
     @Override

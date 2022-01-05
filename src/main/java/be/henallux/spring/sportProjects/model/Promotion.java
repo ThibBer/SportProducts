@@ -11,8 +11,6 @@ public class Promotion {
     private Date endDate;
     private Integer percentage;
 
-    public Promotion() {}
-
     public Promotion(Integer id, Date startDate, Date endDate, Integer percentage) {
         this.id = id;
         this.startDate = startDate;

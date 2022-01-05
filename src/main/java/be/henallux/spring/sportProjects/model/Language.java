@@ -4,8 +4,6 @@ public class Language {
     private Integer id;
     private String internationCode;
 
-    public Language() {}
-
     public Language(Integer id, String internationCode) {
         this.id = id;
         this.internationCode = internationCode;

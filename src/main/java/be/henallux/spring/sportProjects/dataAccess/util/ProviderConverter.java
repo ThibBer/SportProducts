@@ -112,12 +112,6 @@ public class ProviderConverter {
     }
 
     /*Translation*/
-    public TranslationEntity translationModelToTranslationEntity(Translation translation) {
-        if(translation == null)
-            return null;
-        return new TranslationEntity(new TranslationPrimaryGroup(translation.getLanguageId(), translation.getProductId()), translation.getLabel());
-    }
-
     public Translation translationEntityToTranslationModel(TranslationEntity translationEntity) {
         if(translationEntity == null){
             return null;
@@ -127,14 +121,6 @@ public class ProviderConverter {
     }
 
     /*Language*/
-    public LanguageEntity languageModelToLanguageEntity(Language language) {
-        if(language == null){
-            return null;
-        }
-
-        return new LanguageEntity(language.getId(), language.getInternationCode());
-    }
-
     public Language languageEntityToLanguageModel(LanguageEntity languageEntity) {
         if(languageEntity == null){
             return null;
@@ -164,13 +150,6 @@ public class ProviderConverter {
         return new OrderProductEntity(orderProduct.getId(), orderProduct.getQuantity(), orderProduct.getAccordedPrice(), orderModelToOrderEntity(orderProduct.getOrder()), productModelToProductEntity(orderProduct.getProduct()));
     }
 
-    public OrderProduct orderProductEntityToOrderProductModel(OrderProductEntity orderProductEntity){
-        if(orderProductEntity == null)
-            return null;
-
-        return new OrderProduct(orderProductEntity.getId(), orderProductEntity.getQuantity(), orderProductEntity.getAccordedPrice(), orderEntityToOrderModel(orderProductEntity.getOrderEntity()), productEntityToProductModel(orderProductEntity.getProductEntity()));
-    }
-
     public List<OrderProductEntity> orderProductModelsToOrderProductEntities(List<OrderProduct> orderProducts){
         if(orderProducts == null)
             return null;
@@ -182,18 +161,5 @@ public class ProviderConverter {
         }
 
         return orderProductEntities;
-    }
-
-    public  List<OrderProduct> orderProductEntitiesToOrderProductModels(List<OrderProductEntity> orderProductEntities){
-        if(orderProductEntities == null)
-            return null;
-
-        ArrayList<OrderProduct> orderProducts = new ArrayList<>();
-
-        for(OrderProductEntity orderProductEntity: orderProductEntities){
-            orderProducts.add(orderProductEntityToOrderProductModel(orderProductEntity));
-        }
-
-        return orderProducts;
     }
 }

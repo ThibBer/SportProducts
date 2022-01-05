@@ -91,7 +91,6 @@
                                     </c:if>
 
                                     <c:if test="${articlesInPromotion == 1}">
-                                        <small>Votre panier contient <c:out value="${articlesInPromotion}"/> article en promotion</small>
                                         <small><spring:message code="shoppingCartContains" /> <c:out value="${articlesInPromotion}"/> <spring:message code="articleInPromotion" /></small>
                                     </c:if>
 
