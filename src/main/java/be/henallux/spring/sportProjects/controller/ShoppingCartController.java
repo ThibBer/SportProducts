@@ -10,8 +10,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.util.*;
 
 @Controller
@@ -22,6 +25,11 @@ public class ShoppingCartController extends MainController {
     private ShoppingCartService shoppingCartService;
     private OrderService orderService;
     private OrderProductService orderProductService;
+
+    @ModelAttribute("shoppingCartItem")
+    public ShoppingCartItem newShoppingCartItem() {
+        return new ShoppingCartItem();
+    }
 
     @Autowired
     public ShoppingCartController(ProductsService productsService, ShoppingCartService shoppingCartService, OrderService orderService, OrderProductService orderProductService) {
@@ -58,13 +66,21 @@ public class ShoppingCartController extends MainController {
         model.addAttribute("articlesInPromotion", articlesInPromotion);
         model.addAttribute("total", shoppingCartService.getTotalPrice(shoppingCartItems));
         model.addAttribute("shoppingCartItemsCount", shoppingCartItems.size());
-        model.addAttribute("shoppingCartItem", new ShoppingCartItem());
 
         return "integrated:shopping-cart";
     }
 
     @RequestMapping(value="/editQuantity", method = RequestMethod.POST)
-    public String editQuantity(Model model, Locale locale, @ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart, @ModelAttribute ShoppingCartItem shoppingCartItem) {
+    public String editQuantity(@ModelAttribute(value=SHOPPING_CART) ShoppingCart shoppingCart,
+                               @Valid @ModelAttribute("shoppingCartItem") ShoppingCartItem shoppingCartItem,
+                               final BindingResult errors,
+                               final RedirectAttributes redirectAttributes) {
+        if(errors.hasErrors()) {
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.shoppingCartItem", errors);
+            redirectAttributes.addFlashAttribute("shoppingCartItem", shoppingCartItem);
+            return "redirect:/shopping-cart";
+        }
+
         shoppingCart.updateQuantity(shoppingCartItem.getProductId(), shoppingCartItem.getQuantity());
 
         return "redirect:/shopping-cart";

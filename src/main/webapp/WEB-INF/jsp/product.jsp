@@ -47,9 +47,9 @@
 
                                                     <form:hidden path="productId" value="${product.getId()}" />
 
-                                                    <form:input path="quantity" cssClass="form-control" placeholder="${quantityLabel}" />
+                                                    <form:input path="quantity" cssClass="form-control" type="number" value="1" placeholder="${quantityLabel}" />
                                                     <div class="input-group-append">
-                                                        <form:button class="btn btn-primary" type="submit">
+                                                        <form:button class="btn btn-primary" type="submit" formnovalidate="">
                                                             <i class="fal fa-cart-plus"></i>
                                                         </form:button>
                                                     </div>
