@@ -22,7 +22,7 @@ public class UserDAO implements UserDataAccess{
     }
 
     @Override
-    public User getUserFromUsername(String username) {
+    public User findByUsername(String username) {
         return converter.userEntityToUserModel(userRepository.findUserByUsername(username));
     }
 

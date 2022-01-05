@@ -13,7 +13,6 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-
     private static final String LOGIN_REQUEST = "/login";
     private static final String[] AUTHORIZED_REQUESTS_ANYBODY = new String[]{"/login", "/", "/register/**", "/categories","/category/**", "/product/**", "/shopping-cart/**", "/Bergnard", "/css/**", "/assets/**"};
     private static final String[] AUTHORIZED_REQUESTS_ADMIN = new String[]{};
@@ -43,16 +42,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .successHandler(new SavedRequestAwareAuthenticationSuccessHandler()) // provided by spring to redirect to the last request
                 .loginPage(LOGIN_REQUEST) // We specify a login page. Otherwise spring creates one by default
                 .permitAll() // To make the login page the available for any user
-
                 .and()
                 .logout() // We define the logout part here - By default : URL = "/logout"
                 //.logoutUrl("...") // If other link than "/logout" (that is by default)
                 .logoutSuccessUrl("/")  // URL to return if logout is successfull
                 .permitAll(); // To make the logout available for any user
     }
-
-
-
 
     /**
      * We provide the service which will return the user and the password encoder

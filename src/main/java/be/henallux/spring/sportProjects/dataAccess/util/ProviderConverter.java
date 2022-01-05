@@ -1,19 +1,19 @@
 package be.henallux.spring.sportProjects.dataAccess.util;
 
-import be.henallux.spring.sportProjects.dataAccess.dao.OrderProductDAO;
 import be.henallux.spring.sportProjects.dataAccess.entity.*;
 import be.henallux.spring.sportProjects.model.*;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Component
 public class ProviderConverter {
     /*User*/
     public UserEntity userModelToUserEntity(User user){
+        if(user == null)
+            return null;
+
         UserEntity userEntity = new UserEntity(
                 user.getId(),
                 user.getEmail(),
@@ -37,6 +37,9 @@ public class ProviderConverter {
     }
 
     public User userEntityToUserModel(UserEntity userEntity){
+        if(userEntity == null)
+            return null;
+
         User user = new User(
                 userEntity.getId(),
                 userEntity.getEmail(),
@@ -141,22 +144,37 @@ public class ProviderConverter {
     }
 
     public Order orderEntityToOrderModel(OrderEntity orderEntity){
+        if(orderEntity == null)
+            return null;
+
         return new Order(orderEntity.getId(), orderEntity.getDate(), userEntityToUserModel(orderEntity.getUserEntity()));
     }
 
     public OrderEntity orderModelToOrderEntity(Order order){
+        if(order == null)
+            return null;
+
         return new OrderEntity(order.getId(), order.getDate(), userModelToUserEntity(order.getUser()));
     }
 
     public OrderProductEntity orderProductModelToOrderProductEntity(OrderProduct orderProduct){
+        if(orderProduct == null)
+            return null;
+
         return new OrderProductEntity(orderProduct.getId(), orderProduct.getQuantity(), orderProduct.getAccordedPrice(), orderModelToOrderEntity(orderProduct.getOrder()), productModelToProductEntity(orderProduct.getProduct()));
     }
 
     public OrderProduct orderProductEntityToOrderProductModel(OrderProductEntity orderProductEntity){
+        if(orderProductEntity == null)
+            return null;
+
         return new OrderProduct(orderProductEntity.getId(), orderProductEntity.getQuantity(), orderProductEntity.getAccordedPrice(), orderEntityToOrderModel(orderProductEntity.getOrderEntity()), productEntityToProductModel(orderProductEntity.getProductEntity()));
     }
 
     public List<OrderProductEntity> orderProductModelsToOrderProductEntities(List<OrderProduct> orderProducts){
+        if(orderProducts == null)
+            return null;
+
         ArrayList<OrderProductEntity> orderProductEntities = new ArrayList<>();
 
         for(OrderProduct orderProduct: orderProducts){
@@ -167,6 +185,9 @@ public class ProviderConverter {
     }
 
     public  List<OrderProduct> orderProductEntitiesToOrderProductModels(List<OrderProductEntity> orderProductEntities){
+        if(orderProductEntities == null)
+            return null;
+
         ArrayList<OrderProduct> orderProducts = new ArrayList<>();
 
         for(OrderProductEntity orderProductEntity: orderProductEntities){

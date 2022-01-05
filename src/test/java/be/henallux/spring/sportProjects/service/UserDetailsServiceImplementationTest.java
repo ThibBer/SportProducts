@@ -39,6 +39,6 @@ public class UserDetailsServiceImplementationTest {
         when(userRepository.findUserByUsername("nico")).thenReturn(nicolasEntity);
 
         User nicolas = new User(1, "nicolasbernard@gmail.com", "Nicoals", "Bernard", "0445789662", "Spontin", 5530, "Rue de la rue", "14", new Date(), "nico", "password", "ROLE_USER", true, true, true, true);
-        assertThat(userDAO.getUserFromUsername("nico")).isEqualTo(nicolas);
+        assertThat(userDAO.findByUsername("nico")).isEqualTo(nicolas);
     }
 }

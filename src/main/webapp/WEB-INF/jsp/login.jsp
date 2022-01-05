@@ -30,17 +30,22 @@
                                             <form:form method="post" modelAttribute="user">
                                                 <div class="form-group">
                                                     <spring:message code="username" var="username"/>
-
-                                                    <form:input path="username" cssClass="form-control bg-light" required="required" placeholder="${username}"/>
-                                                    <form:errors path="username" />
+                                                    <form:input path="username" cssClass="form-control bg-light" placeholder="${username}"/>
+                                                    <div class="error"><form:errors path="username"/></div>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <spring:message code="password" var="password"/>
-
-                                                    <form:input path="password" cssClass="form-control bg-light" type="password" required="required" placeholder="${password}"/>
-                                                    <form:errors path="password" />
+                                                    <form:input path="password" cssClass="form-control bg-light" type="password" placeholder="${password}"/>
+                                                    <div class="error"><form:errors path="password"/></div>
                                                 </div>
+
+                                                <div>
+                                                    <c:if test="${param.error != null}">
+                                                        <div class="error"><spring:message code='loginError'/></div>
+                                                    </c:if>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <form:button type="submit" class="btn btn-default mx-auto d-block mt-md-3"><spring:message code="login"/></form:button>
                                                 </div>
