@@ -1,9 +1,11 @@
 package be.henallux.spring.sportProjects.dataAccess.dao;
 
 import be.henallux.spring.sportProjects.dataAccess.entity.CategoryEntity;
+import be.henallux.spring.sportProjects.dataAccess.entity.ProductEntity;
 import be.henallux.spring.sportProjects.dataAccess.repository.CategoryRepository;
 import be.henallux.spring.sportProjects.dataAccess.util.ProviderConverter;
 import be.henallux.spring.sportProjects.model.Category;
+import be.henallux.spring.sportProjects.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,13 +49,10 @@ public class CategoryDAO implements CategoryDataAccess {
 
     @Override
     public ArrayList<Category> getNumberRandomCategories(int number) {
-        Long count = categoryRepository.count();
-        int numPage = (int)(Math.random() * (count / number));
-        PageRequest pageRequest = PageRequest.of(numPage, number);
-        Page<CategoryEntity> categoryEntities = categoryRepository.findAll(pageRequest);
+        List<CategoryEntity> CategoryEntities = categoryRepository.getRandomCategories(number);
         ArrayList<Category> categories = new ArrayList<>();
 
-        for(CategoryEntity categoryEntity: categoryEntities.toList()){
+        for(CategoryEntity categoryEntity: CategoryEntities){
             categories.add(converter.categoryEntityToCategoryModel(categoryEntity));
         }
 

@@ -48,13 +48,10 @@ public class ProductDAO implements ProductDataAccess {
 
     @Override
     public ArrayList<Product> getNumberRandomProducts(int numberProducts) {
-        Long count = productRepository.count();
-        int numPage = (int)(Math.random() * (count / numberProducts));
-        PageRequest pageRequest = PageRequest.of(numPage, numberProducts);
-        Page<ProductEntity> productEntities = productRepository.findAll(pageRequest);
+        List<ProductEntity> productEntities = productRepository.getRandomProducts(numberProducts);
         ArrayList<Product> products = new ArrayList<>();
 
-        for(ProductEntity productEntity: productEntities.toList()){
+        for(ProductEntity productEntity: productEntities){
             products.add(converter.productEntityToProductModel(productEntity));
         }
 
