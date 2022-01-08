@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional
 public class CategoryDAO implements CategoryDataAccess {
     private CategoryRepository categoryRepository;
     private ProviderConverter converter;
@@ -38,8 +37,7 @@ public class CategoryDAO implements CategoryDataAccess {
     @Override
     public Category getCategoryWithId(int id) {
         CategoryEntity categoryEntity = categoryRepository.findCategoryEntityById(id);
-        Category category = converter.categoryEntityToCategoryModel(categoryEntity);
-        return category;
+        return converter.categoryEntityToCategoryModel(categoryEntity);
     }
 
     @Override

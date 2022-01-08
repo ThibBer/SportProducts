@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-@Transactional
 public class UserDAO implements UserDataAccess{
     private UserRepository userRepository;
     private ProviderConverter converter;
@@ -39,6 +38,6 @@ public class UserDAO implements UserDataAccess{
     @Override
     public void postUser(User user) {
         UserEntity userEntity = converter.userModelToUserEntity(user);
-        userEntity = userRepository.save(userEntity);
+        userRepository.save(userEntity);
     }
 }

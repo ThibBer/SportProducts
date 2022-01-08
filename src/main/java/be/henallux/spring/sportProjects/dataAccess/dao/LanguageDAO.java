@@ -21,7 +21,6 @@ public class LanguageDAO implements LanguageDataAccess{
     @Override
     public Language getLanguageWithInternationalCode(String internationalCode) {
         LanguageEntity languageEntity = languageRepository.findLanguageEntityByInternationCode(internationalCode);
-        Language language = converter.languageEntityToLanguageModel(languageEntity);
-        return language;
+        return converter.languageEntityToLanguageModel(languageEntity);
     }
 }

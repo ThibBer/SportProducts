@@ -6,6 +6,7 @@ import be.henallux.spring.sportProjects.model.OrderProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -20,6 +21,7 @@ public class OrderProductDAO implements OrderProductDataAccess{
     }
 
     @Override
+    @Transactional
     public void saveAll(List<OrderProduct> orderProducts) {
         orderProductRepository.saveAll(providerConverter.orderProductModelsToOrderProductEntities(orderProducts));
     }

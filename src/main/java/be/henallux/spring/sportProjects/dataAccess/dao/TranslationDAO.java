@@ -21,7 +21,6 @@ public class TranslationDAO implements TranslationDataAccess{
     @Override
     public Translation getTranslationWithProductIdAndLanguageId(Integer idProduct, Integer idLanguage) {
         TranslationEntity translationEntity = translationRepository.findTranslationEntityByTranslationId_ProductAndTranslationId_Language(idProduct, idLanguage);
-        Translation translation = converter.translationEntityToTranslationModel(translationEntity);
-        return translation;
+        return converter.translationEntityToTranslationModel(translationEntity);
     }
 }

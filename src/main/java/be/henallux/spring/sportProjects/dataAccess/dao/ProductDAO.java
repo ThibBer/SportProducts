@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional
 public class ProductDAO implements ProductDataAccess {
     private ProductRepository productRepository;
     private ProviderConverter converter;
@@ -38,8 +37,7 @@ public class ProductDAO implements ProductDataAccess {
     @Override
     public Product getProductWithId(int idProduct) {
         ProductEntity productEntity = productRepository.findProductEntityById(idProduct);
-        Product product = converter.productEntityToProductModel(productEntity);
-        return product;
+        return converter.productEntityToProductModel(productEntity);
     }
 
     @Override
